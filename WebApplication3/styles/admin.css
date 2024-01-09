@@ -1,0 +1,75 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Navbar styles */
+
+.navbar {
+    background-color: #800000; /* Maroon */
+    color: #fff;
+}
+
+/* Tab links styles */
+.nav-tabs .nav-item a.nav-link {
+    color: #000; /* Black */
+}
+
+/* Active tab link styles */
+.nav-tabs .nav-item a.nav-link.active {
+    background-color: #007BFF; /* Blue */
+    color: #fff;
+    border-color: #007BFF;
+}
+
+/* Tab content styles */
+.tab-content {
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Button styles */
+.btn.btn-primary {
+    background-color: #007BFF; /* Blue */
+    border-color: #007BFF;
+}
+
+.btn.btn-danger {
+    background-color: #800000; /* Maroon */
+    border-color: #800000;
+    color: #fff;
+}
+
+/* Table styles */
+.table.table-bordered th, .table.table-bordered td {
+    border: 1px solid #ddd;
+}
+
+/* Modal header styles */
+.modal-header {
+    background-color: #800000; /* Maroon */
+    color: #fff;
+    border-bottom: 1px solid #ddd;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/* Modal body and footer styles */
+.modal-body, .modal-footer {
+    border-top: 1px solid #ddd;
+}
+
+/* Optional: Add hover effect to buttons */
+.btn.btn-primary:hover, .btn.btn-danger:hover {
+    background-color: #0056b3; /* Darker blue */
+    border-color: #0056b3;
+}
+
+/* Optional: Add transition effect */
+.nav-tabs .nav-item a.nav-link, .btn {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}

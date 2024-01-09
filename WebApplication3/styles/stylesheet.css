@@ -1,0 +1,90 @@
+﻿* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif; /* Use Montserrat as the font family */
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+  background-image: url(images/puppq.jpg); /* Replace with the actual path to your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* This keeps the background fixed when scrolling */
+}
+
+/* CSS for the frame-parent element */
+.frame-parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.frame-child {
+  width: 90%;
+  max-width: 415px; /* Adjust as needed */
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* CSS for the login-container element */
+.login-container {
+  text-align: center;
+  position: relative;
+  
+}
+
+/* CSS for the logo image */
+.logo-image {
+    width: 50%;
+    display: block;
+    margin: 0 auto;
+    border-radius: 90%;
+    background-color: transparent; /* Add this line to remove transparent background */
+}
+
+/* CSS for the input fields and button */
+.input-field {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc; /* Add a border for clarity */
+  border-radius: 4px; /* Round the corners of the input fields */
+}
+
+button {
+  width: 100%;
+  padding: 12px; /* Increase padding for better touch responsiveness */
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-size: 18px; /* Increase font size for better visibility */
+}
+
+button:hover {
+  background-color: #0056b3; /* Add a hover effect for better feedback */
+}
+
+/* CSS for the header and paragraph */
+h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+}
