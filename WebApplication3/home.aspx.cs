@@ -290,21 +290,34 @@ namespace WebApplication3
             // Your logic for the Recall button click
         }
 
-        protected void btnDoneTicket_Click(object sender, EventArgs e)
+        protected async void btnDoneTicket_Click(object sender, EventArgs e)
         {
-            // Your logic for the Done button click
-
-            string currentQueueTicket = lblQueueTicket.Text; // Assuming the current queueticket is displayed in a label
-            string department = lblDepartment.Text; // Assuming the department is displayed in a label
-
-            if (!string.IsNullOrEmpty(currentQueueTicket))
+            try
             {
-                UpdateIsDoneForTicket(department, currentQueueTicket);
-                lblMessage.Text = "Ticket marked as Done.";
+                // Your logic for the Done button click
+
+                string currentQueueTicket = lblQueueTicket.Text; // Assuming the current queueticket is displayed in a label
+                string department = lblDepartment.Text; // Assuming the department is displayed in a label
+
+                if (!string.IsNullOrEmpty(currentQueueTicket))
+                {
+                    UpdateIsDoneForTicket(department, currentQueueTicket);
+
+                    // Call the asynchronous method to update the ticket status through API
+                    await UpdateIsDoneThroughAPIAsync(department, currentQueueTicket);
+
+                    lblMessage.Text = "Ticket marked as Done.";
+                }
+                else
+                {
+                    lblMessage.Text = "No queueticket available to mark as Done.";
+                }
             }
-            else
+            catch (Exception ex)
             {
-                lblMessage.Text = "No queueticket available to mark as Done.";
+                // Handle any exceptions that may occur during the process
+                // Display an error message or log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
             }
         }
 
@@ -324,6 +337,34 @@ namespace WebApplication3
 
                     connection.Open();
                     command.ExecuteNonQuery();
+                }
+            }
+        }
+
+        private async Task UpdateIsDoneThroughAPIAsync(string department, string currentQueueTicket)
+        {
+            using (HttpClient client = new HttpClient())
+            {
+                client.BaseAddress = new Uri("http://localhost:65388");
+
+                // Set CurrentQueueTicket to department + "000" if it's empty
+                var payload = new
+                {
+                    Department = department,
+                    CurrentQueueTicket = char.ToUpper(department[0]) + "-000"
+                };
+
+                var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payload), System.Text.Encoding.UTF8, "application/json");
+
+                var response = await client.PostAsync("http://localhost:65388/api/QueueTicket/PostQueueTicket", content);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    Console.WriteLine("Queue ticket information posted successfully.");
+                }
+                else
+                {
+                    Console.WriteLine($"Error posting queue ticket information. Status code: {response.StatusCode}");
                 }
             }
         }

@@ -2,24 +2,12 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.Http;
-using Microsoft.AspNet.SignalR;
 
 namespace WebApplication3.Controllers
 {
     public class QueueTicketController : ApiController
     {
         private string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
-        private IHubContext _hubContext;
-
-        // Parameterless constructor
-        public QueueTicketController()
-        {
-        }
-        public void SetHubContext(IHubContext hubContext)
-        {
-            _hubContext = hubContext;
-        }
-
 
         [HttpPost]
         public IHttpActionResult PostQueueTicket([FromBody] QueueTicketModel model)
@@ -52,7 +40,6 @@ namespace WebApplication3.Controllers
                 }
 
                 // Notify clients about the new queue ticket
-                _hubContext.Clients.All.UpdateQueueTicket(model.Department, model.CurrentQueueTicket);
 
                 return Ok("Queue ticket information received and saved successfully");
             }
@@ -83,10 +70,7 @@ namespace WebApplication3.Controllers
                         if (result != null)
                         {
                             string currentQueueTicket = result.ToString();
-
-                            // Notify clients about the current queue ticket
-                            _hubContext.Clients.All.UpdateQueueTicket(department, currentQueueTicket);
-
+                            // Return the current queue ticket
                             return Ok(new { CurrentQueueTicket = currentQueueTicket });
                         }
                         else

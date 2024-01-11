@@ -13,48 +13,135 @@
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
    <script>
-    var connection = new signalR.HubConnectionBuilder().withUrl('/QueueTicketHub').build();
+       var currentVideoId = null;
 
-    connection.on('UpdateQueueTicket', function (department, queueTicket) {
-        // Update the queue ticket number on the page
-        $('#' + department + 'QueueTicket').text(queueTicket);
+       function updateVideoSource() {
+           // Fetch all selected videos from the server
+           $.ajax({
+               url: 'http://localhost:65388/api/video/getselectedvideos',
+               method: 'GET',
+               success: function (data) {
+                   if (data.length > 0) {
+                       // Create an array to store video URLs
+                       var videoUrls = [];
 
-        // Speak the new queue ticket number
-        speakQueueTicketNumber(department, queueTicket);
-    });
+                       // Iterate through the selected videos and get video URLs
+                       for (var i = 0; i < data.length; i++) {
+                           var videoId = data[i].VideoId;
+                           var videoUrl = 'http://localhost:65388/api/video/playvideo/' + videoId;
+                           videoUrls.push(videoUrl);
+                       
 
-    connection.start().then(function () {
-        console.log('SignalR connected');
-    }).catch(function (err) {
-        return console.error(err.toString());
-    });
+                           // Set the video source using the PlayVideo endpoint
+                           $('#PlayVideo').attr('src', 'http://localhost:65388/api/video/playvideo/' + videoId);
 
-    function updateQueueTicket(department) {
-        $.ajax({
-            url: 'http://localhost:65388/api/QueueTicket/GetQueueTicket?department=' + department,
-            method: 'GET',
-            success: function (data) {
-                // Invoke SignalR hub to notify connected clients about the update
-                connection.invoke('UpdateQueueTicket', department, data.CurrentQueueTicket);
-            },
-            error: function (error) {
-                console.error('Error fetching ' + department + ' queue ticket:', error);
-            }
-        });
-    }
+                           // Mute the video
+                           $('#PlayVideo').prop('muted', true);
 
-    function speakQueueTicketNumber(department, queueTicket) {
-        // Use Web Speech API to convert text to speech
-        var msg = new SpeechSynthesisUtterance('New queue ticket for ' + department + '. Ticket number ' + queueTicket);
-        window.speechSynthesis.speak(msg);
-    }
+                           $('#PlayVideo').prop('loop', true);
+
+                           // Listen for the "ended" event on the video element
+                           $('#PlayVideo').on('ended', function () {
+                               // After the current video ends, fetch the next video and play it
+                               updateVideoSource();
+                           });
+                       }
+                   }
+               },
+               error: function (error) {
+                   console.error('Error fetching selected videos:', error);
+               }
+           });
+       }
+
+       function updateRegistrarQueueTicket() {
+           $.ajax({
+               url: 'http://localhost:65388/api/QueueTicket/GetQueueTicket?department=registrar',
+               method: 'GET',
+               success: function (data) {
+                   // Update the registrar queue ticket number on the page
+                   $('#registrarQueueTicket').text(data.CurrentQueueTicket);
+               },
+               error: function (error) {
+                   console.error('Error fetching registrar queue ticket:', error);
+               }
+           });
+       }
+   function updateCashierQueueTicket() {
+       $.ajax({
+           url: 'http://localhost:65388/api/QueueTicket/GetQueueTicket?department=cashier',
+           method: 'GET',
+           success: function (data) {
+               // Update the registrar queue ticket number on the page
+               $('#cashierQueueTicket').text(data.CurrentQueueTicket);
+           },
+           error: function (error) {
+               console.error('Error fetching cashier queue ticket:', error);
+           }
+       });
+   }
+   function updateDirectorQueueTicket() {
+       $.ajax({
+           url: 'http://localhost:65388/api/QueueTicket/GetQueueTicket?department=director',
+           method: 'GET',
+           success: function (data) {
+               // Update the registrar queue ticket number on the page
+               $('#directorQueueTicket').text(data.CurrentQueueTicket);
+           },
+           error: function (error) {
+               console.error('Error fetching director queue ticket:', error);
+           }
+       });
+   }
+   function updateStudentaffairsandservicesQueueTicket() {
+       $.ajax({
+           url: 'http://localhost:65388/api/QueueTicket/GetQueueTicket?department=studentaffairsandservices',
+           method: 'GET',
+           success: function (data) {
+               // Update the registrar queue ticket number on the page
+               $('#studentaffairsandservicesQueueTicket').text(data.CurrentQueueTicket);
+           },
+           error: function (error) {
+               console.error('Error fetching studentaffairsandservices queue ticket:', error);
+           }
+       });
+   }
+    // Update registrar queue ticket on page load
+   $(document).ready(function () {
+       updateRegistrarQueueTicket();
+       updateVideoSource();
+
+       setInterval(function () {
+           updateRegistrarQueueTicket();
+           
+       }, 5000);
+   });
 
     $(document).ready(function () {
-        // Update queue ticket for each department
-        updateQueueTicket('cashier');
-        updateQueueTicket('registrar');
-        updateQueueTicket('studentAffairs');
-        updateQueueTicket('director');
+        updateCashierQueueTicket();
+
+        // Update cashier queue ticket every 5 seconds (adjust as needed)
+        setInterval(function () {
+            updateCashierQueueTicket();
+        }, 5000);
+    });
+
+    $(document).ready(function () {
+        updateDirectorQueueTicket();
+
+        // Update director queue ticket every 5 seconds (adjust as needed)
+        setInterval(function () {
+            updateDirectorQueueTicket();
+        }, 5000);
+    });
+
+    $(document).ready(function () {
+        updateStudentaffairsandservicesQueueTicket();
+
+        // Update studentaffairsandservices queue ticket every 5 seconds (adjust as needed)
+        setInterval(function () {
+            updateStudentaffairsandservicesQueueTicket();
+        }, 5000);
     });
 </script>
        
@@ -67,8 +154,7 @@
            <div class="row mt-4">
                 <div class="col-md-8 offset-md-2">
                     <!-- Your video player code goes here -->
-                    <video id="queueVideo" class="w-100" controls>
-                        <source src="your-video-source.mp4" type="video/mp4">
+                   <video id="PlayVideo" class="w-100" controls autoplay>
                         Your browser does not support the video tag.
                     </video>
                 </div>
