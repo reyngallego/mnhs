@@ -157,7 +157,5 @@ public class StudentController : ApiController
         public string Queueticket { get; set; }
 
         public string Queuedate { get; set; }
-
-        // Add more properties as needed
     }
 }

@@ -22,6 +22,42 @@ namespace WebApplication3 {
         protected global::System.Web.UI.HtmlControls.HtmlInputHidden hdnLoggedInDepartment;
         
         /// <summary>
+        /// ScriptManager control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.ScriptManager ScriptManager;
+        
+        /// <summary>
+        /// updatePanel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.UpdatePanel updatePanel;
+        
+        /// <summary>
+        /// lblservingTimeLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblservingTimeLabel;
+        
+        /// <summary>
+        /// Timer1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.Timer Timer1;
+        
+        /// <summary>
         /// lblQueueTicket control.
         /// </summary>
         /// <remarks>
@@ -58,15 +94,6 @@ namespace WebApplication3 {
         protected global::System.Web.UI.WebControls.Button btnNextTicket;
         
         /// <summary>
-        /// btnCallTicket control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCallTicket;
-        
-        /// <summary>
         /// btnRecallTicket control.
         /// </summary>
         /// <remarks>
@@ -76,13 +103,22 @@ namespace WebApplication3 {
         protected global::System.Web.UI.WebControls.Button btnRecallTicket;
         
         /// <summary>
-        /// btnDoneTicket control.
+        /// btnConfirmCall control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnDoneTicket;
+        protected global::System.Web.UI.WebControls.Button btnConfirmCall;
+        
+        /// <summary>
+        /// btnConfirmDone control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmDone;
         
         /// <summary>
         /// lblDate control.

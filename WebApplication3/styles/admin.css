@@ -23,7 +23,21 @@
     color: #fff;
     border-color: #007BFF;
 }
-
+.navbar-logo {
+    width: 40px; /* Adjust the width as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Add margin for spacing */
+}
+.navbar-brand {
+    background: url('/images/logo2.png') no-repeat left center; /* Add this line for the logo */
+    background-size: contain; /* Adjust as needed */
+    display: inline-block; /* Ensure the inline-block display to contain the background */
+    padding-left: 60px; /* Adjust as needed based on the logo width */
+    height: 50px; /* Set the height of the logo container */
+    line-height: 50px; /* Center the text vertically within the container */
+    color: #fff; /* Set the text color */
+    text-decoration: none; /* Remove the default underline */
+}
 /* Tab content styles */
 .tab-content {
     padding: 20px;
@@ -72,4 +86,7 @@
 /* Optional: Add transition effect */
 .nav-tabs .nav-item a.nav-link, .btn {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+.bg-maroon {
+    background-color: #800000 !important; /* Maroon background color */
 }

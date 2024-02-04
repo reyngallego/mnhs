@@ -212,58 +212,79 @@ namespace WebApplication3.Controllers
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    // First, select the video details from the original table
-                    using (SqlCommand selectCmd = new SqlCommand("SELECT videoid, videoname, videodata, description FROM videos WHERE videoid = @videoid", connection))
+
+                    using (SqlTransaction transaction = connection.BeginTransaction())
                     {
-                        selectCmd.Parameters.AddWithValue("@videoid", request.VideoId);
-
-                        DataTable dt = new DataTable();
-                        SqlDataAdapter da = new SqlDataAdapter(selectCmd);
-                        da.Fill(dt);
-
-                        if (dt.Rows.Count > 0)
+                        try
                         {
-                            int videoId = Convert.ToInt32(dt.Rows[0]["videoid"]);
-                            string videoName = dt.Rows[0]["videoname"].ToString();
-
-                            // Handle DBNull for videodata
-                            byte[] videoData = DBNull.Value.Equals(dt.Rows[0]["videodata"]) ? null : (byte[])dt.Rows[0]["videodata"];
-
-                            string description = dt.Rows[0]["description"].ToString();
-
-                            // Insert the selected video into the new table
-                            using (SqlCommand insertCmd = new SqlCommand("INSERT INTO SelectedVideos (videoid, videoname, videodata, description) VALUES (@videoid, @videoname, @videodata, @description)", connection))
+                            // First, select the video details from the original table
+                            using (SqlCommand selectCmd = new SqlCommand("SELECT videoid, videoname, videodata, description FROM videos WHERE videoid = @videoid", connection, transaction))
                             {
-                                insertCmd.Parameters.AddWithValue("@videoid", videoId);
-                                insertCmd.Parameters.AddWithValue("@videoname", videoName);
-                                insertCmd.Parameters.AddWithValue("@videodata", videoData);
-                                insertCmd.Parameters.AddWithValue("@description", description);
+                                selectCmd.Parameters.AddWithValue("@videoid", request.VideoId);
 
-                                int rowsAffected = insertCmd.ExecuteNonQuery();
+                                DataTable dt = new DataTable();
+                                SqlDataAdapter da = new SqlDataAdapter(selectCmd);
+                                da.Fill(dt);
 
-                                if (rowsAffected > 0)
+                                if (dt.Rows.Count > 0)
                                 {
-                                    // Log the selected video details
-                                    Console.WriteLine($"Selected Video inserted into SelectedVideos table: {videoName}");
+                                    int videoId = Convert.ToInt32(dt.Rows[0]["videoid"]);
+                                    string videoName = dt.Rows[0]["videoname"].ToString();
 
-                                    // Return the selected video details
-                                    return Ok(new
+                                    // Handle DBNull for videodata
+                                    byte[] videoData = DBNull.Value.Equals(dt.Rows[0]["videodata"]) ? null : (byte[])dt.Rows[0]["videodata"];
+
+                                    string description = dt.Rows[0]["description"].ToString();
+
+                                    // Insert the selected video into the new table
+                                    using (SqlCommand insertCmd = new SqlCommand("INSERT INTO SelectedVideos (videoid, videoname, videodata, description) VALUES (@videoid, @videoname, @videodata, @description)", connection, transaction))
                                     {
-                                        VideoId = videoId,
-                                        VideoName = videoName,
-                                        Description = description
-                                        // Add other properties as needed
-                                    });
+                                        insertCmd.Parameters.AddWithValue("@videoid", videoId);
+                                        insertCmd.Parameters.AddWithValue("@videoname", videoName);
+                                        insertCmd.Parameters.AddWithValue("@videodata", videoData);
+                                        insertCmd.Parameters.AddWithValue("@description", description);
+
+                                        int rowsAffected = insertCmd.ExecuteNonQuery();
+
+                                        if (rowsAffected > 0)
+                                        {
+                                            // Log the selected video details
+                                            Console.WriteLine($"Selected Video inserted into SelectedVideos table: {videoName}");
+
+                                            // Delete all other videos from the SelectedVideos table
+                                            using (SqlCommand deleteCmd = new SqlCommand("DELETE FROM SelectedVideos WHERE videoid != @videoid", connection, transaction))
+                                            {
+                                                deleteCmd.Parameters.AddWithValue("@videoid", videoId);
+                                                deleteCmd.ExecuteNonQuery();
+                                            }
+
+                                            transaction.Commit();
+
+                                            // Return the selected video details
+                                            return Ok(new
+                                            {
+                                                VideoId = videoId,
+                                                VideoName = videoName,
+                                                Description = description
+                                                // Add other properties as needed
+                                            });
+                                        }
+                                        else
+                                        {
+                                            return InternalServerError(new Exception("Failed to insert selected video into SelectedVideos table."));
+                                        }
+                                    }
                                 }
                                 else
                                 {
-                                    return InternalServerError(new Exception("Failed to insert selected video into SelectedVideos table."));
+                                    return NotFound();
                                 }
                             }
                         }
-                        else
+                        catch (Exception ex)
                         {
-                            return NotFound();
+                            transaction.Rollback();
+                            throw ex;
                         }
                     }
                 }
@@ -273,6 +294,8 @@ namespace WebApplication3.Controllers
                 return InternalServerError(ex);
             }
         }
+
+
         [HttpGet]
         [Route("api/video/getselectedvideos")]
         public IHttpActionResult GetSelectedVideos()

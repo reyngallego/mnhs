@@ -1,11 +1,16 @@
-﻿using System;
-using System.Data.SqlClient;
-using WebApplication3; // Add the correct namespace
+﻿using System.Data.SqlClient;
+using System;
 
 namespace WebApplication3
 {
     public class UserUtility
     {
+        public static bool IsUserLoggedIn()
+        {
+            // Check if the user is logged in by checking the session
+            return (System.Web.HttpContext.Current.Session["LoggedInUsername"] != null);
+        }
+
         public static string GetUserDepartment(string username)
         {
             // Connection string to your SQL Server database

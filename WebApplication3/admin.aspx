@@ -8,23 +8,25 @@
 
     <link rel="stylesheet" type="text/css" href="styles/admin.css" />
   <!-- jQuery -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
     <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="/js/videos.js"></script>
-    <script type="text/javascript" src="/js/purpose.js"></script>
     <script type="text/javascript" src="/js/admin.js"></script>
-
+    <script type="text/javascript" src="/js/reports.js"></script>
 
 </head>
 
 <body>
  
     <form id="form1" runat="server">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">Pup Paranaque Campus Queue Management System</a>
+<nav class="navbar navbar-expand-lg navbar-light bg-maroon">
+<a class="navbar-brand text-white" href="#">Pup Paranaque Campus Queue Management System</a>
+
+
         </nav>
 
         <div class="container mt-4">
@@ -32,15 +34,13 @@
                 <li class="nav-item">
                     <a class="nav-link active" data-toggle="tab" href="#employees">Employees</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#reports">Reports</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-toggle="tab" href="#purpose">Purpose</a>
-                </li>
+                        
                 <li class="nav-item">
                     <a class="nav-link" data-toggle="tab" href="#videos">Videos</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="tab" href="#reports">Reports</a>
+                </li>   
                  <li class="nav-item">
                      <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
                 </li>
@@ -83,7 +83,7 @@
             <div class="modal-body">
                <!-- Add form fields for adding a new employee -->
           <div class="form-group">
-    <label for="add-username-input">Username:</label>
+    <label for="add-username-input">EmployeeId:</label>
     <input type="text" class="form-control" id="add-username-input" />
 </div>
           <div class="form-group">
@@ -123,7 +123,8 @@
     </div>
 </div>
                    <!-- Edit Employee Modal -->
-                   <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
+
+        <div class="modal fade" id="editEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="editEmployeeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -135,7 +136,7 @@
             <div class="modal-body">
                 <!-- Edit form fields go here -->
                 <div class="form-group">
-                    <label for="edit-username-input">Username:</label>
+                    <label for="edit-username-input">EmployeeId:</label>
                     <input type="text" class="form-control" id="edit-username-input"/>
                 </div>
                 <div class="form-group">
@@ -177,7 +178,27 @@
         </div>
     </div>
 </div>
-                   <!-- Delete Employee Modal -->
+                
+                <div class="modal fade" id="confirmEditModal" tabindex="-1" role="dialog" aria-labelledby="confirmEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmEditModalLabel">Confirm Edit</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to edit this employee?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-primary" id="confirm-edit-button">Confirm Edit</button>
+            </div>
+        </div>
+    </div>
+</div>
+   <!-- Delete Employee Modal -->
    <div class="modal fade" id="deleteEmployeeModal" tabindex="-1" role="dialog" aria-labelledby="deleteEmployeeModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -200,8 +221,8 @@
                <table class="table table-bordered">
              <thead>
               <tr>
-                <th>ID</th>
-                <th>Username</th>
+                <th>No.</th>
+                <th>EmployeeId</th>
                 <th>First Name</th>
                 <th>Last Name</th>
                 <th>Department</th>
@@ -215,25 +236,52 @@
         </tbody>
     </table>
 </div>
-                <div id="reports" class="tab-pane fade">
-                    <!-- Implement your reports here -->
-                </div>
-                <div id="purpose" class="tab-pane fade">
-                   <h2>Purpose Management</h2>
-    
-    <!-- Table to display purpose data -->
-    <table class="table table-bordered" id="purpose-table">
+            <div id="reports" class="tab-pane fade">
+    <h2>Reports Management</h2>
+
+     <div class="form-group">
+        <label for="dateFilter">Select Date:</label>
+        <input type="date" class="form-control" id="dateFilter" />
+    </div>
+
+    <div class="form-group">
+        <label>Filter by Department:</label>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="registrarCheckbox" data-department="registrar">
+            <label class="form-check-label" for="registrarCheckbox">Registrar</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="cashierCheckbox" data-department="cashier">
+            <label class="form-check-label" for="cashierCheckbox">Cashier</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="directorCheckbox" data-department="director">
+            <label class="form-check-label" for="directorCheckbox">Director</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="studentAffairsCheckbox" data-department="student_affairs">
+            <label class="form-check-label" for="studentAffairsCheckbox">Student Affairs and Services</label>
+        </div>
+    </div>
+
+    <table class="table table-bordered" id="reports-table">
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Purpose</th>
+                <th>ReportID</th>
+                <th>QueueTicket</th>
+                <th>Department</th>
+                <th>Done Date</th>
+                <th>Select</th>
             </tr>
         </thead>
-        <tbody id="purpose-list">
-            <!-- Purpose data will be displayed here -->
+        <tbody id="reports-list">
+            <!-- Reports data will be displayed here -->
         </tbody>
     </table>
+
                 </div>
+   
+          
            <div id="videos" class="tab-pane fade">
     <h2>Video Management</h2>
 
@@ -287,7 +335,47 @@
         </div>
     </div>
 </div>
+             <!-- Delete Video Modal -->
+<div class="modal fade" id="deleteVideoModal" tabindex="-1" role="dialog" aria-labelledby="deleteVideoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteVideoModalLabel">Delete Video</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this video?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirm-delete-video-btn">Delete</button>
+            </div>
+        </div>
+    </div>
+</div>
 
+<!-- Select Video Modal -->
+<div class="modal fade" id="selectVideoModal" tabindex="-1" role="dialog" aria-labelledby="selectVideoModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="selectVideoModalLabel">Select Video</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to select this video?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" id="confirm-select-video-btn">Select</button>
+            </div>
+        </div>
+    </div>
+</div>
                <div class="modal fade" id="videoPlayerModal" tabindex="-1" role="dialog" aria-labelledby="videoPlayerModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -322,7 +410,6 @@
     </table>
 </div>
             </div>
-        </div>
     </form>
 </body>
 </html>

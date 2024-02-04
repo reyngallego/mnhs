@@ -12,6 +12,8 @@
       <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.min.js"></script>
+         <link rel="stylesheet" type="text/css" href="styles/monitor.css" />
+
    <script>
        var currentVideoId = null;
 
@@ -147,68 +149,64 @@
        
 </head>
 <body>
-     
+        <img id="logo" src="/images/logo2.png" alt="PUP Logo" />  
+
     <form id="form1" runat="server">
         <div class="container-fluid">
-            <!-- Video Player Section -->
-           <div class="row mt-4">
-                <div class="col-md-8 offset-md-2">
-                    <!-- Your video player code goes here -->
-                   <video id="PlayVideo" class="w-100" controls autoplay>
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
+     <!-- Video Player Section -->
+<div class="row mt-4">
+    <div class="col-md-6 video-container">
+<h1 style="font-size: 24px !important; color: white !important;">PUP Paranaque Campus Queue Management System</h1>
+        <video id="PlayVideo" class="w-100" controls autoplay>
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
-            <!-- Department Queues Section -->
-            <div class="row mt-4">
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header bg-primary text-white">
-                            Cashier Queue
-                        </div>
-                        <div class="card-body">
-                            <!-- Display Cashier Queue Ticket Here -->
-                            <h1 id="cashierQueueTicket" runat="server">-</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header bg-success text-white">
-                            Registrar Queue
-                        </div>
-                        <div class="card-body">
-                            <!-- Display Registrar Queue Ticket Here -->
-                            <h1 id="registrarQueueTicket" runat="server">-</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header bg-info text-white">
-                            Student Affairs Queue
-                        </div>
-                        <div class="card-body">
-                            <!-- Display Student Affairs Queue Ticket Here -->
-                            <h1 id="studentaffairsandservicesQueueTicket" runat="server">-</h1>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-header bg-warning text-white">
-                            Director Queue
-                        </div>
-                        <div class="card-body">
-                            <!-- Display Director Queue Ticket Here -->
-                            <h1 id="directorQueueTicket" runat="server">-</h1>
-                        </div>
-                    </div>
-                </div>
+    <!-- Department Queues Section -->
+    <div class="col-md-6 card-container">
+        <div class="card">
+            <div class="card-header bg-primary text-white">
+                Cashier Current Serving:
+            </div>
+            <div class="card-body">
+                <!-- Display Cashier Queue Ticket Here -->
+                <h1 id="cashierQueueTicket" runat="server">-</h1>
             </div>
         </div>
 
+        <div class="card">
+            <div class="card-header bg-success text-white">
+                Registrar Current Serving:
+            </div>
+            <div class="card-body">
+                <!-- Display Registrar Queue Ticket Here -->
+                <h1 id="registrarQueueTicket" runat="server">-</h1>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-info text-white">
+                Student Affairs Current Serving:
+            </div>
+            <div class="card-body">
+                <!-- Display Student Affairs Queue Ticket Here -->
+                <h1 id="studentaffairsandservicesQueueTicket" runat="server">-</h1>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header bg-warning text-white">
+                Director Current Serving:
+            </div>
+            <div class="card-body">
+                <!-- Display Director Queue Ticket Here -->
+                <h1 id="directorQueueTicket" runat="server">-</h1>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
     </form>
 </body>
 </html>

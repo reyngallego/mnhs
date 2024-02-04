@@ -17,13 +17,13 @@
             <div class="frame-child">
                 <div class="login-container">
                     <asp:Image ID="imgLogo" runat="server" ImageUrl="~/images/logo2.png" AlternateText="Logo" CssClass="logo-image" />
-                    <h2>PUP QUEUEING MANAGEMENT SYSTEM</h2>
+                    <h2>PUPPQ CAMPUS QUEUE MANAGEMENT SYSTEM</h2>
                     <p>Sign in to start your session</p>
                     <div id="errorMessage" class="error-message" runat="server"></div>
                     <form id="Form1" runat="server" onsubmit="return validateForm()">
 
                         <div class="form-group">
-                            <label for="username">Username</label>
+                            <label for="username">EmployeeId</label>
                             <asp:TextBox ID="username" runat="server" CssClass="input-field" />
                         </div>
                         <div class="form-group">

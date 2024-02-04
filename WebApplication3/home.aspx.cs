@@ -14,10 +14,26 @@ namespace WebApplication3
 {
     public partial class home : System.Web.UI.Page
     {
+        protected static int elapsedTimeInSeconds = 0;
+
         protected void Page_Load(object sender, EventArgs e)
         {
+
             if (!IsPostBack)
             {
+                Timer1.Interval = 1000;
+
+
+                // Check if the user is logged in
+                if (!UserUtility.IsUserLoggedIn())
+                {
+                    // Redirect to the login page if not logged in
+                    Response.Redirect("login.aspx");
+                    return; // Stop further execution
+                }
+
+                // User is logged in, continue with the page logic
+
                 // Get the username from the session
                 string username = Session["LoggedInUsername"] as string;
 
@@ -30,13 +46,16 @@ namespace WebApplication3
                 if (!string.IsNullOrEmpty(username))
                 {
                     LoadUserData(username);
+
                 }
                 else
                 {
                     // Redirect to the login page if the username is not found in the session
                     Response.Redirect("login.aspx");
-                }
+                }          
+
             }
+         
         }
 
         protected bool ShowSuccessMessage
@@ -112,8 +131,15 @@ namespace WebApplication3
                 {
                     lblQueueTicket.Text = "There's no Queue Ticket Today";
                 }
+
+                // Clear the queueticket label after processing
+                lblQueueTicket.Text = "";
+                lblMessage.Text = "";
+
+
             }
         }
+
 
         private string GetQueueTicketForToday(string department)
         {
@@ -135,29 +161,37 @@ namespace WebApplication3
                     {
                         return result.ToString();
                     }
+                    else
+                    {
+                        // Handle the case when no queue ticket is found
+                        // For example, you can return a specific message or throw an exception.
+                        return "";
+                    }
                 }
             }
-
-            return ""; // Return empty string if no queueticket found
         }
-
 
         protected void btnPreviousTicket_Click(object sender, EventArgs e)
         {
             // Your logic for the Previous button click
             string currentQueueTicket = lblQueueTicket.Text; // Assuming the current queueticket is displayed in a label
             string previousQueueTicket = GetPreviousQueueTicket(lblDepartment.Text, currentQueueTicket);
+            lblMessage.Text = "";
+            elapsedTimeInSeconds = 0;
+            Timer1.Enabled = false;
+            lblservingTimeLabel.Visible = false;
 
             if (!string.IsNullOrEmpty(previousQueueTicket))
             {
                 // Display the previous queueticket
                 lblQueueTicket.Text = previousQueueTicket;
-                lblMessage.Text = ""; // Clear any previous messages
+               
             }
             else
             {
                 // Display a message for no previous queueticket
                 lblMessage.Text = "No previous queueticket available";
+
             }
         }
 
@@ -166,17 +200,22 @@ namespace WebApplication3
             // Your logic for the Next button click
             string currentQueueTicket = lblQueueTicket.Text; // Assuming the current queueticket is displayed in a label
             string nextQueueTicket = GetNextQueueTicket(lblDepartment.Text, currentQueueTicket);
+            lblMessage.Text = "";
+            elapsedTimeInSeconds = 0;
+            Timer1.Enabled = false;
+            lblservingTimeLabel.Visible = false;
+
 
             if (!string.IsNullOrEmpty(nextQueueTicket))
             {
                 // Display the next queueticket
                 lblQueueTicket.Text = nextQueueTicket;
-                lblMessage.Text = ""; // Clear any previous messages
             }
             else
             {
                 // Display a message for no next queueticket available
                 lblMessage.Text = "No next queueticket available";
+
             }
         }
         private string GetPreviousQueueTicket(string department, string currentQueueTicket)
@@ -212,7 +251,7 @@ namespace WebApplication3
             string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
 
             // Assuming you have a 'student' table with 'queueticket', 'department', 'queuedate', and 'IsDone' columns
-            string query = "SELECT TOP 1 queueticket FROM student WHERE department = @Department AND CONVERT(date, queuedate) = CONVERT(date, GETDATE()) AND IsDone = 0 AND (@CurrentQueueTicket IS NULL OR queueticket > @CurrentQueueTicket) ORDER BY queuedate ASC";
+            string query = "SELECT TOP 1 queueticket FROM student WHERE department = @Department AND CONVERT(date, queuedate) = CONVERT(date, GETDATE()) AND IsDone = 0 AND (@CurrentQueueTicket IS NULL OR queueticket > @CurrentQueueTicket) ORDER BY queuedate, queueticket ASC";
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
@@ -235,12 +274,29 @@ namespace WebApplication3
         }
 
 
-        protected void btnCallTicket_Click(object sender, EventArgs e)
+
+        protected void btnConfirmCall_Click(object sender, EventArgs e)
         {
             try
             {
                 string department = lblDepartment.Text; // Get the department
                 string currentQueueTicket = lblQueueTicket.Text; // Get the current queueticket
+                lblMessage.Text = "";
+
+                // Check if currentQueueTicket is null or empty
+                if (string.IsNullOrEmpty(currentQueueTicket))
+                {
+                    // If there's no queueticket, set a message in lblMessage
+                    lblMessage.Text = "There's nothing to call.";
+                    return; // Exit the method since there's nothing to call
+                }
+
+
+
+                lblservingTimeLabel.Visible = true;
+                Timer1.Enabled = true; // Enable the timer
+
+
 
                 // Create an instance of HttpClient
                 using (HttpClient client = new HttpClient())
@@ -284,29 +340,80 @@ namespace WebApplication3
             }
         }
 
+        protected void Timer1_Tick(object sender, EventArgs e)
+        {
+
+            elapsedTimeInSeconds++;
+
+            // Update the UI to display the elapsed time
+            UpdateElapsedTimeUI();
+
+            // Debug output
+            Console.WriteLine($"Tick event fired. Elapsed time: {elapsedTimeInSeconds} seconds.");
+        }
+
+        private void UpdateElapsedTimeUI()
+        {
+            // Format the elapsed time as hours, minutes, and seconds
+            TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedTimeInSeconds);
+            string formattedTime = timeSpan.ToString(@"hh\:mm\:ss");
+
+            // Update server-side label
+            lblservingTimeLabel.Text = formattedTime;
+
+            // Call JavaScript function to update client-side label
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "UpdateTimer", $"updateTimer({elapsedTimeInSeconds});", true);
+        }
+        [WebMethod]
+        public static int GetElapsedTime()
+        {
+            // This method is marked as static to be accessible from client-side script
+            // You may need to adjust its accessibility based on your requirements
+
+            // Assuming elapsedTimeInSeconds is an instance variable
+            return elapsedTimeInSeconds;
+        }
+
+
 
         protected void btnRecallTicket_Click(object sender, EventArgs e)
         {
             // Your logic for the Recall button click
         }
 
-        protected async void btnDoneTicket_Click(object sender, EventArgs e)
+        protected async void btnConfirmDone_Click(object sender, EventArgs e)
         {
             try
             {
-                // Your logic for the Done button click
-
-                string currentQueueTicket = lblQueueTicket.Text; // Assuming the current queueticket is displayed in a label
-                string department = lblDepartment.Text; // Assuming the department is displayed in a label
+                string currentQueueTicket = lblQueueTicket.Text;
+                string department = lblDepartment.Text;
 
                 if (!string.IsNullOrEmpty(currentQueueTicket))
                 {
+                    // Stop the serving time timer when marking a ticket as Done
+                    Timer1.Enabled = false;
+                    lblservingTimeLabel.Visible = false;
+
+                    // Stop the serving time timer when marking a ticket as Done
                     UpdateIsDoneForTicket(department, currentQueueTicket);
 
+                    // Get the elapsed time in seconds
+                    int elapsedSeconds = elapsedTimeInSeconds;
+
+                    // Insert a record into QueueReport with the elapsed time
+                    InsertIntoQueueReport(department, currentQueueTicket, DateTime.Now, elapsedSeconds);
+
+                    // Reset the elapsed time to 0
+                    elapsedTimeInSeconds = 0;
                     // Call the asynchronous method to update the ticket status through API
                     await UpdateIsDoneThroughAPIAsync(department, currentQueueTicket);
 
+                    lblQueueTicket.Text = "";
+
                     lblMessage.Text = "Ticket marked as Done.";
+
+                    // Reload user data after processing the queue ticket
+                    LoadUserData(Session["LoggedInUsername"] as string);
                 }
                 else
                 {
@@ -321,6 +428,31 @@ namespace WebApplication3
             }
         }
 
+        private void InsertIntoQueueReport(string department, string queueticket, DateTime doneDate, int elapsedSeconds)
+        {
+            string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
+
+            // Format elapsed time as "00:00:00"
+            TimeSpan timeSpan = TimeSpan.FromSeconds(elapsedSeconds);
+            string formattedTime = $"{timeSpan.Hours:D2}:{timeSpan.Minutes:D2}:{timeSpan.Seconds:D2}";
+
+            // Assuming you have a 'QueueReport' table with 'QueueTicket', 'Department', 'DoneDate', and 'Timer' columns
+            string query = "INSERT INTO QueueReports (QueueTicket, Department, DoneDate, Timer) VALUES (@QueueTicket, @Department, @DoneDate, CAST(@FormattedTime AS TIME))";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    command.Parameters.AddWithValue("@Department", department);
+                    command.Parameters.AddWithValue("@QueueTicket", queueticket);
+                    command.Parameters.AddWithValue("@DoneDate", doneDate);
+                    command.Parameters.AddWithValue("@FormattedTime", formattedTime); // Use the formatted time
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
         private void UpdateIsDoneForTicket(string department, string queueticket)
         {
             string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
@@ -351,7 +483,7 @@ namespace WebApplication3
                 var payload = new
                 {
                     Department = department,
-                    CurrentQueueTicket = char.ToUpper(department[0]) + "-000"
+                    CurrentQueueTicket = char.ToUpper(department[0]) + "-0000"
                 };
 
                 var content = new StringContent(Newtonsoft.Json.JsonConvert.SerializeObject(payload), System.Text.Encoding.UTF8, "application/json");
@@ -368,6 +500,6 @@ namespace WebApplication3
                 }
             }
         }
-
+    
     }
 }

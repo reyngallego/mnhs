@@ -1,63 +1,65 @@
 ﻿/* styles.css */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Montserrat', sans-serif; /* Use Montserrat as the font family */
-}
+
 body {
-    background-color: #ffffff; /* White background */
+    background-image: url('/images/pupback.jpg'); /* Set the background image */
+    background-size: cover; /* Cover the entire background */
     font-family: 'Montserrat', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
 }
 
+
 .container {
-    width: 80%;
-    margin: auto;
-    background-color: #ffffff; /* White background */
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-top: 50px;
+    width: 80% !important;
+    margin: auto !important;
+    background-color: #ffffff !important; /* White background */
+    padding: 20px !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1) !important;
+    margin-top: 50px !important;
 }
 
 h1 {
-    background: url(images/logo2.jpg) no-repeat left center; /* Replace with the actual path to your logo image */
-    padding-left: 60px;
-    color: #800000; /* Maroon text color */
-    text-align: center;
+    color: #800000 !important; /* Maroon text color */
+    text-align: center !important;
+    font-weight: bold !important; /* Make the text bold */
+}
+
+.logo {
+    width: 50px; /* Adjust the width of the logo as needed */
+    height: auto; /* Maintain the aspect ratio */
+    margin-right: 10px; /* Add some space to the right of the logo */
 }
 
 table {
-    width: 100%;
-    margin-top: 20px;
+    width: 100% !important;
+    margin-top: 20px !important;
 }
 
 td {
-    padding: 10px;
+    padding: 10px !important;
 }
 
 .input-field {
-    width: 100%;
-    padding: 8px;
-    box-sizing: border-box;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: 100% !important;
+    padding: 8px !important;
+    box-sizing: border-box !important;
+    margin-bottom: 10px !important;
+    border: 1px solid #ccc !important;
+    border-radius: 4px !important;
 }
 
 .btn-submit {
-    background-color: #800000; /* Maroon background color */
-    color: #ffffff; /* White text color */
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    background-color: #800000 !important; /* Maroon background color */
+    color: #ffffff !important; /* White text color */
+    padding: 10px 20px !important;
+    border: none !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
 }
 
 .btn-submit:hover {
-    background-color: #600000; /* Darker maroon on hover */
+    background-color: #600000 !important; /* Darker maroon on hover */
 }
 
 /* Add any additional styles as needed */

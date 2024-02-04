@@ -2,6 +2,8 @@
 using System.Data;
 using System.Data.SqlClient;
 using System.Web.UI.WebControls;
+using System.IO.Ports;
+using System.Text;
 
 namespace WebApplication3
 {
@@ -22,10 +24,15 @@ namespace WebApplication3
             {
                 using (SqlCommand cmd = new SqlCommand(insertQuery, connection))
                 {
+                    // Use the client-side selected values
+                    string selectedPurpose = Request.Form[ddlPurpose.UniqueID];
+                    string selectedDepartment = Request.Form[ddlDepartment.UniqueID];
+                    string generatedQueueTicket = GenerateQueueTicket(selectedDepartment, selectedPurpose);
+
                     cmd.Parameters.AddWithValue("@Name", txtName.Text);
-                    cmd.Parameters.AddWithValue("@Department", ddlDepartment.Text);
-                    cmd.Parameters.AddWithValue("@Purpose", txtPurpose.Text);
-                    cmd.Parameters.AddWithValue("@QueueTicket", GenerateQueueTicket(ddlDepartment.Text)); // Pass the selected department
+                    cmd.Parameters.AddWithValue("@Department", selectedDepartment);
+                    cmd.Parameters.AddWithValue("@Purpose", selectedPurpose);
+                    cmd.Parameters.AddWithValue("@QueueTicket", generatedQueueTicket);
                     cmd.Parameters.AddWithValue("@QueueDate", DateTime.Now);
 
                     connection.Open();
@@ -35,7 +42,9 @@ namespace WebApplication3
                     if (rowsAffected > 0)
                     {
                         // Show the modal dialog with the name and queue ticket
-                        ClientScript.RegisterStartupScript(GetType(), "ShowModal", $"showQueueTicket('{GeneratedQueueTicket}');", true);
+                        ClientScript.RegisterStartupScript(GetType(), "ShowModal", $"showQueueTicket('{generatedQueueTicket}');", true);
+                        PrintTicket(generatedQueueTicket, txtName.Text, selectedPurpose);
+
                         ClearFormFields();
                     }
                     else
@@ -50,19 +59,19 @@ namespace WebApplication3
         {
             // Clear the form fields after successful data insertion.
             txtName.Text = "";
-            ddlDepartment.Text = ""; // Clear the selected option
-            txtPurpose.Text = "";
+            ddlDepartment.SelectedIndex = 0; // Clear the selected option
+            ddlPurpose.SelectedIndex = 0; // Clear the selected option
         }
 
         public string GeneratedQueueTicket
         {
             get
             {
-                return GenerateQueueTicket(ddlDepartment.Text);
+                return GenerateQueueTicket(ddlDepartment.SelectedValue, ddlPurpose.SelectedValue);
             }
         }
 
-        private string GenerateQueueTicket(string department)
+        private string GenerateQueueTicket(string department, string purpose)
         {
             // Generate the department-specific queue ticket based on the selected department.
             string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
@@ -73,7 +82,7 @@ namespace WebApplication3
                 using (SqlCommand cmd = new SqlCommand(selectQuery, connection))
                 {
                     cmd.Parameters.AddWithValue("@QueueDate", DateTime.Today); // Filter by today's date
-                    cmd.Parameters.AddWithValue("@Department", ddlDepartment.Text); // Use the parameter departmentName
+                    cmd.Parameters.AddWithValue("@Department", department); // Use the parameter department
 
                     connection.Open();
                     object result = cmd.ExecuteScalar();
@@ -86,18 +95,77 @@ namespace WebApplication3
                         int nextTicketNumber = lastTicketNumber + 1;
 
                         // Generate the department-specific queue ticket in the format "X-XXXX" where X is the department code and XXXX is the incremented number.
-                        string departmentCode = ddlDepartment.Text.Substring(0, 1).ToUpper(); // Extract the first character of the department name as the code.
+                        string departmentCode = department.Substring(0, 1).ToUpper(); // Extract the first character of the department name as the code.
                         return $"{departmentCode}-{nextTicketNumber.ToString("D4")}";
                     }
                 }
             }
 
             // If there are no existing records for today in the selected department, start with the department-specific code followed by "-0001".
-            string initialDepartmentCode = ddlDepartment.Text.Substring(0, 1).ToUpper(); // Extract the first character of the department name as the code.
+            string initialDepartmentCode = department.Substring(0, 1).ToUpper(); // Extract the first character of the department name as the code.
             return $"{initialDepartmentCode}-0001";
-
-
         }
 
+        private void PrintTicket(string ticket, string name, string purpose)
+        {
+            try
+            {
+                // Replace "COMx" with the appropriate Bluetooth COM port for your printer
+                using (SerialPort bluetoothPort = new SerialPort("COM3"))
+                {
+                    bluetoothPort.BaudRate = 9600;
+                    bluetoothPort.Open();
+
+                    // Construct the content to be printed
+                    string printContent = ConstructPrintContent(name, ticket, purpose);
+
+                    // Send the ticket to the printer
+                    bluetoothPort.Write(printContent);
+
+                    bluetoothPort.Close();
+                }
+            }
+            catch (Exception ex)
+            {
+                // Handle the exception (e.g., show an error message)
+                lblMessage.Text = $"Error printing ticket: {ex.Message}";
+            }
+        }
+
+        private string ConstructPrintContent(string name, string ticket, string purpose)
+        {
+            StringBuilder contentBuilder = new StringBuilder();
+
+            // Add a header
+            contentBuilder.AppendLine("===============================================================");
+            contentBuilder.AppendLine("              PUP PARANAQUE QUEUE MANAGEMENT SYSTEM");
+            contentBuilder.AppendLine("===============================================================");
+
+            // Add a separator line
+            contentBuilder.AppendLine(new string('-', 60));
+
+            // Add details
+            contentBuilder.AppendLine($"Date: {DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm tt")}");
+            contentBuilder.AppendLine($"Queue Ticket: {ticket.ToUpper()}");
+            contentBuilder.AppendLine($"Name: {name}");
+            contentBuilder.AppendLine($"Purpose: {purpose}");
+
+            // Add a separator line
+            contentBuilder.AppendLine(new string('-', 60));
+
+            // Add additional information
+            contentBuilder.AppendLine("Instructions:");
+            contentBuilder.AppendLine("- Please wait for your turn.");
+            contentBuilder.AppendLine("- Follow the instructions of the staff.");
+            contentBuilder.AppendLine("- Thank you for your cooperation.");
+
+            // Add a separator line
+            contentBuilder.AppendLine(new string('-', 60));
+
+            // Add a footer
+            contentBuilder.AppendLine("Thank you for using PUP Queue Management System!");
+
+            return contentBuilder.ToString();
+        }
     }
 }

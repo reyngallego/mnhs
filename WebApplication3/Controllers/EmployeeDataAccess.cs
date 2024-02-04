@@ -9,11 +9,11 @@ using System.Text;
 using WebApplication3.Models;
 
 using System.Web;
+
 namespace WebApplication3
 {
     public class EmployeeDataAccess
     {
-
         private string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
 
         public List<Employee> GetEmployees()
@@ -54,33 +54,87 @@ namespace WebApplication3
             return employees;
         }
 
-        public void UpdateEmployee(int employeeId, Employee updatedEmployee)
+        public Employee GetEmployeeById(int employeeId)
         {
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                // Define a SQL UPDATE query to update employee data based on employeeId
-                string updateQuery = "UPDATE users SET " +
-                                     "username = ISNULL(@Username, username), " +
-                                     "firstname = ISNULL(@FirstName, firstname), " +
-                                     "lastname = ISNULL(@LastName, lastname), " +
-                                     "department = ISNULL(@Department, department), " +
-                                     "password = ISNULL(@Password, password) " +
-                                     "WHERE id = @Id";
+                // Define a SQL SELECT query to retrieve employee data based on employeeId
+                string selectQuery = "SELECT id, username, firstname, lastname, department, image FROM users WHERE id = @Id";
 
-                using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
-                    // Set the parameter values
+                    // Set the parameter value
                     command.Parameters.AddWithValue("@Id", employeeId);
-                    command.Parameters.AddWithValue("@Username", (object)updatedEmployee.Username ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@FirstName", (object)updatedEmployee.FirstName ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@LastName", (object)updatedEmployee.LastName ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@Department", (object)updatedEmployee.Department ?? DBNull.Value);
-                    command.Parameters.AddWithValue("@Password", (object)updatedEmployee.Password ?? DBNull.Value);
 
-                    command.ExecuteNonQuery();
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            Employee employee = new Employee
+                            {
+                                Id = (int)reader["id"],
+                                Username = reader["username"].ToString(),
+                                FirstName = reader["firstname"].ToString(),
+                                LastName = reader["lastname"].ToString(),
+                                Department = reader["department"].ToString(),
+                            };
+
+                            // Check if the "image" column is not DBNull
+                            if (reader["image"] != DBNull.Value)
+                            {
+                                employee.Image = (byte[])reader["image"];
+                            }
+
+                            return employee;
+                        }
+                    }
                 }
+            }
+
+            // Return null if no employee with the specified ID is found
+            return null;
+        }
+
+        public void UpdateEmployee(int employeeId, Employee updatedEmployee)
+        {
+            // Get the current employee data for the specified ID
+            Employee existingEmployee = GetEmployeeById(employeeId);
+
+            if (existingEmployee != null)
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    // Define a SQL UPDATE query to update employee data based on employeeId
+                    string updateQuery = "UPDATE users SET " +
+                                         "username = ISNULL(@Username, username), " +
+                                         "firstname = ISNULL(@FirstName, firstname), " +
+                                         "lastname = ISNULL(@LastName, lastname), " +
+                                         "department = ISNULL(@Department, department), " +
+                                         "password = ISNULL(@Password, password) " +
+                                         "WHERE id = @Id";
+
+                    using (SqlCommand command = new SqlCommand(updateQuery, connection))
+                    {
+                        // Set the parameter values
+                        command.Parameters.AddWithValue("@Id", employeeId);
+                        command.Parameters.AddWithValue("@Username", (object)updatedEmployee.Username ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@FirstName", (object)updatedEmployee.FirstName ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@LastName", (object)updatedEmployee.LastName ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Department", (object)updatedEmployee.Department ?? DBNull.Value);
+                        command.Parameters.AddWithValue("@Password", (object)updatedEmployee.Password ?? DBNull.Value);
+
+                        command.ExecuteNonQuery();
+                    }
+                }
+            }
+            else
+            {
+                // Handle the case where no employee with the specified ID is found
+                throw new Exception($"Employee with ID {employeeId} not found");
             }
         }
 
@@ -105,6 +159,7 @@ namespace WebApplication3
                 }
             }
         }
+
         private byte[] GetDefaultImageBytes()
         {
             // Assuming the image is named default-image.jpg
@@ -154,7 +209,5 @@ namespace WebApplication3
                 }
             }
         }
-
-
     }
 }

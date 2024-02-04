@@ -1,0 +1,89 @@
+﻿/* monitor.css */
+
+body {
+    background-color: #580202 !important; /* White background */
+    color: #000000 !important; /* Black text */
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat font for body */
+}
+
+.container-fluid {
+    margin-top: 20px !important;
+}
+
+.card-header {
+    font-size: 18px !important;
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat font for card headers */
+}
+
+.card {
+    border: 2px solid #000000 !important; /* Black border for cards */
+    margin-bottom: 10px !important; /* Add margin between cards */
+}
+
+.card-body {
+    text-align: center !important;
+}
+
+.bg-primary {
+    background-color: #007BFF !important; /* Primary color: Blue */
+}
+
+.bg-success {
+    background-color: #28A745 !important; /* Success color: Green */
+}
+
+.bg-info {
+    background-color: #17A2B8 !important; /* Info color: Cyan */
+}
+
+.bg-warning {
+    background-color: #FFC107 !important; /* Warning color: Yellow */
+}
+
+.text-white {
+    color: #ffffff !important; /* White text for headers */
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat font for text-white */
+}
+
+h1 {
+    font-size: 40px !important; /* Large font size for queue numbers */
+    margin-bottom: 0 !important; /* Remove default margin for h1 */
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat font for h1 */
+}
+
+.video-container {
+    width: 50% !important; /* Adjust the width of the video container */
+    float: left; /* Float the video container to the left */
+    height: 500px !important; /* Adjust the height of the video container */
+}
+
+video {
+    width: 100% !important; /* Make the video fill its container */
+    height: 100% !important; /* Make the video fill its container */
+}
+
+.card-container {
+    width: 50% !important; /* Adjust the width of the card container */
+    float: right; /* Float the card container to the right */
+    box-sizing: border-box; /* Include padding and border in the total width */
+}
+
+.card {
+    border: 2px solid #000000 !important; /* Black border for cards */
+    margin-bottom: 10px !important; /* Add margin between cards */
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+#logo {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    max-width: 100px; /* Adjust the maximum width as needed */
+    height: auto;
+    font-family: 'Montserrat', sans-serif !important; /* Montserrat font for logo */
+}

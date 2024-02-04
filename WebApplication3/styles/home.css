@@ -1,10 +1,11 @@
-﻿* {
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
 }
 html, body {
+
     overflow-x: hidden; /* Prevent horizontal scrollbar */
     margin: 0;
     padding: 0;
@@ -12,6 +13,8 @@ html, body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
+    background-image: url('../images/pupback.jpg'); /* Replace 'path/to/your/image.jpg' with the actual path to your image */
+
 }
 body {
     display: flex;
@@ -126,23 +129,113 @@ body {
     padding: 20px;
 }
 .button-container {
-    display: flex;
-    justify-content: flex-start;
-    margin-bottom: 10px;
+    justify-content: space-around;
+    margin-right: 20px;
+    text-align: center !important;
+    margin-top: 20px !important; 
 }
 
-.button {
-    padding: 10px;
-    background-color: #007bff; /* Adjust button background color as needed */
+.btn {
+  display: inline-block;
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  color: #fff; /* Text color */
+  text-decoration: none;
+  cursor: pointer;
+  overflow: hidden; /* Hides the text initially */
+}
+
+.btn-previous {
+  width: 80px; /* Adjust width as needed */
+  height: 45px; /* Adjust height as needed */
+  background-image: url('../images/buttons/left.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-size: contain; /* Adjust image size */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center; /* Center the image */
+  background-color: #007bff; /* Background color */
+  color: transparent; /* Hide the text */
+  transition: color 0.3s ease; /* Transition for text color change */
+}
+
+
+.btn-previous:hover {
+  color: #000; /* Text color on hover */
+}
+.btn-previous:hover {
+  background-color: #0056b3; /* Darker shade of primary color on hover */
+  text-align:center;
+}
+
+
+.btn-next {
+  width: 80px; /* Adjust width as needed */
+  height: 45px; /* Adjust height as needed */
+  background-image: url('../images/buttons/right.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-size: contain; /* Adjust image size */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center; /* Center the image */
+  background-color: #007bff; /* Background color */
+  color: transparent; /* Hide the text */
+  transition: color 0.3s ease; /* Transition for text color change */
+}
+
+
+.btn-next:hover {
+  color: #000; /* Text color on hover */
+}
+.btn-next:hover {
+  background-color: #0056b3; /* Darker shade of primary color on hover */
+  text-align:center;
+}
+
+.btn-call {
+  width: 80px; /* Adjust width as needed */
+  height: 45px; /* Adjust height as needed */
+  background-image: url('../images/buttons/call.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-size: contain; /* Adjust image size */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center; /* Center the image */
+  background-color: #17a2b8; /* Background color */
+  color: transparent; /* Hide the text */
+  transition: color 0.3s ease; /* Transition for text color change */
+}
+
+
+.btn-call:hover {
+  color: #000; /* Text color on hover */
+}
+.btn-call:hover {
+  background-color: #0056b3; /* Darker shade of primary color on hover */
+  text-align:center;
+}
+
+.btn-success {
+    background-color: #28a745;
     color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-right: 10px;
+    border: 1px solid #28a745;
+}
+
+.btn-success {
+  width: 80px; /* Adjust width as needed */
+  height: 45px; /* Adjust height as needed */
+  background-image: url('../images/buttons/done.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-size: contain; /* Adjust image size */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center; /* Center the image */
+  background-color: #28a745; /* Background color */
+  color: transparent; /* Hide the text */
+  transition: color 0.3s ease; /* Transition for text color change */
 }
 
 
-
+.btn-success:hover {
+  color: #000; /* Text color on hover */
+}
+.btn-success:hover {
+  background-color: #0056b3; /* Darker shade of primary color on hover */
+  text-align:center;
+}
 
 /* Style for rows on hover */
 .data-row:hover {
@@ -184,7 +277,7 @@ body {
     color: #fff; /* White text on hover */
 }
 .ticket {
-    display: flex;
+    /* display: flex; */
     flex-direction: column;
     align-items: center; /* Center horizontally */
     text-align: center; /* Center the text inside the div */
@@ -211,16 +304,51 @@ body {
     cursor: pointer;
     margin-right: 10px;
 }
- .queue-ticket {
-        display: none;
-    }
- .button-container {
-        text-align: center !important;
-        margin-top: 20px !important;
-        margin-left: 450px;
-      
-    }
 
-    .button-container button {
-        margin: 0 10px !important;
-    }
+
+.message-label {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #e44d26; /* Set the text color to red */
+    text-align: center;
+    font-weight: bold; /* Add font weight for emphasis if needed */
+}
+
+.message-label {
+    font-weight: bold; /* Add font weight for emphasis if needed */
+}
+
+ 
+  #servingTimeLabel,
+#currentServingLabel,
+#ticketsDoneLabel {
+    display: inline-block;
+    box-sizing: border-box;
+    text-align: center;
+    color: #555; /* Adjust the color as needed */
+    font-weight: bold; /* Add font weight as needed */
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px; /* Adjust the font size as needed */
+    margin-bottom: 10px; /* Add space between labels and corresponding controls */
+}
+
+/* Style the center section */
+.center-section {
+    display: inline-block;
+    box-sizing: border-box;
+    width: 30%; /* Adjust the width for the center section */
+    text-align: center;
+    margin: 0 auto; /* Center horizontally */
+}
+
+/* Style the labels for serving time, queue ticket, and tickets done */
+.servingtime-label,
+.queueticket-label,
+.tickets-done-label {
+    display: block;
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 18px; /* Adjust the font size as needed */
+    color: #555; /* Adjust the color as needed */
+    margin-bottom: 10px; /* Add space between labels and corresponding controls */
+}

@@ -130,14 +130,14 @@
                 '<td>' + employee.Department + '</td>' +
                 '<td><img src="' + imageUrl + '" alt="Employee Image" style="max-width: 100px; max-height: 100px;"></td>' + // Display image with maximum dimensions
                 '<td>' +
-                '<button class="btn btn-info edit-employee-button" data-employee-id="' + employee.Id + '" data-toggle="modal" data-target="#editEmployeeModal">Edit</button>' +
+                '<button class="btn btn-info edit-employee-button" data-employee-id="' + employee.Id + '" data-toggle="modal" data-target="#confirmEditModal">Edit</button>' +
                 '<button class="btn btn-danger delete-employee-button" data-employee-id="' + employee.Id + '" type="button">Delete</button>' +
                 '</td>' +
                 '</tr>'
             );
         });
-    
-    
+
+
         // Add click event handlers for Edit and Delete buttons
         bindButtonClickEvents();
     }
@@ -145,75 +145,84 @@
     // Function to trigger the edit modal for a specific employee
     function triggerEditModal(employeeId) {
         // Fetch the employee data by making an API request to get the employee details by ID
-        $.ajax({
-            url: '/api/Employee/' + employeeId,
-            type: 'GET',
-            dataType: 'json',
-            success: function (employeeData) {
-                // Populate the modal/form fields with the employee data for editing
-                $('#editEmployeeModal').modal('show'); // Show the edit modal
+        $('#confirmEditModal').modal('show');
 
-                // Populate the input fields with the employee data
-                $('#edit-username-input').val(employeeData.Username);
-                $('#edit-firstname-input').val(employeeData.FirstName);
-                $('#edit-lastname-input').val(employeeData.LastName);
+        // Add an event listener for the "Confirm Edit" button in the confirmation modal
+        $('#confirm-edit-button').off('click').on('click', function () {
+            // Close the confirmation modal
+            $('#confirmEditModal').modal('hide');
 
-                // Set the selected department in the dropdown
-                $('#edit-department-input').val(employeeData.Department);
-
-                // Show the new password and confirm password input fields
-                $('#edit-new-password-input').show();
-                $('#edit-confirm-password-input').show();
-
-                // Clear the password fields
-                $('#edit-old-password-input').val('');
-                $('#edit-new-password-input').val('');
-                $('#edit-confirm-password-input').val('');
-            },
-            error: function (error) {
-                // Handle errors
-                console.error("Error loading employee details: " + error);
-            }
-        });
-
-        // Attach click event for the edit save button
-        $('#edit-save-button').on('click', function () {
-            // Collect the data for editing from the modal fields
-            var newPassword = $('#edit-new-password-input').val();
-            var confirmPassword = $('#edit-confirm-password-input').val();
-
-            // Validate password and confirm password
-            if (newPassword !== confirmPassword) {
-                alert('New password and confirm password do not match.');
-                return;
-            }
-
-            var editedEmployee = {
-                Username: $('#edit-username-input').val(),
-                Password: newPassword,
-                FirstName: $('#edit-firstname-input').val(),
-                LastName: $('#edit-lastname-input').val(),
-                Department: $('#edit-department-input').val(),
-            };
-
-            // Send the edited data to the server using an AJAX request
+            // Fetch the employee data by making an API request to get the employee details by ID
             $.ajax({
                 url: '/api/Employee/' + employeeId,
-                type: 'PUT', // Use PUT for update
-                contentType: 'application/x-www-form-urlencoded', // Change the content type
-                data: editedEmployee,
-                success: function (response) {
-                    // Handle success
-                    console.log("Employee updated successfully:", response);
-                    // You may want to reload the employee data after a successful update
-                    loadEmployees();
-                    // Close the modal after a successful update
-                    $('#editEmployeeModal').modal('hide');
+                type: 'GET',
+                dataType: 'json',
+                success: function (employeeData) {
+                    // Populate the modal/form fields with the employee data for editing
+                    $('#editEmployeeModal').modal('show'); // Show the edit modal
+
+                    // Populate the input fields with the employee data
+                    $('#edit-username-input').val(employeeData.Username);
+                    $('#edit-firstname-input').val(employeeData.FirstName);
+                    $('#edit-lastname-input').val(employeeData.LastName);
+
+                    // Set the selected department in the dropdown
+                    $('#edit-department-input').val(employeeData.Department);
+
+                    // Show the new password and confirm password input fields
+                    $('#edit-new-password-input').show();
+                    $('#edit-confirm-password-input').show();
+
+                    // Clear the password fields
+                    $('#edit-old-password-input').val('');
+                    $('#edit-new-password-input').val('');
+                    $('#edit-confirm-password-input').val('');
                 },
                 error: function (error) {
                     // Handle errors
-                    console.error("Error updating employee: " + error);
+                    console.error("Error loading employee details: " + error);
                 }
+            });
+
+            // Attach click event for the edit save button
+            $('#edit-save-button').on('click', function () {
+                // Collect the data for editing from the modal fields
+                var newPassword = $('#edit-new-password-input').val();
+                var confirmPassword = $('#edit-confirm-password-input').val();
+
+                // Validate password and confirm password
+                if (newPassword !== confirmPassword) {
+                    alert('New password and confirm password do not match.');
+                    return;
+                }
+
+                var editedEmployee = {
+                    Username: $('#edit-username-input').val(),
+                    Password: newPassword,
+                    FirstName: $('#edit-firstname-input').val(),
+                    LastName: $('#edit-lastname-input').val(),
+                    Department: $('#edit-department-input').val(),
+                };
+
+                // Send the edited data to the server using an AJAX request
+                $.ajax({
+                    url: '/api/Employee/' + employeeId,
+                    type: 'PUT', // Use PUT for update
+                    contentType: 'application/x-www-form-urlencoded', // Change the content type
+                    data: editedEmployee,
+                    success: function (response) {
+                        // Handle success
+                        console.log("Employee updated successfully:", response);
+                        // You may want to reload the employee data after a successful update
+                        loadEmployees();
+                        // Close the modal after a successful update
+                        $('#editEmployeeModal').modal('hide');
+                    },
+                    error: function (error) {
+                        // Handle errors
+                        console.error("Error updating employee: " + error);
+                    }
+                });
             });
         });
     }

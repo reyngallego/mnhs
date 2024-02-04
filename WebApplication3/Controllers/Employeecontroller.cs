@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Web.Http;
 using WebApplication3.Models;
-
+using System;
 namespace WebApplication3.Controllers
 {
     public class EmployeeController : ApiController
@@ -13,6 +13,20 @@ namespace WebApplication3.Controllers
         {
             return dataAccess.GetEmployees();
         }
+
+        // GET api/Employee/{id}
+        public IHttpActionResult Get(int id)
+        {
+            Employee employee = dataAccess.GetEmployeeById(id);
+
+            if (employee == null)
+            {
+                return NotFound(); // Return 404 Not Found if the employee with the specified ID is not found
+            }
+
+            return Ok(employee); // Return the employee data if found
+        }
+
 
         // POST api/Employee - Add a new employee
         [HttpPost]
@@ -29,20 +43,31 @@ namespace WebApplication3.Controllers
                 return BadRequest("Invalid employee data");
             }
         }
+
+        // PUT api/Employee/5 - Update an existing employee
         [HttpPut]
-        public IHttpActionResult Put(int id, [FromBody] Employee employee)
+        public IHttpActionResult Put([FromUri] int id, [FromBody] Employee employee)
         {
             if (employee != null)
             {
                 // Call your data access layer to update the employee data in the database.
-                dataAccess.UpdateEmployee(id, employee);
-                return Ok("Employee updated successfully");
+                try
+                {
+                    dataAccess.UpdateEmployee(id, employee);
+                    return Ok("Employee updated successfully");
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(ex.Message);
+                }
             }
             else
             {
                 return BadRequest("Invalid employee data");
             }
         }
+
+        // DELETE api/Employee/5 - Delete an employee by ID
         [HttpDelete]
         public IHttpActionResult Delete(int id)
         {
@@ -58,8 +83,5 @@ namespace WebApplication3.Controllers
                 return NotFound();
             }
         }
-
     }
 }
-
-

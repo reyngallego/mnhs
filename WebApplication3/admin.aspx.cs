@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebApplication3
 {
@@ -11,7 +6,18 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                // Check if the user is logged in
+                if (!UserUtility.IsUserLoggedIn())
+                {
+                    // Redirect to the login page if not logged in
+                    Response.Redirect("login.aspx");
+                    return; // Stop further execution
+                }
 
+                // User is logged in, continue with the page logic
+            }
         }
     }
 }

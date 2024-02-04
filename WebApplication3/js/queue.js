@@ -5,12 +5,55 @@
         $("#logoutModal").modal("show");
     });
 
+    // Handle the cancel action
+    $("#cancelLogout").on("click", function () {
+        // Close the modal without performing logout actions
+        $("#logoutModal").modal("hide");
+    });
+
     // Handle the confirmation of logout
     $("#confirmLogout").on("click", function () {
         // Perform logout actions here (e.g., redirect or log out the user)
         // For demonstration, let's assume the user is redirected to login.aspx
         window.location.href = "login.aspx";
     });
+    // Logic for the Call button click
+    $("#btnCallTicket").click(function () {
+        // Show the Call modal
+        $("#callModal").modal("show");
+    });
+
+    // Logic for the Done button click
+    $("#btnDoneTicket").click(function () {
+        // Show the Done modal
+        $("#doneModal").modal("show");
+    });
+
+    // Logic for confirming the Call action
+    function confirmCall() {
+        $('#callModal').modal('show');
+
+        // Logic to handle confirmation
+        $('#confirmCall').click(function () {
+            // Hide the modal
+            $('#callModal').modal('hide');
+
+            // Perform the server-side action
+        });
+    }
+
+    function confirmDone() {
+        $('#doneModal').modal('show');
+
+        // Logic to handle confirmation
+        $('#confirmDone').click(function () {
+            // Hide the modal
+            $('#doneModal').modal('hide');
+
+            // Perform the server-side action
+        });
+    }
+
 
     // Function to fetch and display student data based on the logged-in department
     function fetchStudentDataAndQueueTicket() {
@@ -93,4 +136,6 @@
 
     // Call the function to fetch and display student data
     fetchStudentDataAndQueueTicket();
+  
 });
+

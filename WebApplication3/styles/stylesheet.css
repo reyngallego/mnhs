@@ -9,7 +9,6 @@ body {
   padding: 0;
   box-sizing: border-box;
   font-family: 'Montserrat', sans-serif;
-  background-image: url(images/puppq.jpg); /* Replace with the actual path to your background image */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -23,6 +22,11 @@ body {
   align-items: center;
   height: 100vh;
   position: relative;
+  background-image: url('/images/puppq.jpg'); /* Path to your background image */
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed; /* This keeps the background fixed when scrolling */
 }
 
 .frame-child {
