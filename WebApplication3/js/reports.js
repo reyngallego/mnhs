@@ -1,69 +1,53 @@
 ﻿$(document).ready(function () {
-    var reports;  // Declare reports variable
+    // Function to fetch data from the API and update the table
+    function fetchReports() {
+        // Your API endpoint URL
+        var apiUrl = '/api/QueueReports/GetQueueReports';
 
-    // Fetch and display reports on page load
-    fetchAndDisplayReports();
+        // Additional parameters (if needed)
+        var dateFilter = $('#dateFilter').val();
+        console.log('Date Filter:', dateFilter); // Log date filter value
 
-    // Event listener for department checkboxes
-    $(document).on('change', '.department-checkbox', function () {
-        filterReports();
-    });
+        var departmentFilters = $('.department-checkbox:checked').map(function () {
+            return $(this).data('department');
+        }).get();
 
-    // Event listener for date filter
-    $('#dateFilter').on('change', function () {
-        filterReports();
-    });
-
-    function fetchAndDisplayReports() {
+        // Make AJAX request
         $.ajax({
+            url: apiUrl,
             type: 'GET',
-            url: '/api/reports/getqueuereports',
-            success: function (data) {
-                reports = data;  // Set the reports variable
-                displayReports(reports);
+            data: {
+                dateFilter: dateFilter, // Pass the date filter value
+                departmentFilters: departmentFilters
             },
-            error: function () {
-                alert('Error fetching data from the server.');
+            success: function (data) {
+                // Clear existing table rows
+                $('#reports-list').empty();
+
+                // Update table with new data
+                $.each(data, function (index, report) {
+                    var row = '<tr>' +
+                        '<td>' + report.ReportID + '</td>' +
+                        '<td>' + report.QueueTicket + '</td>' +
+                        '<td>' + report.Department + '</td>' +
+                        '<td>' + report.DoneDate + '</td>' +
+                        '<td>' + report.Timer + '</td>' +
+                        '</tr>';
+
+                    $('#reports-list').append(row);
+                });
+            },
+            error: function (error) {
+                console.error('Error fetching reports: ', error);
             }
         });
     }
 
-    function displayReports(reports) {
-        var tbody = $('#reports-list');
-        tbody.empty();
+    // Call fetchReports initially
+    fetchReports();
 
-        for (var i = 0; i < reports.length; i++) {
-            var report = reports[i];
-
-            var row = $('<tr>');
-            row.append('<td>' + report.ReportID + '</td>');
-            row.append('<td>' + report.QueueTicket + '</td>');
-            row.append('<td>' + report.Department + '</td>');
-            row.append('<td>' + report.DoneDate + '</td>');
-
-            // Add Timer column
-            row.append('<td>' + report.Timer + '</td>');
-
-            row.append('<td><input type="checkbox" class="department-checkbox" data-department="' + report.Department + '"></td>');
-
-            tbody.append(row);
-        }
-
-        filterReports(); // Apply initial filters
-    }
-
-    function filterReports() {
-        var selectedDepartments = $('.department-checkbox:checked').map(function () {
-            return $(this).data('department');
-        }).get();
-
-        var selectedDate = $('#dateFilter').val();
-
-        var filteredReports = reports.filter(function (report) {
-            return (selectedDepartments.length === 0 || selectedDepartments.includes(report.Department)) &&
-                (selectedDate === '' || new Date(selectedDate).toISOString().split('T')[0] === report.DoneDate.split('T')[0]);
-        });
-
-        displayReports(filteredReports);
-    }
+    // Bind fetchReports to the change event of date and department filters
+    $('#dateFilter, .department-checkbox').on('change', function () {
+        fetchReports();
+    });
 });

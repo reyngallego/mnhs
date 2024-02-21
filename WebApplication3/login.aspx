@@ -23,12 +23,16 @@
                     <form id="Form1" runat="server" onsubmit="return validateForm()">
 
                         <div class="form-group">
-                            <label for="username">EmployeeId</label>
-                            <asp:TextBox ID="username" runat="server" CssClass="input-field" />
+<label for="username">
+    <img src="images/icons/employeeid.png" alt="Employee ID Icon" width="20" height="20"/>
+    EmployeeId
+</label>                            <asp:TextBox ID="username" runat="server" CssClass="input-field" />
                         </div>
                         <div class="form-group">
-                            <label for="password">Password</label>
-                            <asp:TextBox ID="password" runat="server" CssClass="input-field" TextMode="Password" />
+<label for="password">
+    <img src="images/icons/Password.png" alt="Password Icon" width="20" height="20"/>
+    Password
+</label>                            <asp:TextBox ID="password" runat="server" CssClass="input-field" TextMode="Password" />
                         </div>
                         <div class="sign-in">
                             <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" OnClientClick="return validateForm();" />

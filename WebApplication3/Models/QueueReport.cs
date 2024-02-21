@@ -10,6 +10,8 @@ namespace WebApplication3.Models
         public int ReportID { get; set; }
         public string QueueTicket { get; set; }
         public string Department { get; set; }
-        public DateTime DoneDate { get; set; }
+        public string DoneDate { get; set; }
+        public TimeSpan Timer { get; set; }
+
     }
 }

@@ -1,4 +1,10 @@
 ﻿jQuery(document).ready(function ($) {
+    // Function to handle file input change event
+    $('#add-profile-image-input').on('change', function () {
+        var file = $(this)[0].files[0];
+        // Handle the file, you can upload it via AJAX or perform any other operation
+        console.log('Selected file:', file);
+    });
     // Declare employeeId variable outside of functions to make it accessible globally
     var employeeIdToDelete;
 
@@ -84,15 +90,16 @@
                     // Close the modal after a successful update
                     $('#editEmployeeModal').modal('hide');
                 },
-                error: function (error) {
+                error: function (xhr, status, error) {
                     // Log the error details
-                    console.error("Error updating employee data:", error);
+                    console.error("Error updating employee data:", xhr.responseText);
 
                     // Handle errors
                     alert("Error updating employee data. See console for details.");
                 }
             });
         });
+
 
         // Add an event listener for a button to trigger the edit modal
     }
@@ -130,8 +137,9 @@
                 '<td>' + employee.Department + '</td>' +
                 '<td><img src="' + imageUrl + '" alt="Employee Image" style="max-width: 100px; max-height: 100px;"></td>' + // Display image with maximum dimensions
                 '<td>' +
-                '<button class="btn btn-info edit-employee-button" data-employee-id="' + employee.Id + '" data-toggle="modal" data-target="#confirmEditModal">Edit</button>' +
-                '<button class="btn btn-danger delete-employee-button" data-employee-id="' + employee.Id + '" type="button">Delete</button>' +
+                '<button class="btn btn-info edit-employee-button" data-employee-id="' + employee.Id + '" data-toggle="modal" data-target="#confirmEditModal"><span>Edit</span></button>' +
+'<button class="btn btn-danger delete-employee-button" data-employee-id="' + employee.Id + '" type="button"><span>Delete</span></button>'
+ +
                 '</td>' +
                 '</tr>'
             );
@@ -202,30 +210,50 @@
                     FirstName: $('#edit-firstname-input').val(),
                     LastName: $('#edit-lastname-input').val(),
                     Department: $('#edit-department-input').val(),
+                    Image: null // Initialize image property
                 };
 
-                // Send the edited data to the server using an AJAX request
-                $.ajax({
-                    url: '/api/Employee/' + employeeId,
-                    type: 'PUT', // Use PUT for update
-                    contentType: 'application/x-www-form-urlencoded', // Change the content type
-                    data: editedEmployee,
-                    success: function (response) {
-                        // Handle success
-                        console.log("Employee updated successfully:", response);
-                        // You may want to reload the employee data after a successful update
-                        loadEmployees();
-                        // Close the modal after a successful update
-                        $('#editEmployeeModal').modal('hide');
-                    },
-                    error: function (error) {
-                        // Handle errors
-                        console.error("Error updating employee: " + error);
+                var fileInput = document.getElementById('edit-profile-image-input');
+                var file = fileInput.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.readAsArrayBuffer(file);
+                    reader.onload = function (event) {
+                        editedEmployee.Image = Array.from(new Uint8Array(event.target.result)); // Convert ArrayBuffer to byte array
+                        sendEditRequest(employeeId, editedEmployee); // Call the function to send edit request
                     }
-                });
+                } else {
+                    sendEditRequest(employeeId, editedEmployee); // Call the function to send edit request without image
+                }
             });
         });
     }
+
+    function sendEditRequest(employeeId, editedEmployee) {
+        // Send the edited data to the server using an AJAX request
+        $.ajax({
+            url: '/api/Employee/' + employeeId,
+            type: 'PUT', // Use PUT for update
+            contentType: 'application/json',
+            data: JSON.stringify(editedEmployee),
+            success: function (response) {
+                // Handle success
+                console.log("Employee updated successfully:", response);
+                // You may want to reload the employee data after a successful update
+                loadEmployees();
+                // Close the modal after a successful update
+                $('#editEmployeeModal').modal('hide');
+            },
+            error: function (xhr, status, error) {
+                // Handle errors
+                var errorMessage = xhr.status + ': ' + xhr.statusText;
+                console.error("Error updating employee: " + errorMessage);
+                // Log the detailed error message
+                console.error("Detailed error:", xhr.responseText);
+            }
+        });
+    }
+
     // Function to delete an employee by ID
     function deleteEmployee(employeeId) {
         try {
@@ -258,11 +286,9 @@
 
     // Add an event listener for the "Add Employee" button in the modal
     $('#add-save-button').on('click', function () {
-        // Collect the data for the new employee from the modal fields
         var newPassword = $('#add-password-input').val();
         var confirmPassword = $('#add-confirm-password-input').val();
 
-        // Validate password and confirm password
         if (newPassword !== confirmPassword) {
             alert('Password and confirm password do not match.');
             return;
@@ -274,29 +300,44 @@
             FirstName: $('#add-firstname-input').val(),
             LastName: $('#add-lastname-input').val(),
             Department: $('#add-department-input').val(),
+            Image: null
         };
 
+        var fileInput = document.getElementById('add-profile-image-input');
+        var file = fileInput.files[0];
+        if (file) {
+            var reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = function (event) {
+                var arrayBuffer = event.target.result;
+                var bytes = new Uint8Array(arrayBuffer);
+                newEmployee.Image = Array.from(bytes); // Convert Uint8Array to regular array
+                addEmployee(newEmployee);
+            }
+        } else {
+            addEmployee(newEmployee);
+        }
+    });
 
-        // Send the data for the new employee to the server using an AJAX request
+    function addEmployee(newEmployee) {
         $.ajax({
             url: '/api/Employee',
             type: 'POST',
-            contentType: 'application/x-www-form-urlencoded', // Change the content type
-            data: newEmployee, // No need to stringify the data
+            contentType: 'application/json',
+            data: JSON.stringify(newEmployee),
             success: function (response) {
-                // Handle success
                 console.log("Employee added successfully:", response);
-                // You may want to reload the employee data after a successful add
                 loadEmployees();
-                // Close the modal after a successful add
                 $('#addEmployeeModal').modal('hide');
             },
             error: function (error) {
-                // Handle errors
                 console.error("Error adding employee: " + error);
             }
         });
-    });
+    }
+
+
+
 
     // Load employees when the page is ready and when the "Employees" tab is clicked
     function loadEmployeesOnTabClick() {

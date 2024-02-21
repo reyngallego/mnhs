@@ -114,7 +114,8 @@ namespace WebApplication3
                                          "firstname = ISNULL(@FirstName, firstname), " +
                                          "lastname = ISNULL(@LastName, lastname), " +
                                          "department = ISNULL(@Department, department), " +
-                                         "password = ISNULL(@Password, password) " +
+                                         "password = ISNULL(@Password, password), " +
+                                         "image = ISNULL(@Image, image) " + // Add image update
                                          "WHERE id = @Id";
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
@@ -127,6 +128,9 @@ namespace WebApplication3
                         command.Parameters.AddWithValue("@Department", (object)updatedEmployee.Department ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Password", (object)updatedEmployee.Password ?? DBNull.Value);
 
+                        // Add the Image parameter
+                        command.Parameters.Add("@Image", SqlDbType.VarBinary, -1).Value = (object)updatedEmployee.Image ?? DBNull.Value;
+
                         command.ExecuteNonQuery();
                     }
                 }
@@ -137,6 +141,8 @@ namespace WebApplication3
                 throw new Exception($"Employee with ID {employeeId} not found");
             }
         }
+
+
 
         public bool DeleteEmployee(int employeeId)
         {
@@ -180,34 +186,33 @@ namespace WebApplication3
             {
                 connection.Open();
 
-                // Define a SQL INSERT query to add a new employee
                 string insertQuery = "INSERT INTO users (username, password, firstname, lastname, department, image) " +
                                      "VALUES (@Username, @Password, @FirstName, @LastName, @Department, @Image)";
 
                 using (SqlCommand command = new SqlCommand(insertQuery, connection))
                 {
-                    // Set the parameter values
                     command.Parameters.AddWithValue("@Username", newEmployee.Username);
-                    command.Parameters.AddWithValue("@Password", newEmployee.Password); // Assuming newEmployee.Password is provided
+                    command.Parameters.AddWithValue("@Password", newEmployee.Password);
                     command.Parameters.AddWithValue("@FirstName", newEmployee.FirstName);
                     command.Parameters.AddWithValue("@LastName", newEmployee.LastName);
                     command.Parameters.AddWithValue("@Department", newEmployee.Department);
 
-                    // Assuming ImageData is a byte array property in your Employee class
                     if (newEmployee.Image != null)
                     {
-                        command.Parameters.Add("@Image", SqlDbType.VarBinary).Value = newEmployee.Image;
+                        command.Parameters.Add("@Image", SqlDbType.VarBinary, -1).Value = newEmployee.Image;
                     }
                     else
                     {
-                        // If Image is null, set a default image (replace defaultImageBytes with your default image byte array)
-                        byte[] defaultImageBytes = GetDefaultImageBytes(); // Implement this method to get the default image bytes
-                        command.Parameters.Add("@Image", SqlDbType.VarBinary).Value = defaultImageBytes;
+                        byte[] defaultImageBytes = GetDefaultImageBytes();
+                        command.Parameters.Add("@Image", SqlDbType.VarBinary, -1).Value = defaultImageBytes;
                     }
 
                     command.ExecuteNonQuery();
                 }
             }
         }
+
+
+
     }
 }

@@ -145,13 +145,126 @@
             updateStudentaffairsandservicesQueueTicket();
         }, 5000);
     });
+
+  
+    // Variable to store the previous recall information for each department
+    var previousRecallInfo = {
+        registrar: "",
+        cashier: "",
+        studentaffairsandservices: "",
+        director: ""
+    };
+
+    // Variable to track whether the page has loaded for the first time
+    var isFirstLoad = true;
+
+    // Function to update recall information on the server
+    function updateRecallInfo(recallInfo, department) {
+        $.ajax({
+            url: 'http://localhost:65388/api/Recall/PostRecallInfo',
+            method: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify({ RecallInformation: recallInfo, Department: department }),
+            success: function (response) {
+                console.log('Recall information updated successfully:', response);
+            },
+            error: function (error) {
+                console.error('Error updating recall information:', error);
+            }
+        });
+    }
+
+    // Function to retrieve recall information from the server
+    function getRecallInfo(department) {
+        $.ajax({
+            url: 'http://localhost:65388/api/Recall/GetRecallInfo?department=' + department,
+            method: 'GET',
+            success: function (response) {
+                console.log('Recall information retrieved successfully for ' + department + ':', response);
+
+                // Update the hidden field value with the retrieved recall information
+                $('#' + department + 'queueticketrecall').val(response.RecallInfo);
+
+                // Speak the recall information if it's updated or if it's the first load
+                if (response.RecallInfo !== previousRecallInfo[department] || isFirstLoad) {
+                    console.log('New recall information detected for ' + department + '. Speaking...');
+                    // Speak the recall information only if it's not the first load
+                    if (!isFirstLoad) {
+                        speak(response.RecallInfo, department);
+                    }
+                    // Update the previous recall information
+                    previousRecallInfo[department] = response.RecallInfo;
+                }
+            },
+            error: function (error) {
+                console.error('Error retrieving recall information for ' + department + ':', error);
+            }
+        });
+    }
+
+    // Function to speak text
+    function speak(text, department) {
+        const speech = new SpeechSynthesisUtterance();
+        speech.text = text + ". Please come to " + department + " department."; // Adding the department message
+        speech.volume = 1;
+        speech.rate = 1;
+        speech.pitch = 1;
+        window.speechSynthesis.speak(speech);
+    }
+
+    // Update recall information on page load for each department
+    $(document).ready(function () {
+        // Periodically update recall information for each department
+        setInterval(function () {
+            getRecallInfo('registrar');
+            getRecallInfo('cashier');
+            getRecallInfo('studentaffairsandservices');
+            getRecallInfo('director');
+            // After the first load, set isFirstLoad to false
+            if (isFirstLoad) {
+                isFirstLoad = false;
+            }
+        }, 5000); // Update every 5 seconds, adjust the interval as needed
+    });
+
+    // Example: update recall information for registrar when a button is clicked
+    $('#updateRegistrarRecallButton').click(function () {
+        var recallInfo = $('#registrarqueueticketrecall').val();
+        var department = 'registrar';
+        updateRecallInfo(recallInfo, department);
+    });
+
+    // Example: update recall information for cashier when a button is clicked
+    $('#updateCashierRecallButton').click(function () {
+        var recallInfo = $('#cashierqueueticketrecall').val();
+        var department = 'cashier';
+        updateRecallInfo(recallInfo, department);
+    });
+
+    // Example: update recall information for student affairs and services when a button is clicked
+    $('#updateStudentAffairsRecallButton').click(function () {
+        var recallInfo = $('#studentaffairsandservicesqueueticketrecall').val();
+        var department = 'studentaffairsandservices';
+        updateRecallInfo(recallInfo, department);
+    });
+
+    // Example: update recall information for director when a button is clicked
+    $('#updateDirectorRecallButton').click(function () {
+        var recallInfo = $('#directorqueueticketrecall').val();
+        var department = 'director';
+        updateRecallInfo(recallInfo, department);
+    });
+
 </script>
        
 </head>
 <body>
         <img id="logo" src="/images/logo2.png" alt="PUP Logo" />  
 
+
     <form id="form1" runat="server">
+                <asp:HiddenField ID="queueticketrecall" runat="server" />
+
         <div class="container-fluid">
      <!-- Video Player Section -->
 <div class="row mt-4">

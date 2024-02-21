@@ -99,11 +99,17 @@
 
                 <table>
                     <tr>
-                        <td>Name:</td>
+                        <td>
+    <img src="images/icons/name.png" alt="Icon" width="20" height="20">
+    Name:
+</td>
                         <td><asp:TextBox ID="txtName" runat="server" required="true" CssClass="input-field"></asp:TextBox></td>
                     </tr>
                     <tr>
-                        <td>Department:</td>
+                       <td>
+    <img src="images/icons/department.png" alt="Icon" width="20" height="20">
+    Department:
+</td>
                         <td>
                             <asp:DropDownList ID="ddlDepartment" runat="server" CssClass="input-field">
                                 <asp:ListItem Value="REGISTRAR">REGISTRAR</asp:ListItem>
@@ -114,7 +120,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>Purpose:</td>
+                        <td>
+    <img src="images/icons/description.png" alt="Icon" width="20" height="20">
+    Purpose:
+</td>
                         <td>    <asp:DropDownList ID="ddlPurpose" runat="server" required="true" CssClass="input-field"></asp:DropDownList>
 </td>
                     </tr>

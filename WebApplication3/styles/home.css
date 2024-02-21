@@ -149,7 +149,7 @@ body {
 .btn-previous {
   width: 80px; /* Adjust width as needed */
   height: 45px; /* Adjust height as needed */
-  background-image: url('../images/buttons/left.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-image: url('../images/buttons/Previous.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
   background-size: contain; /* Adjust image size */
   background-repeat: no-repeat; /* Prevent image from repeating */
   background-position: center; /* Center the image */
@@ -171,7 +171,7 @@ body {
 .btn-next {
   width: 80px; /* Adjust width as needed */
   height: 45px; /* Adjust height as needed */
-  background-image: url('../images/buttons/right.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-image: url('../images/buttons/Next.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
   background-size: contain; /* Adjust image size */
   background-repeat: no-repeat; /* Prevent image from repeating */
   background-position: center; /* Center the image */
@@ -206,6 +206,27 @@ body {
   color: #000; /* Text color on hover */
 }
 .btn-call:hover {
+  background-color: #0056b3; /* Darker shade of primary color on hover */
+  text-align:center;
+}
+
+.btn-recall {
+  width: 80px; /* Adjust width as needed */
+  height: 45px; /* Adjust height as needed */
+  background-image: url('../images/buttons/recall.png'); /* Replace 'path/to/previous-image.jpg' with the path to your image */
+  background-size: contain; /* Adjust image size */
+  background-repeat: no-repeat; /* Prevent image from repeating */
+  background-position: center; /* Center the image */
+  background-color: #17a2b8; /* Background color */
+  color: transparent; /* Hide the text */
+  transition: color 0.3s ease; /* Transition for text color change */
+}
+
+
+.btn-recall:hover {
+  color: #000; /* Text color on hover */
+}
+.btn-recall:hover {
   background-color: #0056b3; /* Darker shade of primary color on hover */
   text-align:center;
 }

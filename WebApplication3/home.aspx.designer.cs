@@ -94,15 +94,6 @@ namespace WebApplication3 {
         protected global::System.Web.UI.WebControls.Button btnNextTicket;
         
         /// <summary>
-        /// btnRecallTicket control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnRecallTicket;
-        
-        /// <summary>
         /// btnConfirmCall control.
         /// </summary>
         /// <remarks>
@@ -110,6 +101,15 @@ namespace WebApplication3 {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btnConfirmCall;
+        
+        /// <summary>
+        /// btnConfirmRecall control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnConfirmRecall;
         
         /// <summary>
         /// btnConfirmDone control.

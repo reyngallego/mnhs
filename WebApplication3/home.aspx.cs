@@ -376,10 +376,69 @@ namespace WebApplication3
 
 
 
-        protected void btnRecallTicket_Click(object sender, EventArgs e)
+        protected void btnConfirmRecall_Click(object sender, EventArgs e)
         {
-            // Your logic for the Recall button click
+            lblMessage.Text = "";
+
+            try
+            {
+                // Get the recall information from lblQueueTicket
+                string recallInfo = lblQueueTicket.Text;
+
+                // Get the department from lblDepartment
+                string department = lblDepartment.Text;
+
+                // Check if recallInfo or department is null or empty
+                if (string.IsNullOrEmpty(recallInfo) || string.IsNullOrEmpty(department))
+                {
+                    // If either recallInfo or department is empty, display an error message
+                    lblMessage.Text = "Recall information or department is missing.";
+                    return;
+                }
+
+                // Insert the recall information into the database
+                InsertRecallInfo(recallInfo, department);
+
+                // Display a success message
+                lblMessage.Text = "Recall information inserted successfully.";
+            }
+            catch (Exception ex)
+            {
+                // Handle any exceptions that may occur during the process
+                // Display an error message or log the exception
+                Console.WriteLine($"An error occurred: {ex.Message}");
+                lblMessage.Text = "An error occurred while inserting recall information.";
+            }
         }
+
+        private void InsertRecallInfo(string recallInfo, string department)
+        {
+            // Connection string to your SQL Server database
+            string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
+
+            // SQL query to insert recall information into the database
+            string query = "INSERT INTO RecallInformation (Recall, Department, CreatedAt) VALUES (@Recall, @Department, GETDATE())";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                using (SqlCommand command = new SqlCommand(query, connection))
+                {
+                    // Add parameters to the SQL command to prevent SQL injection
+                    command.Parameters.AddWithValue("@Recall", recallInfo);
+                    command.Parameters.AddWithValue("@Department", department);
+
+                    // Open the database connection
+                    connection.Open();
+
+                    // Execute the SQL command
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
+
+
+
 
         protected async void btnConfirmDone_Click(object sender, EventArgs e)
         {

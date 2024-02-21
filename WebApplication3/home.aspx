@@ -113,7 +113,7 @@
 
         $("#btnRecallTicket").click(function () {
             // Implement the logic for the "Recall" button click
-            console.log("Recall button clicked");
+            $('#recallModal').modal('show');
         });
 
         $("#btnDoneTicket").click(function () {
@@ -154,6 +154,23 @@
         });
 
        
+
+           // Function to handle "Confirm Recall" button click inside the "Recall" modal
+        $("#confirmRecall").click(function () {
+            // Add your logic here for confirming the recall
+            // For example, you may want to make an API call or perform some other action
+            console.log("Recall confirmed");
+            // Close the modal after confirmation
+            $('#recallModal').modal('hide');
+
+        });
+           // Function to handle "Cancel Recall" button click inside the "Recall" modal
+        $("#cancelRecall").click(function () {
+            // Add your logic here for canceling the recall
+            console.log("Recall canceled");
+            // Close the modal after cancelation
+            $('#recallModal').modal('hide');
+        });
         });
     
     </script>
@@ -199,7 +216,7 @@
            <asp:Button ID="btnPreviousTicket" runat="server" Text="Previous" OnClick="btnPreviousTicket_Click" CssClass="btn btn-previous"/>
           <asp:Button ID="btnNextTicket" runat="server" Text="Next" OnClick="btnNextTicket_Click" CssClass="btn btn-next" />
          <button type="button" id="btnCallTicket" class="btn btn-call" onclick="showCallModal()">Call</button>
-          <asp:Button ID="btnRecallTicket" runat="server" Text="Recall" OnClick="btnRecallTicket_Click"  CssClass="btn btn-call" />
+           <button type="button" id="btnRecallTicket" class="btn btn-recall" onclick="recallTicket()">Recall</button>
           <button type="button" id="btnDoneTicket" class="btn btn-success">Done</button>
 
         </div>
@@ -219,6 +236,27 @@
             <div class="modal-footer">
         <button type="button" class="btn btn-secondary" id="cancelCall" data-dismiss="modal">Cancel</button>
     <asp:Button runat="server" ID="btnConfirmCall" CssClass="btn btn-primary" Text="Confirm" OnClick="btnConfirmCall_Click" />
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Recall Modal -->
+<div class="modal fade" id="recallModal" tabindex="-1" role="dialog" aria-labelledby="recallModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="recallModalLabel">Recall Student</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Do you want to recall this student?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" id="cancelRecall" data-dismiss="modal">Cancel</button>
+                <asp:Button runat="server" ID="btnConfirmRecall" CssClass="btn btn-primary" Text="Confirm" OnClick="btnConfirmRecall_Click" />
             </div>
         </div>
     </div>
