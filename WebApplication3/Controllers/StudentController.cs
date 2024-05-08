@@ -79,7 +79,7 @@ public class StudentController : ApiController
                 query = baseQuery;
                 break;
         }
-    
+
 
         using (SqlConnection connection = new SqlConnection(connectionString))
         {

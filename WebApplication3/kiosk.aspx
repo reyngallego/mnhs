@@ -25,10 +25,10 @@
     });
 
     var purposeOptions = {
-        'REGISTRAR': ['Getting Diploma', 'Other Registrar Purposes'],
-        'CASHIER': ['Paying Tuition Fee', 'Paying Uniform Fee', 'Other Cashier Purposes'],
+        'REGISTRAR': ['Request for Academic Verification Service', 'Application for Graduation', 'Request for Correction of Late/Incomplete/Entry of Grade', 'Request for Correction of Name', 'Request for Credentials Service', 'Certificate of Transfer Credentials', 'Other Registrar Purposes'],
+        'CASHIER': ['Payment of SIS/NON-SIS', 'Request for Refund', 'Other Cashier Purposes'],
         'DIRECTOR': ['Signing Paper', 'Other Director Purposes'],
-        'STUDENTAFFAIRSANDSERVICES': ['Getting School ID', 'Reporting Bullying', 'Other Student Affairs Purposes']
+        'STUDENTAFFAIRSANDSERVICES': ['Student Concerns/Complaints', 'Permission to conduct events', 'Request of Certificate of ID', 'Request of Good Moral', 'Consultation for Counseling', 'Scholarships', 'Other SAS purposes']
     };
 
     function updatePurposeOptions() {

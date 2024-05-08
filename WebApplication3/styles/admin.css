@@ -1,4 +1,5 @@
-﻿* {
+﻿/* Reset and global styles */
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -6,7 +7,6 @@
 }
 
 /* Navbar styles */
-
 .navbar {
     background-color: #800000; /* Maroon */
     color: #fff;
@@ -23,11 +23,14 @@
     color: #fff;
     border-color: #007BFF;
 }
+
+/* Navbar logo styles */
 .navbar-logo {
     width: 40px; /* Adjust the width as needed */
     height: auto; /* Maintain aspect ratio */
     margin-right: 10px; /* Add margin for spacing */
 }
+
 .navbar-brand {
     background: url('/images/logo2.png') no-repeat left center; /* Add this line for the logo */
     background-size: contain; /* Adjust as needed */
@@ -38,6 +41,7 @@
     color: #fff; /* Set the text color */
     text-decoration: none; /* Remove the default underline */
 }
+
 /* Tab content styles */
 .tab-content {
     padding: 20px;
@@ -87,6 +91,72 @@
 .nav-tabs .nav-item a.nav-link, .btn {
     transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
+
+/* Additional styles for form */
 .bg-maroon {
     background-color: #800000 !important; /* Maroon background color */
+}
+
+/* Form styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-check label {
+    display: inline-block;
+    margin-right: 10px; /* Adjust spacing between labels as needed */
+}
+
+/* Styling for Date Filter */
+.form-control#dateFilter {
+    width: 200px; /* Adjust width as needed */
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+/* Styling for Check Group */
+.check-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.department-checkbox {
+    margin-right: 15px;
+}
+
+/* Styling for Summary Box */
+.summary-box {
+    display: flex;
+    justify-content: space-around; /* Distribute items evenly */
+    margin-bottom: 20px;
+}
+
+.summary-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    flex: 1; /* Equal width for both summary items */
+    margin-right: 10px;
+}
+
+.summary-item:last-child {
+    margin-right: 0;
+}
+
+.summary-item h3 {
+text-align: center;
+color: #007BFF; /* Blue */
+margin-bottom: 10px;
+}
+
+.summary-item p {
+    font-size: 18px;
+    margin-bottom: 0;
+}
+#totalProcessed,
+#averageProcessed {
+    display: block;
+    text-align: center;
 }

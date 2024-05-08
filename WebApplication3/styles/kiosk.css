@@ -41,7 +41,7 @@ td {
 }
 
 .input-field {
-    width: 100% !important;
+    width: 700px !important; /* Adjust the width as needed */
     padding: 8px !important;
     box-sizing: border-box !important;
     margin-bottom: 10px !important;

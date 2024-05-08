@@ -66,6 +66,7 @@ body {
 
 /* Style the first name, last name, and department */
 .user-data-container .user-info {
+    text-align: center;
     font-size: 14px;
     font-weight: bold;
     margin-bottom: 10px;

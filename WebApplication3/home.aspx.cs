@@ -400,7 +400,7 @@ namespace WebApplication3
                 InsertRecallInfo(recallInfo, department);
 
                 // Display a success message
-                lblMessage.Text = "Recall information inserted successfully.";
+                lblMessage.Text = "Recall student successfully.";
             }
             catch (Exception ex)
             {

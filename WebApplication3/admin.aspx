@@ -11,6 +11,8 @@
     <!-- jQuery -->
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
@@ -26,7 +28,7 @@
 
     <form id="form1" runat="server">
         <nav class="navbar navbar-expand-lg navbar-light bg-maroon">
-            <a class="navbar-brand text-white" href="#">Pup Paranaque Campus Queue Management System</a>
+            <a class="navbar-brand text-white" href="#">PUP Paranaque Campus Queue Management System</a>
 
 
         </nav>
@@ -95,7 +97,7 @@
             <div id="employees" class="tab-pane fade show active">
                 <h2>Employee Management</h2>
                 <button type="button" id="add-employee-button" class="btn btn-primary" data-toggle="modal" data-target="#addEmployeeModal">
-                    <img src="images/icons/register.png" alt="Add Employee Icon" width="20" height="20">
+                    <img src="images/icons/register.png" alt="Add Employee Icon" width="20" height="20"/>
                     Add Employee
                 </button>
 
@@ -137,7 +139,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="add-firstname-input">
-                                        <img src="images/icons/name.png" alt="First Name Icon" width="20" height="20">
+                                        <img src="images/icons/name.png" alt="First Name Icon" width="20" height="20"/>
                                         First Name:
                                     </label>
                                     <input type="text" class="form-control" id="add-firstname-input" />
@@ -200,14 +202,21 @@
                             </div>
             <div class="modal-body" style="max-height: 500px; overflow-y: auto;">
                                 <!-- Edit form fields go here -->
-                                <div class="form-group">
+                              <div class="form-group">
     <label for="edit-username-input">
         <img src="images/icons/employeeid.png" alt="Employee ID Icon" width="20" height="20"/> EmployeeId:
     </label>
     <input type="text" class="form-control" id="edit-username-input" />
 </div>
 
-                               <div class="form-group">
+<div class="form-group">
+    <label for="edit-old-password-input">
+        <img src="images/icons/Password.png" alt="Password Icon" width="20" height="20"/> Old Password:
+    </label>
+    <input type="password" class="form-control" id="edit-old-password-input" />
+</div>
+
+<div class="form-group">
     <label for="edit-new-password-input">
         <img src="images/icons/Password.png" alt="Password Icon" width="20" height="20"/> New Password:
     </label>
@@ -246,14 +255,14 @@
         <option value="cashier">Cashier</option>
     </select>
 </div>
-                                <div class="form-group">
-                                    <label for="add-profile-image-input">
+
+<div class="form-group">
+    <label for="edit-profile-image-input">
         <img src="images/icons/add.png" alt="Upload Icon" width="20" height="20"/>
         Change Profile Image:
     </label>
     <input type="file" class="form-control-file" id="edit-profile-image-input" accept="image/*" />
-
-                                </div>
+</div>
                             </div>
                             <div class="modal-footer">
                                <button type="button" class="btn btn-secondary" data-dismiss="modal">
@@ -348,51 +357,67 @@
                     </tbody>
                 </table>
             </div>
-            <div id="reports" class="tab-pane fade">
-                <h2>Reports Management</h2>
+      <div id="reports" class="tab-pane fade">
+    <h2>Reports Management</h2>
 
-                <div class="form-group">
-                    <label for="dateFilter">Select Date:</label>
-                    <input type="date" class="form-control" id="dateFilter" />
-                </div>
+   <div class="form-group">
+  <img src="images/icons/date.png" alt="date Icon" width="20" height="20"/>
+  <label for="dateFilter">Select Date:</label>
+        <input type="date" class="form-control" id="dateFilter" />
+    </div>
+      <img src="images/icons/department.png" alt="Department Icon" width="20" height="20"/> 
+    <label>Filter by Department:</label>
+    <div class="check-group">
 
-                <div class="form-group">
-                    <label>Filter by Department:</label>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input department-checkbox" id="registrarCheckbox" data-department="registrar"/>
-                        <label class="form-check-label" for="registrarCheckbox">Registrar</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input department-checkbox" id="cashierCheckbox" data-department="cashier"/>
-                        <label class="form-check-label" for="cashierCheckbox">Cashier</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input department-checkbox" id="directorCheckbox" data-department="director"/>
-                        <label class="form-check-label" for="directorCheckbox">Director</label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input department-checkbox" id="studentAffairsCheckbox" data-department="student_affairs"/>
-                        <label class="form-check-label" for="studentAffairsCheckbox">Student Affairs and Services</label>
-                    </div>
-                </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="registrarCheckbox" data-department="registrar" />
+            <label class="form-check-label" for="registrarCheckbox">Registrar</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="cashierCheckbox" data-department="cashier" />
+            <label class="form-check-label" for="cashierCheckbox">Cashier</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="directorCheckbox" data-department="director" />
+            <label class="form-check-label" for="directorCheckbox">Director</label>
+        </div>
+        <div class="form-check">
+            <input type="checkbox" class="form-check-input department-checkbox" id="studentAffairsCheckbox" data-department="student_affairs" />
+            <label class="form-check-label" for="studentAffairsCheckbox">Student Affairs and Services</label>
+        </div>
+    </div>
 
-                <table class="table table-bordered" id="reports-table">
-                    <thead>
-                        <tr>
-                            <th>ReportID</th>
-                            <th>QueueTicket</th>
-                            <th>Department</th>
-                            <th>Done Date</th>
-                            <th>time finished</th>
+    <div class="summary-box">
+        <div class="summary-item">
+            <h3>Total Processed </h3>
+            <p><span id="totalProcessed">0</span></p>
+        </div>
+        <div class="summary-item">
+            <h3>Average Processed Time</h3>
+            <p><span id="averageProcessed">0</span></p>
+        </div>
 
-                        </tr>
-                    </thead>
-                    <tbody id="reports-list">
-                        <!-- Reports data will be displayed here -->
-                    </tbody>
-                </table>
+    </div>
 
-            </div>
+
+    <table class="table table-bordered" id="reports-table">
+        <thead>
+            <tr>
+                <th>ReportID</th>
+                <th>QueueTicket</th>
+                <th>Department</th>
+                <th>Done Date</th>
+                <th>Time Finished</th>
+
+            </tr>
+        </thead>
+        <tbody id="reports-list">
+            <!-- Reports data will be displayed here -->
+        </tbody>
+    </table>
+          <canvas id="barGraph" width="400" height="200"></canvas>
+</div>
+
 
 
             <div id="videos" class="tab-pane fade">

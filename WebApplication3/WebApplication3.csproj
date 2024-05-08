@@ -412,6 +412,7 @@
     <Content Include="images\default-image.jpg" />
     <Content Include="images\icons\Add.png" />
     <Content Include="images\icons\cancel.png" />
+    <Content Include="images\icons\date.png" />
     <Content Include="images\icons\delete.png" />
     <Content Include="images\icons\department.png" />
     <Content Include="images\icons\description.png" />
@@ -516,6 +517,7 @@
     </Compile>
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\QueueReport.cs" />
+    <Compile Include="Models\reportfilter.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Controllers\VideoController.cs" />

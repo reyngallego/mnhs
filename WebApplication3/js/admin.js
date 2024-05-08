@@ -73,6 +73,7 @@
                 FirstName: $('#edit-firstname-input').val(),
                 LastName: $('#edit-lastname-input').val(),
                 Department: $('#edit-department-input').val(),
+                Password:  $('#edit-confirm-password-input').val(),
                 // Add other fields as needed
             };
 
@@ -149,7 +150,11 @@
         // Add click event handlers for Edit and Delete buttons
         bindButtonClickEvents();
     }
-
+    $(document).on('keydown', '#edit-username-input, #edit-firstname-input, #edit-lastname-input, #edit-old-password-input, #edit-new-password-input, #edit-confirm-password-input, #edit-department-input', function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+        }
+    });
     // Function to trigger the edit modal for a specific employee
     function triggerEditModal(employeeId) {
         // Fetch the employee data by making an API request to get the employee details by ID
@@ -173,7 +178,8 @@
                     $('#edit-username-input').val(employeeData.Username);
                     $('#edit-firstname-input').val(employeeData.FirstName);
                     $('#edit-lastname-input').val(employeeData.LastName);
-
+                    $('#edit-old-password-input').val(employeeData.Password);
+                    $('#edit-confirm-password-input').val(employeeData.Password);
                     // Set the selected department in the dropdown
                     $('#edit-department-input').val(employeeData.Department);
 
@@ -182,7 +188,7 @@
                     $('#edit-confirm-password-input').show();
 
                     // Clear the password fields
-                    $('#edit-old-password-input').val('');
+                    $('#edit-old-password-input').val(employeeData.Password);
                     $('#edit-new-password-input').val('');
                     $('#edit-confirm-password-input').val('');
                 },
@@ -193,8 +199,8 @@
             });
 
             // Attach click event for the edit save button
-            $('#edit-save-button').on('click', function () {
-                // Collect the data for editing from the modal fields
+            $('#edit-save-button').off('click').on('click', function () {
+                // Collect the edited data from the modal fields
                 var newPassword = $('#edit-new-password-input').val();
                 var confirmPassword = $('#edit-confirm-password-input').val();
 
@@ -220,12 +226,13 @@
                     reader.readAsArrayBuffer(file);
                     reader.onload = function (event) {
                         editedEmployee.Image = Array.from(new Uint8Array(event.target.result)); // Convert ArrayBuffer to byte array
-                        sendEditRequest(employeeId, editedEmployee); // Call the function to send edit request
+                        sendEditRequest(employeeIdToDelete, editedEmployee); // Call the function to send edit request
                     }
                 } else {
-                    sendEditRequest(employeeId, editedEmployee); // Call the function to send edit request without image
+                    sendEditRequest(employeeIdToDelete, editedEmployee); // Call the function to send edit request without image
                 }
             });
+
         });
     }
 
@@ -284,10 +291,28 @@
         $('#addEmployeeModal').modal('show');
     });
 
+    // Prevent form submission on Enter key press
+    $(document).on('keydown', '#add-username-input, #add-firstname-input, #add-lastname-input, #add-password-input, #add-confirm-password-input, #add-department-input', function (event) {
+        if (event.which === 13) {
+            event.preventDefault();
+        }
+    });
+
     // Add an event listener for the "Add Employee" button in the modal
     $('#add-save-button').on('click', function () {
         var newPassword = $('#add-password-input').val();
         var confirmPassword = $('#add-confirm-password-input').val();
+
+        // Validate if all fields are filled
+        var username = $('#add-username-input').val().trim();
+        var firstname = $('#add-firstname-input').val().trim();
+        var lastname = $('#add-lastname-input').val().trim();
+        var department = $('#add-department-input').val().trim();
+
+        if (username === '' || firstname === '' || lastname === '' || department === '') {
+            alert('Please fill in all required fields.');
+            return;
+        }
 
         if (newPassword !== confirmPassword) {
             alert('Password and confirm password do not match.');
@@ -295,11 +320,11 @@
         }
 
         var newEmployee = {
-            Username: $('#add-username-input').val(),
+            Username: username,
             Password: newPassword,
-            FirstName: $('#add-firstname-input').val(),
-            LastName: $('#add-lastname-input').val(),
-            Department: $('#add-department-input').val(),
+            FirstName: firstname,
+            LastName: lastname,
+            Department: department,
             Image: null
         };
 
@@ -318,7 +343,6 @@
             addEmployee(newEmployee);
         }
     });
-
     function addEmployee(newEmployee) {
         $.ajax({
             url: '/api/Employee',
@@ -364,4 +388,3 @@
 
 
 });
-

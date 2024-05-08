@@ -61,7 +61,7 @@ namespace WebApplication3
                 connection.Open();
 
                 // Define a SQL SELECT query to retrieve employee data based on employeeId
-                string selectQuery = "SELECT id, username, firstname, lastname, department, image FROM users WHERE id = @Id";
+                string selectQuery = "SELECT id, username, password, firstname, lastname, department, image FROM users WHERE id = @Id";
 
                 using (SqlCommand command = new SqlCommand(selectQuery, connection))
                 {
@@ -76,6 +76,7 @@ namespace WebApplication3
                             {
                                 Id = (int)reader["id"],
                                 Username = reader["username"].ToString(),
+                                Password = reader["password"].ToString(), // Include the password field
                                 FirstName = reader["firstname"].ToString(),
                                 LastName = reader["lastname"].ToString(),
                                 Department = reader["department"].ToString(),
@@ -114,8 +115,8 @@ namespace WebApplication3
                                          "firstname = ISNULL(@FirstName, firstname), " +
                                          "lastname = ISNULL(@LastName, lastname), " +
                                          "department = ISNULL(@Department, department), " +
-                                         "password = ISNULL(@Password, password), " +
-                                         "image = ISNULL(@Image, image) " + // Add image update
+                                         "password = CASE WHEN @Password IS NOT NULL AND @Password != '' THEN @Password ELSE password END, " +
+                                         "image = ISNULL(@Image, image) " +
                                          "WHERE id = @Id";
 
                     using (SqlCommand command = new SqlCommand(updateQuery, connection))
@@ -127,8 +128,6 @@ namespace WebApplication3
                         command.Parameters.AddWithValue("@LastName", (object)updatedEmployee.LastName ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Department", (object)updatedEmployee.Department ?? DBNull.Value);
                         command.Parameters.AddWithValue("@Password", (object)updatedEmployee.Password ?? DBNull.Value);
-
-                        // Add the Image parameter
                         command.Parameters.Add("@Image", SqlDbType.VarBinary, -1).Value = (object)updatedEmployee.Image ?? DBNull.Value;
 
                         command.ExecuteNonQuery();

@@ -136,6 +136,5 @@
 
     // Call the function to fetch and display student data
     fetchStudentDataAndQueueTicket();
-  
-});
 
+});

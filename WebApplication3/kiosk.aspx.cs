@@ -137,35 +137,38 @@ namespace WebApplication3
             StringBuilder contentBuilder = new StringBuilder();
 
             // Add a header
-            contentBuilder.AppendLine("===============================================================");
-            contentBuilder.AppendLine("              PUP PARANAQUE QUEUE MANAGEMENT SYSTEM");
-            contentBuilder.AppendLine("===============================================================");
+
+            contentBuilder.AppendLine("         PUP PARANAQUE        ");
+            contentBuilder.AppendLine("     QUEUE MANAGEMENT SYSTEM  ");
+
 
             // Add a separator line
-            contentBuilder.AppendLine(new string('-', 60));
+            contentBuilder.AppendLine(new string('-', 30));
 
             // Add details
-            contentBuilder.AppendLine($"Date: {DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm tt")}");
+            contentBuilder.AppendLine($"Date:");
+            contentBuilder.AppendLine($"{DateTime.Now.ToString("dddd, MMMM dd, yyyy HH:mm tt")}");
             contentBuilder.AppendLine($"Queue Ticket: {ticket.ToUpper()}");
             contentBuilder.AppendLine($"Name: {name}");
             contentBuilder.AppendLine($"Purpose: {purpose}");
-
             // Add a separator line
-            contentBuilder.AppendLine(new string('-', 60));
-
-            // Add additional information
-            contentBuilder.AppendLine("Instructions:");
-            contentBuilder.AppendLine("- Please wait for your turn.");
-            contentBuilder.AppendLine("- Follow the instructions of the staff.");
-            contentBuilder.AppendLine("- Thank you for your cooperation.");
-
-            // Add a separator line
-            contentBuilder.AppendLine(new string('-', 60));
+            contentBuilder.AppendLine(new string('-', 30));
+            contentBuilder.AppendLine("Feedback Form");
+            contentBuilder.AppendLine("https://docs.google.com/forms/d/e/1FAIpQLSff6riCakzCUi4SOytZ-xbzg3jyI7kMNRECyeEVoBJtcL6VEA/viewform");
+            contentBuilder.AppendLine(new string('-', 30));
 
             // Add a footer
-            contentBuilder.AppendLine("Thank you for using PUP Queue Management System!");
+            contentBuilder.AppendLine("Thank you for using ");
+            contentBuilder.AppendLine("PUP Queue Management System!");
+
+            contentBuilder.AppendLine(new string('-', 30));
+            contentBuilder.AppendLine(new string('-', 30));
+            contentBuilder.AppendLine(new string('-', 30));
+            contentBuilder.AppendLine(new string('-', 30));
 
             return contentBuilder.ToString();
         }
     }
 }
+
+    
