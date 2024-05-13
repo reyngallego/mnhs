@@ -23,7 +23,7 @@ body {
     height: 100vh; /* Make the sidebar full height of the viewport */
     display: flex;
     flex-direction: column;
-    flex-direction: column;
+
 }
 
 #mwnhs-banner {

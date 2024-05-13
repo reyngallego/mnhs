@@ -4,24 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/dashboard.css">
+
+    <!-- Include your CSS file -->
     <link rel="stylesheet" href="/styles/dashboard_1.css">
+    <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Include DataTables CSS -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <!-- Include DataTables JS -->
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
     <title>Dashboard Homepage</title>
 </head>
 <body>
+
     <div class="container">
         <div class="header">
             <div class="nav">
                 <div class="search">
                     <input type="text" placeholder="search..">
-                    <button type="submit"><img src="images/search.png" alt="" width="20" height="20"></button>
+                    <button type="submit"><img src="/gallery/search.png" alt="" width="20" height="20"></button>
                 </div>
                 <div class="user">
                     <a href="#" class="btn">Add New</a>
-                    <img src="images/notification-bell.png"  alt="notification-bell " width="30" height="30">
+                    <img src="/gallery/notification-bell.png" alt="notification-bell" width="30" height="30">
                     <div class="img-case">
-                        <img src="images/user.png" alt="user" width="30" height="30">
+                        <img src="/gallery/user.png" alt="user" width="30" height="30">
                     </div>
                 </div>
             </div>
@@ -34,7 +41,7 @@
                         <h3>Total Enrolled Student</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="images/student.png" alt="student" width="70" height="70">
+                        <img src="/gallery/student.png" alt="student" width="70" height="70">
                     </div>
                 </div>
                 <div class="card">
@@ -43,7 +50,7 @@
                         <h3>Total Present Students</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="images/present.png" alt="student" width="70" height="70">
+                        <img src="/gallery/present.png" alt="present" width="70" height="70">
                     </div>
                 </div>
                 <div class="card">
@@ -52,131 +59,137 @@
                         <h3>Total Absent Student</h3>
                     </div>
                     <div class="icon-case">
-                        <img src="images/absent.png" alt="student" width="70" height="70">
+                        <img src="/gallery/absent.png" alt="absent" width="70" height="70">
                     </div>
                 </div>
-                    
             </div>
             <div class="content-2">
                 <div class="recent-entry">
                     <div class="title">
                         <h2>Recent-entry</h2>
                         <a href="#" class="btn">View All</a>
-
                     </div>
-                    <table>
-                        <tr>
-                            <th>LRN</th>
-                            <th>Student</th>
-                            <th>Time-in</th>
-                            <th>Time-out</th>
-                            <th>Date</th>    
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                        <tr>
-                            <td>537289248256</td>
-                            <td>Emily A. Patel </td>
-                            <td>6:01 AM</td>
-                            <td>10:01 PM</td>
-                            <td>2024 - 05 - 02</td>
-                        </tr>
-                    </table>
+                    <div style="overflow-x:auto;">
+                        <table id="myTable">
+                            <thead>
+                                <tr>
+                                    <th>LRN</th>
+                                    <th>Student</th>
+                                    <th>Time-in</th>
+                                    <th>Time-out</th>
+                                    <th>Date</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>537289248256</td>
+                                    <td>Emily A. Patel</td>
+                                    <td>6:01 AM</td>
+                                    <td>10:01 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+                                <tr>
+                                    <td>537289248257</td>
+                                    <td>John Doe</td>
+                                    <td>7:30 AM</td>
+                                    <td>11:30 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+                                <tr>
+                                    <td>537289248256</td>
+                                    <td>Emily A. Patel</td>
+                                    <td>6:01 AM</td>
+                                    <td>10:01 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+                                <tr>
+                                    <td>537289248257</td>
+                                    <td>John Doe</td>
+                                    <td>7:30 AM</td>
+                                    <td>11:30 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+                                <tr>
+                                    <td>537289248256</td>
+                                    <td>Emily A. Patel</td>
+                                    <td>6:01 AM</td>
+                                    <td>10:01 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+                                <tr>
+                                    <td>537289248257</td>
+                                    <td>John Doe</td>
+                                    <td>7:30 AM</td>
+                                    <td>11:30 PM</td>
+                                    <td>2024-05-02</td>
+                                </tr>
+
+
+                                <!-- Add more rows as needed -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="student-graph">
                     <div class="title">
                         <h2>Student-Graph</h2>
                     </div>
-                    <canvas id="myChart" width="250" height="200"></canvas>
+                    <canvas id="myChart" width="250" height="250"></canvas>
                 </div>
             </div>
         </div>
     </div>
     <script>
         // Sample data
-        var labels = ['Absent', 'Present', ];
-        var data = [38  , 112, ];
-    
+        var labels = ['Absent', 'Present'];
+        var data = [38, 112];
+
         // Create the chart
         var ctx = document.getElementById('myChart').getContext('2d');
         var myChart = new Chart(ctx, {
-          type: 'pie',
-          data: {
-            labels: labels,
-            datasets: [{
-              label: 'Student',
-              data: data,
-              backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)' 
-              ],
-              borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-              ],
-              borderWidth: 1
-            }]
-          },
-          options: {
-            plugins: {
-              datalabels: {
-                formatter: (value, ctx) => {
-                  return value;
-                },
-                color: '#fff'
-              }
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: 'Student',
+                    data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                plugins: {
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            return value;
+                        },
+                        color: '#fff'
+                    }
+                }
             }
-          }
         });
-      </script>
-      <!-- Bootstrap JS dependencies (jQuery, Popper.js, Bootstrap JS) -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-    $(document).ready(function () {
-        // Use delegated event handler for dynamically added elements
-        $(document).on("click", "#addStudentRecord", function (e) {
-            e.preventDefault();
-            $("#mainContent").load("dashboard/add_student_record.html");
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            // Use delegated event handler for dynamically added elements
+            $(document).on("click", "#addStudentRecord", function (e) {
+                e.preventDefault();
+                $("#mainContent").load("dashboard/add_student_record.html");
+            });
+
+            // Initialize DataTable
+            $('#myTable').DataTable();
         });
-    });
-</script>
+    </script>
 </body>
 </html>
-
-

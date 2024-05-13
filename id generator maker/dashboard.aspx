@@ -30,8 +30,6 @@
             </ul>   
         </div>
         <div class="content" id="mainContent">
-            <h1>Welcome to the Admin Dashboard!</h1>
-            <p>This is a basic Bootstrap template for an admin dashboard with tabs on the left side.</p>
         </div>
     </div>
 
@@ -43,6 +41,10 @@
     <script>
         $(document).ready(function () {
             // Use delegated event handler for dynamically added elements
+            $(document).ready(function () {
+                $("#mainContent").load("dashboard/dashboard.html");
+            });
+
             $(document).on("click", "#dashboard", function (e) {
                 e.preventDefault();
                 $("#mainContent").load("dashboard/dashboard.html");
