@@ -363,7 +363,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="admin.aspx" />
     <Content Include="bootstrap\css\bootstrap-grid.css" />
     <Content Include="bootstrap\css\bootstrap-grid.min.css" />
     <Content Include="bootstrap\css\bootstrap-grid.rtl.css" />
@@ -403,7 +402,6 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
-    <Content Include="home.aspx" />
     <Content Include="images\buttons\call.png" />
     <Content Include="images\buttons\done.png" />
     <Content Include="images\buttons\Next.png" />
@@ -432,15 +430,8 @@
     <Content Include="images\pupback.jpg" />
     <Content Include="images\puppq.jpg" />
     <Content Include="images\qrcode.png" />
-    <Content Include="js\admin.js" />
-    <Content Include="js\purpose.js" />
-    <Content Include="js\queue.js" />
-    <Content Include="js\reports.js" />
-    <Content Include="js\timer.js" />
-    <Content Include="js\videos.js" />
-    <Content Include="kiosk.aspx" />
-    <Content Include="login.aspx" />
-    <Content Include="monitor.aspx" />
+    <Content Include="js\student.js" />
+    <Content Include="mnhs.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.bundle.js" />
@@ -449,7 +440,7 @@
     <Content Include="scripts\bootstrap.esm.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
-    <Content Include="styles\monitor.css" />
+    <Content Include="styles\custom.css" />
     <None Include="scripts\jquery-3.7.1.intellisense.js" />
     <Content Include="scripts\jquery-3.7.1.js" />
     <Content Include="scripts\jquery-3.7.1.min.js" />
@@ -460,29 +451,18 @@
     <Content Include="scripts\jquery.signalR.min.js" />
     <Content Include="scripts\realtime.js" />
     <Content Include="scripts\WebSocketManager.js" />
-    <Content Include="styles\admin.css" />
-    <Content Include="styles\home.css" />
-    <Content Include="styles\kiosk.css" />
-    <Content Include="styles\queue.css" />
-    <Content Include="styles\stylesheet.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="admin.aspx.cs">
-      <DependentUpon>admin.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin.aspx.designer.cs">
-      <DependentUpon>admin.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\ReactConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountTypeController.cs" />
     <Compile Include="Controllers\ButtonsController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
+    <Compile Include="Controllers\mnhsController.cs" />
     <Compile Include="Controllers\QueueController.cs" />
     <Compile Include="Controllers\QueueReportsController.cs" />
     <Compile Include="Controllers\QueueTicketController.cs" />
@@ -492,28 +472,14 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="kiosk.aspx.cs">
-      <DependentUpon>kiosk.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="kiosk.aspx.designer.cs">
-      <DependentUpon>kiosk.aspx</DependentUpon>
-    </Compile>
     <Compile Include="Controllers\Employeecontroller.cs" />
     <Compile Include="Controllers\EmployeeDataAccess.cs" />
-    <Compile Include="home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
+    <Compile Include="mnhs.aspx.cs">
+      <DependentUpon>mnhs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="login.aspx.cs">
-      <DependentUpon>login.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="login.aspx.designer.cs">
-      <DependentUpon>login.aspx</DependentUpon>
+    <Compile Include="mnhs.aspx.designer.cs">
+      <DependentUpon>mnhs.aspx</DependentUpon>
     </Compile>
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\QueueReport.cs" />
@@ -523,13 +489,6 @@
     <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Models\Videos.cs" />
     <Compile Include="Models\VideoSelectionRequest.cs" />
-    <Compile Include="monitor.aspx.cs">
-      <DependentUpon>monitor.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="monitor.aspx.designer.cs">
-      <DependentUpon>monitor.aspx</DependentUpon>
-    </Compile>
     <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -587,6 +546,12 @@
     <Content Include="bootstrap\js\bootstrap.min.js.map" />
     <Content Include="scripts\jquery-3.7.1.slim.min.map" />
     <Content Include="scripts\jquery-3.7.1.min.map" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -598,6 +563,7 @@
     <Folder Include="api\" />
     <Folder Include="App_Data\" />
     <Folder Include="Videos\" />
+    <Folder Include="Views\admin\" />
     <Folder Include="Views\Purpose\" />
   </ItemGroup>
   <PropertyGroup>

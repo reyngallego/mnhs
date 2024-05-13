@@ -1,0 +1,41 @@
+﻿/* custom.css */
+
+/* Example custom styles */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 48px 0 0; /* Adjust the top padding according to your needs */
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px); /* Adjust the height according to your needs */
+    padding-top: .5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable sidebar */
+}
+.add-student-button{
+    padding-bottom: 20px;
+}
+.main-content {
+    padding-top: 1rem; /* Adjust the top padding according to your needs */
+}
+
+@media (min-width: 768px) {
+    .sidebar {
+        width: 240px; /* Adjust the sidebar width according to your needs */
+    }
+
+    .main-content {
+        margin-left: 240px; /* Same as sidebar width */
+    }
+}
