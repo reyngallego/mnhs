@@ -13,8 +13,8 @@ body {
     z-index: 100;
     padding: 48px 0 0; /* Adjust the top padding according to your needs */
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    background-color: #D4F9CC !important; /* Add the desired color */
 }
-
 .sidebar-sticky {
     position: relative;
     top: 0;

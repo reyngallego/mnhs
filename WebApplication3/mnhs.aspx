@@ -19,6 +19,7 @@
     </script>
 </head>
 <body>
+
     <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
@@ -29,14 +30,40 @@
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
                             Dashboard
                         </h6>
-                        <ul class="nav flex-column">
-                            <li class="nav-item">
-                                <a class="nav-link active" href="#">
-                                    Dashboard
-                                </a>
-                            </li>
-                            <!-- Add more sidebar links here -->
-                        </ul>
+
+<ul class="nav flex-column">
+    <li class="nav-item">
+        <a class="nav-link active" href="#">
+            Dashboard
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Attendance
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Student
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Reports
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            ID Generator
+        </a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="#">
+            Log Out
+        </a>
+    </li>
+</ul>
+
                     </div>
                 </nav>
 
@@ -45,7 +72,7 @@
     <!-- Main content goes here -->
     <h1 class="mt-5">Student List</h1>
                   <div class="add-student-button">
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
+<button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
 </div>
      <table id="studentTable" class="table">
     <thead>
@@ -116,7 +143,7 @@
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_BIRTHDATE">Birthdate:</label>
-                        <input type="date" class="form-control" id="edit_STUD_BIRTHDATE">
+            <input type="text" id="edit_STUD_BIRTHDATE" class="form-control" disabled>
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_SEX">Sex:</label>

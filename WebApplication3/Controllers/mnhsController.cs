@@ -10,7 +10,7 @@ namespace WebApplication3.Controllers
 {
     public class mnhsController : ApiController
     {
-        private string connectionString = "Data Source=DESKTOP-M20CR1S\\SQLEXPRESS;Initial Catalog=capstone;Integrated Security=True";
+        private string connectionString = "Data Source=DESKTOP-1K0L57N;Initial Catalog=capstone;Integrated Security=True";
 
         [HttpPost]
         [Route("api/mnhs/InsertData")]
@@ -99,6 +99,64 @@ namespace WebApplication3.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("api/mnhs/GetStudentByLRN")]
+        public HttpResponseMessage GetStudentByLRN(string LRN)
+        {
+            try
+            {
+                FormData student = null;
+
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "SELECT LRN, FirstName, MiddleName, LastName, Grade, Section, Adviser, NameExtension, Birthdate, Sex, Address, ParentFullName, ParentContact " +
+                                   "FROM mnhs " +
+                                   "WHERE LRN = @LRN";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@LRN", LRN);
+                        using (SqlDataReader reader = command.ExecuteReader())
+                        {
+                            if (reader.Read())
+                            {
+                                student = new FormData
+                                {
+                                    LRN = reader["LRN"].ToString(),
+                                    FirstName = reader["FirstName"].ToString(),
+                                    MiddleName = reader["MiddleName"].ToString(),
+                                    LastName = reader["LastName"].ToString(),
+                                    NameExtension = reader["NameExtension"].ToString(),
+                                    Grade = reader["Grade"].ToString(),
+                                    Section = reader["Section"].ToString(),
+                                    Birthdate = Convert.ToDateTime(reader["Birthdate"]),
+                                    Sex = reader["Sex"].ToString(),
+                                    Address = reader["Address"].ToString(),
+                                    ParentFullName = reader["ParentFullName"].ToString(),
+                                    ParentContact = reader["ParentContact"].ToString(),
+                                    Adviser = reader["Adviser"].ToString()
+                                };
+                            }
+                        }
+                    }
+                }
+
+                if (student != null)
+                {
+                    return Request.CreateResponse(HttpStatusCode.OK, student);
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
+
         [HttpPost]
         [Route("api/mnhs/UpdateStudent")]
         public HttpResponseMessage UpdateStudent([FromBody] FormData formData)
@@ -146,6 +204,38 @@ namespace WebApplication3.Controllers
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
+        [HttpDelete]
+        [Route("api/mnhs/DeleteStudent")]
+        public HttpResponseMessage DeleteStudent(string LRN)
+        {
+            try
+            {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    string query = "DELETE FROM mnhs WHERE LRN = @LRN";
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        command.Parameters.AddWithValue("@LRN", LRN);
+
+                        int rowsAffected = command.ExecuteNonQuery();
+                        if (rowsAffected > 0)
+                        {
+                            return Request.CreateResponse(HttpStatusCode.OK, "Student deleted successfully.");
+                        }
+                        else
+                        {
+                            return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found.");
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+            }
+        }
+
     }
 
     public class FormData

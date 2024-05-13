@@ -15,15 +15,57 @@
                         "<td>" + student.Grade + "</td>" +
                         "<td>" + student.Section + "</td>" +
                         "<td>" + student.Adviser + "</td>" +
-                        "<td><button class='btn btn-primary edit-btn' data-student-id='" + student.LRN + "'>Edit</button> <button class='btn btn-danger'>Delete</button></td>" +
+                        "<td><button class='btn btn-primary edit-btn' data-student-id='" + student.LRN + "'>Edit</button> <button class='btn btn-danger delete-btn' data-student-id='" + student.LRN + "'>Delete</button></td>" +
                         "</tr>";
                     $("#studentTable tbody").append(row);
                 });
 
                 // Add click event listener to edit buttons
-                $(".edit-btn").click(function () {
+                $(document).on("click", ".edit-btn", function (event) {
+                     // Prevent default behavior of the button
                     var studentId = $(this).data("student-id");
-                    openEditModal(studentId);
+                    // Display confirmation dialog
+                    var confirmEdit = confirm("Are you sure you want to edit this student?");
+                    if (confirmEdit) {
+                        openEditModal(studentId);
+                    }
+                    event.preventDefault();
+                });
+                $("#addStudentBtn").click(function () {
+                    event.preventDefault();
+                    // Display confirmation dialog
+                    var confirmAdd = confirm("Are you sure you want to add a new student?");
+                    if (confirmAdd) {
+                        // Open the "Add Student" modal if the user confirms
+                        $('#addStudentModal').modal('show');
+                    }
+
+                });
+
+
+                // Add click event listener to delete buttons
+                $(".delete-btn").click(function (event) {
+                    event.preventDefault(); // Prevent default behavior of the button
+                    var studentId = $(this).data("student-id");
+                    // Display confirmation dialog
+                    var confirmDelete = confirm("Are you sure you want to delete this student?");
+                    if (confirmDelete) {
+                        // If user confirms deletion, proceed with AJAX call to delete student
+                        $.ajax({
+                            type: "DELETE",
+                            url: "/api/mnhs/DeleteStudent?LRN=" + studentId,
+                            contentType: "application/json; charset=utf-8",
+                            dataType: "json",
+                            success: function (response) {
+                                alert(response); // Alert success message
+                                populateTable(); // Repopulate the table after successful deletion
+                            },
+                            error: function (xhr, textStatus, errorThrown) {
+                                console.log(xhr.responseText); // Log the error response
+                                alert("Error: " + errorThrown); // Alert error message
+                            }
+                        });
+                    }
                 });
             },
             error: function (xhr, textStatus, errorThrown) {
@@ -37,16 +79,17 @@
     populateTable();
 
     // Function to open the edit modal dialog with student data
-    function openEditModal(studentId) {
-        // Retrieve student data by ID and populate the edit modal fields
+    function openEditModal(LRN) {
+        // Retrieve student data by LRN and populate the edit modal fields
         // You need to implement this part based on your backend logic
         // Example:
         $.ajax({
             type: "GET",
-            url: "/api/mnhs/GetStudentById?studentId=" + studentId, // Endpoint to retrieve student data by ID
+            url: "/api/mnhs/GetStudentByLRN?LRN=" + LRN, // Pass LRN as a query parameter
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (student) {
+                // Populate the edit modal fields with student data
                 $("#edit_STUD_LRN").val(student.LRN);
                 $("#edit_STUD_FNAME").val(student.FirstName);
                 $("#edit_STUD_MNAME").val(student.MiddleName);
@@ -100,13 +143,13 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                alert(response);
-                $("#addStudentModal").modal("hide"); // Hide the edit modal dialog
+                alert(response); // Alert success message
+                $("#editStudentModal").modal("hide"); // Hide the edit modal dialog
                 populateTable(); // Repopulate the table after successful update
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr.responseText);
-                alert("Error: " + errorThrown);
+                console.log(xhr.responseText); // Log the error response
+                alert("Error: " + errorThrown); // Alert error message
             }
         });
     });
