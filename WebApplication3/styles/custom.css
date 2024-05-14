@@ -15,6 +15,7 @@ body {
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
     background-color: #D4F9CC !important; /* Add the desired color */
 }
+
 .sidebar-sticky {
     position: relative;
     top: 0;
@@ -23,11 +24,21 @@ body {
     overflow-x: hidden;
     overflow-y: auto; /* Scrollable sidebar */
 }
-.add-student-button{
+
+.add-student-button {
     padding-bottom: 20px;
 }
+
 .main-content {
     padding-top: 1rem; /* Adjust the top padding according to your needs */
+}
+
+/* Styles for logo */
+img.logo {
+    max-width: 100px; /* Adjust the maximum width according to your needs */
+    height: auto;
+    display: block; /* Ensure the image is treated as a block element */
+    margin: 0 auto; /* Center the image horizontally */
 }
 
 @media (min-width: 768px) {
@@ -39,3 +50,20 @@ body {
         margin-left: 240px; /* Same as sidebar width */
     }
 }
+/* Logo and Title styles */
+.logo-title {
+    text-align: center;
+    margin-bottom: 20px; /* Adjust the spacing between the logo/title and the sidebar links */
+}
+
+.logo {
+    max-width: 100px; /* Adjust the maximum width according to your needs */
+    height: auto;
+}
+
+.logo-title h6 {
+    margin-top: 0;
+    font-size: 18px; /* Adjust the font size of the title */
+}
+/* Define icon styles */
+

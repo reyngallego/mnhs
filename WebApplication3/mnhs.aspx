@@ -1,298 +1,97 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="mnhs.aspx.cs" Inherits="WebApplication3.mnhs" %>
-
-<!DOCTYPE html>
-
+﻿<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title></title>
+    <title>My Dashboard</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-   <link href="styles/custom.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
-    <script src="js/student.js"></script>
-
-    <script>
-      
-         
-    </script>
+    <link href="styles/custom.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
 </head>
 <body>
-
     <form id="form1" runat="server">
         <div class="container-fluid">
             <div class="row">
                 <!-- Sidebar -->
                 <nav class="col-md-2 d-none d-md-block bg-light sidebar">
                     <div class="sidebar-sticky">
+                        <!-- Logo -->
+                        <div>
+<div class="logo-title">
+            <img src="/images/logomnhs.png" alt="Logo" class="img-fluid mb-4 logo">
+            <h6>Moonwalk National Highschool</h6>
+        </div>
+                            </div>
                         <!-- Sidebar content goes here -->
                         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-                            Dashboard
+                            Main
                         </h6>
-
-<ul class="nav flex-column">
-    <li class="nav-item">
-        <a class="nav-link active" href="#">
-            Dashboard
+                <ul class="nav">
+    <li class="nav-item" style="margin-bottom: 10px;">
+        <a class="nav-link active" href="mnhs.aspx" data-page="mnhs.aspx">
+            <img src="/images/icons/dashboard.png" alt="Dashboard" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Dashboard</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            Attendance
+    <li class="nav-item" style="margin-bottom: 10px;">
+        <a class="nav-link" href="attendance.aspx" data-page="attendance.aspx">
+            <img src="/images/icons/attendance.png" alt="Attendance" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Attendance</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            Student
+    <li class="nav-item" style="margin-bottom: 10px;">
+        <a class="nav-link" href="studentlist.aspx" data-page="studentlist.aspx">
+            <img src="/images/icons/student.png" alt="Student" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Student</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            Reports
+    <li class="nav-item" style="margin-bottom: 10px; width: auto;"> <!-- Adjust the width as needed -->
+    <a class="nav-link" href="#" data-page="">
+        <img src="/images/icons/reports.png" alt="Reports" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Reports</span>
+    </a>
+</li>
+    <li class="nav-item" style="margin-bottom: 10px;">
+        <a class="nav-link" href="#" data-page="">
+            <img src="/images/icons/idgenerator.png" alt="ID Generator" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">ID Generator</span>
         </a>
     </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            ID Generator
-        </a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="#">
-            Log Out
+    <li class="nav-item" style="margin-bottom: 10px;">
+        <a class="nav-link" href="#" data-page="">
+            <img src="/images/icons/logout.png" alt="Log Out" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Log Out</span>
         </a>
     </li>
 </ul>
 
+
+
+
                     </div>
                 </nav>
 
-                <!-- MAIN CONTEENT !!!!! -->
-               <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
-    <!-- Main content goes here -->
-    <h1 class="mt-5">Student List</h1>
-                  <div class="add-student-button">
-<button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
-</div>
-     <table id="studentTable" class="table">
-    <thead>
-        <tr>
-            <th>LRN</th>
-            <th>Name</th>
-            <th>Grade</th>
-            <th>Section</th>
-            <th>Adviser</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Student data will be dynamically inserted here -->
-    </tbody>
-</table>
-
-   <!-- Modal for editing student -->
-<div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editStudentModalLabel">Edit Student Details</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <!-- Student edit form -->
-                <form id="editStudentForm">
-                    <div class="form-group">
-                        <label for="edit_STUD_LRN">LRN:</label>
-                        <input type="text" class="form-control" id="edit_STUD_LRN">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_FNAME">First Name:</label>
-                        <input type="text" class="form-control" id="edit_STUD_FNAME">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_MNAME">Middle Name:</label>
-                        <input type="text" class="form-control" id="edit_STUD_MNAME">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_LNAME">Last Name:</label>
-                        <input type="text" class="form-control" id="edit_STUD_LNAME">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_EXT">Name Extension:</label>
-                        <input type="text" class="form-control" id="edit_STUD_EXT">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_GRADE">Grade:</label>
-                        <select class="form-control" id="edit_STUD_GRADE">
-                            <option value="Grade 7">Grade 7</option>
-                            <option value="Grade 8">Grade 8</option>
-                            <option value="Grade 9">Grade 9</option>
-                            <!-- Add more grade options as needed -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_SECTION">Section:</label>
-                        <select class="form-control" id="edit_STUD_SECTION">
-                            <option value="Section A">Section A</option>
-                            <option value="Section B">Section B</option>
-                            <option value="Section C">Section C</option>
-                            <!-- Add more section options as needed -->
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_BIRTHDATE">Birthdate:</label>
-            <input type="text" id="edit_STUD_BIRTHDATE" class="form-control" disabled>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_SEX">Sex:</label>
-                        <select class="form-control" id="edit_STUD_SEX">
-                            <option value="Male">Male</option>
-                            <option value="Female">Female</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_STUD_ADDRESS">Address:</label>
-                        <input type="text" class="form-control" id="edit_STUD_ADDRESS">
-                    </div>
-
-                    <!-- Parent details -->
-                    <h5>Parent Information</h5>
-                    <div class="form-group">
-                        <label for="edit_PARENT_FULLNAME">Parent's Full Name:</label>
-                        <input type="text" class="form-control" id="edit_PARENT_FULLNAME">
-                    </div>
-                    <div class="form-group">
-                        <label for="edit_PARENT_CONTACT">Parent's Contact Number:</label>
-                        <input type="text" class="form-control" id="edit_PARENT_CONTACT">
-                    </div>
-
-                    <!-- Adviser -->
-                    <div class="form-group">
-                        <label for="edit_ADVISER">Adviser:</label>
-                        <select class="form-control" id="edit_ADVISER">
-                            <option value="Mr. Smith">Mr. Smith</option>
-                            <option value="Ms. Johnson">Ms. Johnson</option>
-                            <!-- Add more adviser options as needed -->
-                        </select>
-                    </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="editSaveChanges" class="btn btn-primary">Save changes</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-    <!-- Modal for adding student -->
-    <div class="modal fade" id="addStudentModal" tabindex="-1" role="dialog" aria-labelledby="addStudentModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="addStudentModalLabel">Add New Student</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <!-- Student fill-up form -->
-                  <div class="modal-body">
-    <!-- Student fill-up form -->
-    <form>
-        <div class="form-group">
-            <label for="STUD_LRN">LRN:</label>
-            <input type="text" class="form-control" id="STUD_LRN">
-        </div>
-        <div class="form-group">
-            <label for="STUD_FNAME">First Name:</label>
-            <input type="text" class="form-control" id="STUD_FNAME">
-        </div>
-        <div class="form-group">
-            <label for="STUD_MNAME">Middle Name:</label>
-            <input type="text" class="form-control" id="STUD_MNAME">
-        </div>
-        <div class="form-group">
-            <label for="STUD_LNAME">Last Name:</label>
-            <input type="text" class="form-control" id="STUD_LNAME">
-        </div>
-        <div class="form-group">
-            <label for="STUD_EXT">Name Extension:</label>
-            <input type="text" class="form-control" id="STUD_EXT">
-        </div>
-       <div class="form-group">
-    <label for="STUD_GRADE">Grade:</label>
-    <select class="form-control" id="STUD_GRADE">
-        <option value="Grade 7">Grade 7</option>
-        <option value="Grade 8">Grade 8</option>
-        <option value="Grade 9">Grade 9</option>
-        <!-- Add more grade options as needed -->
-    </select>
-</div>
-<div class="form-group">
-    <label for="STUD_SECTION">Section:</label>
-    <select class="form-control" id="STUD_SECTION">
-        <option value="Section A">Section A</option>
-        <option value="Section B">Section B</option>
-        <option value="Section C">Section C</option>
-        <!-- Add more section options as needed -->
-    </select>
-</div>
-        <div class="form-group">
-            <label for="STUD_BIRTHDATE">Birthdate:</label>
-            <input type="date" class="form-control" id="STUD_BIRTHDATE">
-        </div>
-        <div class="form-group">
-            <label for="STUD_SEX">Sex:</label>
-            <select class="form-control" id="STUD_SEX">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="STUD_ADDRESS">Address:</label>
-            <input type="text" class="form-control" id="STUD_ADDRESS">
-        </div>
-
-        <!-- Parent details -->
-        <h5>Parent Information</h5>
-        <div class="form-group">
-            <label for="PARENT_FULLNAME">Parent's Full Name:</label>
-            <input type="text" class="form-control" id="PARENT_FULLNAME">
-        </div>
-        <div class="form-group">
-            <label for="PARENT_CONTACT">Parent's Contact Number:</label>
-            <input type="text" class="form-control" id="PARENT_CONTACT">
-        </div>
-
-        <!-- Adviser -->
-        <div class="form-group">
-            <label for="ADVISER">Adviser:</label>
-            <select class="form-control" id="ADVISER">
-                <option value="Mr. Smith">Mr. Smith</option>
-                <option value="Ms. Johnson">Ms. Johnson</option>
-                <!-- Add more adviser options as needed -->
-            </select>
-        </div>
-    </form>
-</div>
-
-<div class="modal-footer">
-    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-<button type="button" id="btnSaveChanges" class="btn btn-primary">Save changes</button>
-</div>
-
-            </div>
-        </div>
-    </div>
-</main>        
-
-
+                <!-- MAIN CONTENT -->
+                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
+                    <!-- Content will be loaded here -->
+                </main>
             </div>
         </div>
     </form>
+
+    <script>
+        $(document).ready(function () {
+            // Function to load page content into main content area
+            function loadContent(page) {
+                // Prevent default link behavior
+                event.preventDefault();
+                // Load content into main content area
+                $.get(page, function (data) {
+                    $(".main-content").html(data);
+                });
+            }
+
+            // Event handler for sidebar link clicks
+            $(".nav-link").click(function (e) {
+                var page = $(this).data("page");
+                loadContent(page);
+            });
+
+        });
+    </script>
 </body>
 </html>
