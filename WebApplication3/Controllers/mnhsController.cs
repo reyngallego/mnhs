@@ -51,9 +51,33 @@ namespace WebApplication3.Controllers
                     }
                 }
             }
-            catch (Exception ex)
+            catch (SqlException ex)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                if (ex.Number == 2627) // Unique constraint violation error number
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "LRN already exists.");
+                }
+                else
+                {
+                    return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
+                }
+            }
+        }
+
+
+        // Method to check if LRN already exists in mnhs table
+        private bool IsLRNAlreadyExists(string lrn)
+        {
+            using (SqlConnection con = new SqlConnection(connectionString))
+            {
+                con.Open();
+                string query = "SELECT COUNT(1) FROM mnhs WHERE LRN = @LRN";
+                using (SqlCommand cmd = new SqlCommand(query, con))
+                {
+                    cmd.Parameters.AddWithValue("@LRN", lrn);
+                    int count = (int)cmd.ExecuteScalar();
+                    return count > 0;
+                }
             }
         }
 
@@ -213,6 +237,11 @@ namespace WebApplication3.Controllers
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
+
+                    // Disable foreign key constraints
+                    DisableForeignKeyConstraints(connection);
+
+                    // Delete the student
                     string query = "DELETE FROM mnhs WHERE LRN = @LRN";
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
@@ -221,10 +250,14 @@ namespace WebApplication3.Controllers
                         int rowsAffected = command.ExecuteNonQuery();
                         if (rowsAffected > 0)
                         {
+                            // Re-enable foreign key constraints
+                            EnableForeignKeyConstraints(connection);
                             return Request.CreateResponse(HttpStatusCode.OK, "Student deleted successfully.");
                         }
                         else
                         {
+                            // Re-enable foreign key constraints
+                            EnableForeignKeyConstraints(connection);
                             return Request.CreateErrorResponse(HttpStatusCode.NotFound, "Student not found.");
                         }
                     }
@@ -236,22 +269,35 @@ namespace WebApplication3.Controllers
             }
         }
 
-    }
+        // Method to disable foreign key constraints
+        private void DisableForeignKeyConstraints(SqlConnection connection)
+        {
+            SqlCommand command = new SqlCommand("EXEC sp_MSforeachtable 'ALTER TABLE ? NOCHECK CONSTRAINT ALL'", connection);
+            command.ExecuteNonQuery();
+        }
 
-    public class FormData
-    {
-        public string LRN { get; set; }
-        public string FirstName { get; set; }
-        public string MiddleName { get; set; }
-        public string LastName { get; set; }
-        public string NameExtension { get; set; }
-        public string Grade { get; set; }
-        public string Section { get; set; }
-        public DateTime Birthdate { get; set; }
-        public string Sex { get; set; }
-        public string Address { get; set; }
-        public string ParentFullName { get; set; }
-        public string ParentContact { get; set; }
-        public string Adviser { get; set; }
+        // Method to enable foreign key constraints
+        private void EnableForeignKeyConstraints(SqlConnection connection)
+        {
+            SqlCommand command = new SqlCommand("EXEC sp_MSforeachtable 'ALTER TABLE ? WITH CHECK CHECK CONSTRAINT ALL'", connection);
+            command.ExecuteNonQuery();
+        }
+
+        public class FormData
+        {
+            public string LRN { get; set; }
+            public string FirstName { get; set; }
+            public string MiddleName { get; set; }
+            public string LastName { get; set; }
+            public string NameExtension { get; set; }
+            public string Grade { get; set; }
+            public string Section { get; set; }
+            public DateTime Birthdate { get; set; }
+            public string Sex { get; set; }
+            public string Address { get; set; }
+            public string ParentFullName { get; set; }
+            public string ParentContact { get; set; }
+            public string Adviser { get; set; }
+        }
     }
 }

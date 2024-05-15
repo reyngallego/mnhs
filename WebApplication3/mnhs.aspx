@@ -73,25 +73,43 @@
         </div>
     </form>
 
-    <script>
-        $(document).ready(function () {
-            // Function to load page content into main content area
-            function loadContent(page) {
-                // Prevent default link behavior
-                event.preventDefault();
-                // Load content into main content area
-                $.get(page, function (data) {
-                    $(".main-content").html(data);
-                });
-            }
+  <script>
+      $(document).ready(function () {
+          var isContentLoading = false; // Flag to track whether content is being loaded
 
-            // Event handler for sidebar link clicks
-            $(".nav-link").click(function (e) {
-                var page = $(this).data("page");
-                loadContent(page);
-            });
+          // Function to load page content into main content area
+          function loadContent(page, event) {
+              // Prevent default link behavior
+              event.preventDefault();
 
-        });
-    </script>
+              // If content is already being loaded, ignore this click event
+              if (isContentLoading) {
+                  return;
+              }
+
+              isContentLoading = true; // Set flag to true since content loading is starting
+
+              // Load content into main content area
+              $.get(page, function (data) {
+                  $(".main-content").html(data);
+                  isContentLoading = false; // Reset flag after content is loaded
+                  // After loading content, re-attach event handlers to newly loaded elements
+                  attachEventHandlers();
+              });
+          }
+
+          // Function to attach event handlers to sidebar links
+          function attachEventHandlers() {
+              $(".nav-link").click(function (e) {
+                  var page = $(this).data("page");
+                  loadContent(page, e);
+              });
+          }
+
+          // Initial attachment of event handlers
+          attachEventHandlers();
+      });
+
+  </script>
 </body>
 </html>

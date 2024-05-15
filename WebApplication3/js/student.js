@@ -1,4 +1,5 @@
 ﻿$(document).ready(function () {
+
     // Function to populate the table with student data
     function populateTable() {
         $.ajax({
@@ -21,6 +22,12 @@
                 });
 
                 // Add click event listener to edit buttons
+                // Unbind previously bound event handlers to avoid multiple bindings
+                $(document).off("click", ".edit-btn");
+                $(document).off("click", "#addStudentBtn");
+                $(document).off("click", "#delete-btn");
+
+                // Rebind event handlers
                 $(document).on("click", ".edit-btn", function (event) {
                     // Prevent default behavior of the button
                     var studentId = $(this).data("student-id");
@@ -31,6 +38,7 @@
                     }
                     event.preventDefault();
                 });
+
                 $("#addStudentBtn").click(function () {
                     event.preventDefault();
                     // Display confirmation dialog
@@ -42,8 +50,6 @@
                         // If the user cancels, do nothing (no need to open the modal)
                     }
                 });
-
-               
                 // Add click event listener to delete buttons
                 $(document).on("click", ".delete-btn", function (event) {
                     event.preventDefault(); // Prevent default behavior of the button
@@ -117,6 +123,9 @@
 
     // Function to handle form submission in the edit modal
     $("#editSaveChanges").click(function () {
+        var lrn = $("#STUD_LRN").val();
+        var parentContact = $("#PARENT_CONTACT").val();
+
         // Collect data from edit modal fields
         var formData = {
             LRN: $("#edit_STUD_LRN").val(),
@@ -134,7 +143,16 @@
             Adviser: $("#edit_ADVISER").val()
         };
 
-        // Perform validation if needed
+        // Perform LRN and Parent Contact validation
+        if (!validateLRN(formData.LRN)) {
+            alert("LRN should contain numbers only.");
+            return;
+        }
+
+        if (!validateParentContact(formData.ParentContact)) {
+            alert("Parent's contact number should contain numbers only and have a maximum of 11 digits.");
+            return;
+        }
 
         // Send updated data to the server
         $.ajax({
@@ -154,7 +172,6 @@
             }
         });
     });
-
 
     // Function to handle form submission for adding a new student
     $("#btnSaveChanges").click(function () {
@@ -187,6 +204,17 @@
             return;
         }
 
+        // Perform LRN and Parent Contact validation
+        if (!validateLRN(formData.LRN)) {
+            alert("LRN should contain numbers only.");
+            return;
+        }
+
+        if (!validateParentContact(formData.ParentContact)) {
+            alert("Parent's contact number should contain numbers only and have a maximum of 11 digits.");
+            return;
+        }
+
         $.ajax({
             type: "POST",
             url: "/api/mnhs/InsertData",
@@ -194,13 +222,50 @@
             contentType: "application/json; charset=utf-8",
             dataType: "json",
             success: function (response) {
-                alert(response);
+                alert(response); // This will show the success message returned from the server
                 populateTable(); // Repopulate the table after successful insertion
+                $('#addStudentModal').modal('hide'); // Hide the modal after saving changes
+                clearModalForm(); // Clear the modal form fields
             },
             error: function (xhr, textStatus, errorThrown) {
-                console.log(xhr.responseText);
-                alert("Error: " + errorThrown);
+                if (xhr.status === 400) {
+                    // LRN already exists, show warning message
+                    alert(xhr.responseJSON.Message);
+                } else {
+                    console.log(xhr.responseText);
+                    alert("Error: " + errorThrown);
+                }
             }
         });
     });
+
+    // Function to clear the modal form fields
+    function clearModalForm() {
+        $("#STUD_LRN").val("");
+        $("#STUD_FNAME").val("");
+        $("#STUD_MNAME").val("");
+        $("#STUD_LNAME").val("");
+        $("#STUD_EXT").val("");
+        $("#STUD_GRADE").val("Grade 7"); // Reset to default value
+        $("#STUD_SECTION").val("Section A"); // Reset to default value
+        $("#STUD_BIRTHDATE").val("");
+        $("#STUD_SEX").val("Male"); // Reset to default value
+        $("#STUD_ADDRESS").val("");
+        $("#PARENT_FULLNAME").val("");
+        $("#PARENT_CONTACT").val("");
+        $("#ADVISER").val("Mr. Smith"); // Reset to default value
+    }
+
+    // Function to validate LRN
+    function validateLRN(lrNumber) {
+        var regex = /^[0-9]+$/; // Regex to match numbers only
+        return regex.test(lrNumber);
+    }
+
+    // Function to validate Parent Contact Number
+    function validateParentContact(contactNumber) {
+        var regex = /^[0-9]{1,12}$/; // Regex to match numbers only and maximum of 11 digits
+        return regex.test(contactNumber);
+    }
+
 });

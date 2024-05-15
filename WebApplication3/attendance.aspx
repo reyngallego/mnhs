@@ -11,8 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
     <script src="js/attendance.js"></script> <!-- Link to custom JavaScript file -->
+
 
     <script>
         // Your JavaScript code can go here if needed
@@ -20,20 +20,34 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="mt-5">Attendance</h1>
-        <div class="form-group">
-            <label for="searchInput">Search:</label>
-            <input type="text" class="form-control" id="searchInput" placeholder="Enter name">
+    <h1 class="mt-5">Attendance</h1>
+    <div class="form-group">
+        <label for="searchInput">Enter Student LRN:</label>
+        <div class="input-group">
+            <input type="text" id="lrnInput" placeholder="Enter LRN">
+            <div class="input-group-append">
+                <button class="btn btn-primary" type="button" onclick="enterAttendance()">Enter</button>
+                <button class="btn btn-danger" type="button" onclick="leaveAttendance()">Leave</button>
+            </div>
         </div>
+    </div>
+</div>
         <!-- Status notification -->
-        <div id="statusNotification" class="status-notification" style="display: none;"></div>
+                    <h5>Status:</h5>
+        <div class="form-group">
+            <div id="statusNotification" class="status-notification" style="display: none;"></div>
+        </div>
+        <div class="form-group">
+
+        </div>
         <table id="attendanceTable" class="table">
             <thead>
                 <tr>
+                    <th>LRN</th>
                     <th>Name</th>
-                    <th>Time In</th>
-                    <th>Time Out</th>
-                    <th>Status</th> <!-- Add new column for status -->
+                    <th>Time</th>
+                    <th>Date</th> <!-- Add new column for status -->
+                    <th>Class</th>
                 </tr>
             </thead>
             <tbody>

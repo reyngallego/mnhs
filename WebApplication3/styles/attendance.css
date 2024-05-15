@@ -2,7 +2,11 @@
 
 /* Container styles */
 .container {
-    margin-top: 50px;
+    margin-left: 0; /* Set margin-left to 0 to position it at the leftmost */
+    position: relative; /* Add position relative */
+    display: flex; /* Use flexbox */
+    flex-direction: column; /* Arrange items vertically */
+    align-items: flex-start; /* Align items to the left */
 }
 
 /* Search input styles */
@@ -17,7 +21,6 @@
 
 /* Status notification styles */
 .status-notification {
-    margin-top: 20px;
     padding: 10px;
     border-radius: 5px;
 }

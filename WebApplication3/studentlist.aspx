@@ -21,7 +21,7 @@
 <body>
     <h1 class="mt-5">Student List</h1>
                   <div class="add-student-button">
-<button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#">Add Student</button>
+<button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="">Add Student</button>
 </div>
      <table id="studentTable" class="table">
     <thead>
@@ -54,11 +54,11 @@
                 <form id="editStudentForm">
                     <div class="form-group">
                         <label for="edit_STUD_LRN">LRN:</label>
-                        <input type="text" class="form-control" id="edit_STUD_LRN">
+                        <input type="text" class="form-control" id="edit_STUD_LRN" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_FNAME">First Name:</label>
-                        <input type="text" class="form-control" id="edit_STUD_FNAME">
+                        <input type="text" class="form-control" id="edit_STUD_FNAME" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_MNAME">Middle Name:</label>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_LNAME">Last Name:</label>
-                        <input type="text" class="form-control" id="edit_STUD_LNAME">
+                        <input type="text" class="form-control" id="edit_STUD_LNAME" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_EXT">Name Extension:</label>
@@ -103,18 +103,18 @@
                     </div>
                     <div class="form-group">
                         <label for="edit_STUD_ADDRESS">Address:</label>
-                        <input type="text" class="form-control" id="edit_STUD_ADDRESS">
+                        <input type="text" class="form-control" id="edit_STUD_ADDRESS" required>
                     </div>
 
                     <!-- Parent details -->
                     <h5>Parent Information</h5>
                     <div class="form-group">
                         <label for="edit_PARENT_FULLNAME">Parent's Full Name:</label>
-                        <input type="text" class="form-control" id="edit_PARENT_FULLNAME">
+                        <input type="text" class="form-control" id="edit_PARENT_FULLNAME" required>
                     </div>
                     <div class="form-group">
                         <label for="edit_PARENT_CONTACT">Parent's Contact Number:</label>
-                        <input type="text" class="form-control" id="edit_PARENT_CONTACT">
+                        <input type="text" class="form-control" id="edit_PARENT_CONTACT" required maxlength="12">
                     </div>
 
                     <!-- Adviser -->
@@ -154,11 +154,11 @@
     <form>
         <div class="form-group">
             <label for="STUD_LRN">LRN:</label>
-            <input type="text" class="form-control" id="STUD_LRN">
+            <input type="text" class="form-control" id="STUD_LRN" required>
         </div>
         <div class="form-group">
             <label for="STUD_FNAME">First Name:</label>
-            <input type="text" class="form-control" id="STUD_FNAME">
+            <input type="text" class="form-control" id="STUD_FNAME" required>
         </div>
         <div class="form-group">
             <label for="STUD_MNAME">Middle Name:</label>
@@ -166,7 +166,7 @@
         </div>
         <div class="form-group">
             <label for="STUD_LNAME">Last Name:</label>
-            <input type="text" class="form-control" id="STUD_LNAME">
+            <input type="text" class="form-control" id="STUD_LNAME" required>
         </div>
         <div class="form-group">
             <label for="STUD_EXT">Name Extension:</label>
@@ -203,18 +203,18 @@
         </div>
         <div class="form-group">
             <label for="STUD_ADDRESS">Address:</label>
-            <input type="text" class="form-control" id="STUD_ADDRESS">
+            <input type="text" class="form-control" id="STUD_ADDRESS" required>
         </div>
 
         <!-- Parent details -->
         <h5>Parent Information</h5>
         <div class="form-group">
             <label for="PARENT_FULLNAME">Parent's Full Name:</label>
-            <input type="text" class="form-control" id="PARENT_FULLNAME">
+            <input type="text" class="form-control" id="PARENT_FULLNAME" required>
         </div>
         <div class="form-group">
             <label for="PARENT_CONTACT">Parent's Contact Number:</label>
-            <input type="text" class="form-control" id="PARENT_CONTACT">
+            <input type="text" class="form-control" id="PARENT_CONTACT" required maxlength="12" >
         </div>
 
         <!-- Adviser -->
