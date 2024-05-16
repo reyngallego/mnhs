@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ID Card</title>
+    <link rel="stylesheet" href="../styles/idLayout.css">
+</head>
+<body>
+    <div class="id-card-back">
+        <div class="id-card-back-header">
+            <p><strong>This ID card is non-transferrable</strong></p>
+            <p>In case of emergency, please contact:</p>
+        </div>
+        <div class="details">
+            <div class="id-card-back-content">
+                <ul>
+                    <li class="student-details-back">Asuncion F. Gondong</li>
+                    <li>Name</li>
+                    <li class="student-details-back">Blk 3, Lot 1, St. Mary, Daang Batang St., Moonwalk, Parañaque City</li>
+                    <li>Address</li>
+                    <li class="student-details-back">09123456789</li>
+                    <li>Contact number</li>
+                    <li class="signature"></li>
+                    <li>Signature</li>
+                </ul>
+            </div>
+            <div class="qr-code"></div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script>
+        function generateQRCode(identifier) {
+            const qrContent = `https://example.com/${identifier}`;
+            return new QRCode(document.querySelector(".qr-code"), {
+                text: qrContent,
+                width: 100,
+                height: 100,
+                colorDark: "#000000",
+                colorLight: "#ffffff",
+                correctLevel: QRCode.CorrectLevel.H,
+            });
+        }
+
+        generateQRCode("student-136764797094");
+    </script>
+</body>
+</html>
+

@@ -1,0 +1,74 @@
+﻿﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Poppins, sans-serif;
+}
+
+id-preview-modal {
+    display: table-cell;
+}
+
+.id-preview-modal img {
+    padding: 20px 0px;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    width: 360px;
+    display: center;
+    filter: drop-shadow(0px 10px 15px #000000)
+}
+
+#lrn-generate-id {
+    width: 150px;
+}
+
+#full-name-generate-id, #faculty-generate-id {
+    width: 300px;
+}
+
+#grade-generate-id {
+    width: 50px;
+}
+
+#section-generate-id {
+    width: 170px;
+}
+
+
+#generate-id-column {
+    width: 130px;
+}
+
+.wrapper {
+    display: flex;
+    min-height: 100vh; /* Make the wrapper at least 100% of the viewport height */
+}
+
+.sidebar {
+    width: 350px;
+    background-color: #d4f9cc; /* Green color */
+    color: #000;
+    padding-top: 20px;      
+    height: 100vh; /* Make the sidebar full height of the viewport */
+}
+
+#mwnhs-banner {
+    width: 330px;
+}
+.content {
+    flex: 1;
+    padding: 20px;
+}
+
+
+
+@media (max-width: 768px) {
+    .wrapper {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+    }
+}

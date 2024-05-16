@@ -1,0 +1,289 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Student Management System</title>
+    <meta charset="utf-8" />
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/styles/idLayout.css" rel="stylesheet" />
+    <link href="/styles/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container mt-4">
+        <h2>ID Generator</h2>
+
+        <!-- Button to trigger modal -->
+        <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#generateIdModal">
+            Generate ID
+        </button>
+        <a href="/dashboard/idBack.html">Click here!</a>
+
+        <!-- Table to display students -->
+        <table class="table table-sm mt-4">
+            <!-- Table headers -->
+            <thead>
+                <tr>
+                    <th id="lrn-generate-id">LRN</th>
+                    <th id="full-name-generate-id">Full Name</th>
+                    <th id="grade-generate-id">Grade</th>
+                    <th id="section-generate-id">Section</th>
+                    <th id="faculty-generate-id">Adviser</th>
+                    <th id="generate-id-column"></th>
+                </tr>
+            </thead>
+            <!-- Table body -->
+            <tbody id="studentTableBody">
+                <!-- Student data will be displayed here dynamically -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Modal for previewing the ID -->
+    <div class="modal fade" id="generateIdModal" tabindex="-1" role="dialog" aria-labelledby="generateIdModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="addStudentModalLabel">ID Preview</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="id-preview-modal">
+                    <!-- Previewing the ID with student credentials -->
+
+                    <div class="id-card-front" id="id-card-front">
+                        <div class="id-card-front-header">
+                            <p><b>Republic of the Philippines</b></p>
+                            <p>National Capital Region</p>
+                            <p>Schools Division of Parañaque City</p>
+                            <h3>MOONWALK NATIONAL HIGH SCHOOL</h3>
+                            <p class="address">St. Mary's St., Daang Batang St., San Agustin Village, Moonwalk, Parañaque City</p>
+                        </div>
+                        <div class="id-card-front-content">
+
+                            <div class="details">
+                                <img class="school-logo" src="../gallery/logo-moonwalk-e1558547411181.png" alt="MwNHS Logo">
+                                <img class="id-picture" src="../gallery/sample.jpg" alt="Student picture">
+                                <ul>
+                                    <ul class="inline">
+                                        <li class="lrn">LRN: <u> 130042354990 </u> </li>
+                                        <li>SY: 2023 - 2024</li>
+                                    </ul>
+
+                                    <li class="student-details-front">Juan C. Dela Cruz</li>
+                                    <li>Name</li>
+                                    <li class="student-details-front">X - Armstrong</li>
+                                    <li>Grade and Section</li>
+                                    <li class="student-details-front">Dr. Alpha M. Burgos, Ph. D, Ed. D</li>
+                                    <li>Principal</li>
+                                </ul>
+                            </div>
+
+                        </div>
+                        <div class="id-card-front-footer">STUDENT</div>
+                    </div>
+                    <div class="id-card-back" id="id-card-back">
+                        <div class="id-card-back-header">
+                            <p><strong>This ID card is non-transferrable</strong></p>
+                            <p>In case of emergency, please contact:</p>
+                        </div>
+                        <div class="details">
+                            <div class="id-card-back-content">
+                                <ul>
+                                    <li class="student-details-back">Mariano P. Garcia</li>
+                                    <li>Name</li>
+                                    <li class="student-details-back">3206 Gayan St., Antipino Village, Brgy. Moonwalk, Parañaque City</li>
+                                    <li>Address</li>
+                                    <li class="student-details-back">09123456789</li>
+                                    <li>Contact number</li>
+                                    <li class="signature"></li>
+                                    <li>Signature</li>
+                                </ul>
+                            </div>
+                            <div class="qr-code" id="qr-code"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Modal Footer -->
+                <div class="modal-footer">
+                    <button id="print-id" type="button" class="btn btn-primary" onclick="printID()">Print ID</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap JS dependencies (jQuery, Popper.js, Bootstrap JS) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="../Scripts/generate_id.js"></script>
+    <script src="../Scripts/html2canvas.min.js"></script>
+    <script>
+
+        function generateQRCode(identifier) {
+            console.log('generateQRCode function called');
+
+            const qrContent = `${identifier}`;
+            console.log('QR content:', qrContent);
+
+            try {
+                const qrCodeDiv = document.querySelector(".qr-code");
+                console.log('QR code div:', qrCodeDiv);
+
+                new QRCode(qrCodeDiv, {
+                    text: qrContent,
+                    width: 100,
+                    height: 100,
+                    colorDark: "#000000",
+                    colorLight: "#ffffff",
+                    correctLevel: QRCode.CorrectLevel.H,
+                });
+
+                console.log('QR code generated successfully');
+            } catch (error) {
+                console.error('Error generating QR code:', error);
+            }
+        }
+
+        generateQRCode("23232");
+
+        $(document).ready(function () {
+            // Function to fetch and display students
+            function getStudents() {
+                $.ajax({
+                    url: 'api/students', // Assuming your API endpoint is at this URL
+                    method: 'GET',
+                    success: function (response) {
+                        // Clear existing table rows
+                        $(".generate-ID-preview").empty();
+
+                        // Loop through each student in the response and append a table row
+                        response.forEach(function (student) {
+                            $("#.generate-ID-preview").append(
+                                "<tr><td>" + student.LRN + "</td>" +
+                                "<td>" + student.FirstName +
+                                student.MiddleName +
+                                student.LastName +
+                                student.Extension + "</td>" +
+                                "<td>" + student.GradeSection + "</td>" +
+                                "<td>" + student.Faculty + "</td></tr > "
+                            );
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Call the function to fetch and display students when the document is ready
+            getStudents();
+
+            $(document).ready(function () {
+                // Handle form submission to add student
+                $("#studentForm").submit(function (event) {
+                    // Prevent the default form submission behavior
+                    event.preventDefault();
+
+                    // Serialize form data
+                    var formData = $(this).serialize();
+                    console.log("Form Data:", formData); // Log form data to console
+
+                    // Send AJAX POST request to add student
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/students", // Update the URL to match the controller route
+                        data: formData,
+                        success: function (response) {
+                            console.log("Success:", response); // Log success message to console
+                            alert(response);
+                            $('#addStudentModal').modal('hide'); // Hide the modal after adding student
+                            fetchStudentData(); // Update table after adding student
+                            $("#studentForm")[0].reset();
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + error); // Alert user if error occurs
+                        }
+                    });
+                });
+
+                // Bind form submission to button click
+                $("#addStudentBtn").click(function () {
+                    $("#studentForm").submit(); // Trigger form submission when button is clicked
+                });
+            });
+
+        });
+
+        $(document).ready(function () {
+            // Function to fetch and display students
+            function getStudents() {
+                $.ajax({
+                    url: 'api/students', // Assuming your API endpoint is at this URL
+                    method: 'GET',
+                    success: function (response) {
+                        // Clear existing table rows
+                        $("#studentTableBody").empty();
+
+                        // Loop through each student in the response and append a table row
+                        response.forEach(function (student) {
+                            $("#studentTableBody").append(
+                                "<tr><td>" + student.LRN + "</td>" +
+                                "<td>" + student.FirstName + "</td>" +
+                                "<td>" + student.MiddleName + "</td>" +
+                                "<td>" + student.LastName + "</td>" +
+                                "<td>" + student.Extension + "</td>" +
+                                "<td>" + student.GradeSection + "</td>" +
+                                "<td>" + student.Faculty + "</td></tr > "
+                            );
+                        });
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(xhr.responseText);
+                    }
+                });
+            }
+
+            // Call the function to fetch and display students when the document is ready
+            getStudents();
+
+            $(document).ready(function () {
+                // Handle form submission to add student
+                $("#studentForm").submit(function (event) {
+                    // Prevent the default form submission behavior
+                    event.preventDefault();
+
+                    // Serialize form data
+                    var formData = $(this).serialize();
+                    console.log("Form Data:", formData); // Log form data to console
+
+                    // Send AJAX POST request to add student
+                    $.ajax({
+                        type: "POST",
+                        url: "/api/students", // Update the URL to match the controller route
+                        data: formData,
+                        success: function (response) {
+                            console.log("Success:", response); // Log success message to console
+                            alert(response);
+                            $('#addStudentModal').modal('hide'); // Hide the modal after adding student
+                            fetchStudentData(); // Update table after adding student
+                            $("#studentForm")[0].reset();
+                        },
+                        error: function (xhr, status, error) {
+                            alert("Error: " + error); // Alert user if error occurs
+                        }
+                    });
+                });
+
+                // Bind form submission to button click
+                $("#addStudentBtn").click(function () {
+                    $("#studentForm").submit(); // Trigger form submission when button is clicked
+                });
+            });
+        });
+
+
+
+    </script>
+</body>
+</html>
