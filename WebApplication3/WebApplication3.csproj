@@ -424,6 +424,10 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
     <Content Include="images\icons\dashboard.png" />
+    <Content Include="images\icons\dashboard\attendance.png" />
+    <Content Include="images\icons\dashboard\day.png" />
+    <Content Include="images\icons\dashboard\timeout.png" />
+    <Content Include="images\icons\dashboard\warning.png" />
     <Content Include="images\icons\reports.png" />
     <Content Include="images\icons\logout.png" />
     <Content Include="images\icons\idgenerator.png" />
@@ -456,6 +460,7 @@
     <Content Include="scripts\WebSocketManager.js" />
     <Content Include="attendance.aspx" />
     <Content Include="dashboard.aspx" />
+    <Content Include="styles\dashboard.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
