@@ -1,12 +1,13 @@
-﻿* {
+﻿﻿* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Poppins, sans-serif;
 }
+
 body {
     margin: 0; /* Remove default margin */
-    font-family: Poppins, sans-serif;
+    font-family: Arial, sans-serif;
     background-color: #f8f9fa;
 }
 
@@ -16,56 +17,73 @@ body {
 }
 
 .sidebar {
-    width: 250px;
+    width: 350px;
     background-color: #d4f9cc; /* Green color */
     color: #000;
     padding-top: 20px;
     height: 100vh; /* Make the sidebar full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    flex-direction: column;
 }
 
 #mwnhs-banner {
-    width: 220px;
+    width: 330px;
 }
 
 .sidebar h2 {
-    display:ruby;
-    padding-bottom:20px;
+    text-align: center;
     font-size: 20pt;
-    font-weight: 900;
+    font-weight: 700;
     text-transform: uppercase;
+    margin: 0px;
 }
 
 .sidebar h6 {
-    margin-top: 10px
+    display: block;
 }
 
-    .sidebar ul.nav {
-        flex-direction: column;
-        padding-left: 0;
-        display: ruby;
-    }
-    
+.sidebar ul.nav {
+    flex-direction: column;
+    padding-left: 0;
+    display: ruby;
+}
 
-        .sidebar ul.nav li {
-            list-style: none;
+
+    .sidebar ul.nav li {
+        list-style: none;
+    }
+
+        .sidebar ul.nav li img {
+            display: inline-block;
+            float: left;
+            margin-right: 5px;
+            vertical-align: middle;
+            height: auto;
+            width: 30px;
         }
 
-            .sidebar ul.nav li a {
-                color: #000;
-                padding: 10px 20px;
-                display: block;
-                text-decoration: none;
-                margin-bottom: -20px;
+        .sidebar ul.nav li a {
+            color: #000;
+            padding: 10px 20px;
+            display: block;
+            text-decoration: none;
+            font-size: 16pt;
+            margin-bottom: -10px;
+        }
+
+            .sidebar ul.nav li a:hover {
+                background-color: rgba(0, 0, 0, 0.2);
             }
 
-                .sidebar ul.nav li a:hover {
-                    background-color: rgba(0, 0, 0, 0.2);
-                }
+
 
 .content {
     flex: 1;
     padding: 20px;
 }
+
+
 
 @media (max-width: 768px) {
     .wrapper {

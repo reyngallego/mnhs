@@ -1,5 +1,4 @@
-﻿/* Custom CSS for Student Management System */
-
+﻿﻿ /* Custom CSS for Student Management System */
 /* Set max height for container to fit in one screen */
 .container {
     max-height: calc(100vh - 20px);
@@ -27,4 +26,8 @@
     font-size: 12px;
     padding: 0.25rem 0.5rem;
     height: calc(1.5em + 0.5rem + 2px);
+}
+
+li img {
+    text-align: start;
 }
