@@ -14,24 +14,66 @@
     <script src="js/attendance.js"></script> <!-- Link to custom JavaScript file -->
 
 
-    <script>
-        // Your JavaScript code can go here if needed
-    </script>
+  <script>
+      var currentState = 'enter'; // Initialize the current state to 'enter'
+
+      function enterOrLeaveAttendance() {
+          if (currentState === 'enter') {
+              enterAttendance();
+          } else {
+              leaveAttendance();
+          }
+      }
+
+      function toggleState() {
+          currentState = currentState === 'enter' ? 'leave' : 'enter';
+          $('#lrnInput').attr('placeholder', currentState === 'enter' ? 'Enter LRN' : 'Leave LRN');
+      }
+
+      $('#toggleButton').on('click', function () {
+          toggleState();
+      });
+
+      $('#lrnInput').on('keypress', function (event) {
+          if (event.which === 13) { // Check if the pressed key is Enter (key code 13)
+              event.preventDefault(); // Prevent default form submission behavior
+              scanLRN(); // Call the scanLRN function
+          }
+      });
+
+      function scanLRN() {
+          var lrn = $('#lrnInput').val().trim();
+
+          if (lrn !== '') {
+              if (currentState === 'enter') {
+                  enterAttendance();
+              } else {
+                  leaveAttendance();
+              }
+              $('#lrnInput').val(''); // Clear the input field
+          } else {
+              alert('Please enter LRN first.');
+          }
+      }
+  </script>
 </head>
 <body>
     <div class="container">
-    <h1 class="mt-5">Attendance</h1>
-    <div class="form-group">
-        <label for="searchInput">Enter Student LRN:</label>
-        <div class="input-group">
-            <input type="text" id="lrnInput" placeholder="Enter LRN">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button" onclick="enterAttendance()">Enter</button>
-                <button class="btn btn-danger" type="button" onclick="leaveAttendance()">Leave</button>
+        <h1 class="mt-5">Attendance</h1>
+        <div class="form-group">
+            <label for="searchInput">Enter/Leave Student LRN:</label>
+            <div class="input-group">
+                <input type="text" id="lrnInput" placeholder="Enter LRN">
+                <div class="input-group-append">
+                    <button class="btn btn-primary" type="button" onclick="scanLRN()">Scan</button>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+
+<button id="toggleButton" class="btn btn-secondary" type="button">TIMEIN/TIMEOUT</button> <br />
+        </div>
+
+
         <!-- Status notification -->
                     <h5>Status:</h5>
         <div class="form-group">

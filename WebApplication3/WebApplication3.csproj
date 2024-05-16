@@ -455,6 +455,7 @@
     <Content Include="scripts\realtime.js" />
     <Content Include="scripts\WebSocketManager.js" />
     <Content Include="attendance.aspx" />
+    <Content Include="dashboard.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -464,7 +465,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
-    <Compile Include="Controllers\ButtonsController.cs" />
+    <Compile Include="Controllers\parentController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\mnhsController.cs" />
     <Compile Include="Controllers\QueueController.cs" />
@@ -510,6 +511,13 @@
     </Compile>
     <Compile Include="attendance.aspx.designer.cs">
       <DependentUpon>attendance.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

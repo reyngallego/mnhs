@@ -28,7 +28,7 @@
                         </h6>
                 <ul class="nav">
     <li class="nav-item" style="margin-bottom: 10px;">
-        <a class="nav-link active" href="mnhs.aspx" data-page="mnhs.aspx">
+        <a class="nav-link active" href="dashboard.aspx" data-page="dashboard.aspx">
             <img src="/images/icons/dashboard.png" alt="Dashboard" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">Dashboard</span>
         </a>
     </li>
