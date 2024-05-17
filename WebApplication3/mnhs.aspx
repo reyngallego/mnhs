@@ -6,7 +6,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <link href="styles/custom.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
+    <link href="styles/dashboard.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
+
 </head>
 <body>
     <form id="form1" runat="server">
@@ -48,7 +51,7 @@
     </a>
 </li>
     <li class="nav-item" style="margin-bottom: 10px;">
-        <a class="nav-link" href="#" data-page="">
+        <a class="nav-link" href="generateid.aspx" data-page="generateid.aspx">
             <img src="/images/icons/idgenerator.png" alt="ID Generator" style="width: 20px; height: 20px; vertical-align: middle;"> <span style="font-size: 20px; color: black;">ID Generator</span>
         </a>
     </li>
@@ -66,9 +69,9 @@
                 </nav>
 
                 <!-- MAIN CONTENT -->
-                <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
-                    <!-- Content will be loaded here -->
-                </main>
+               <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4 main-content">
+               
+</main>
             </div>
         </div>
     </form>

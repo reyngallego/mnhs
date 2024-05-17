@@ -433,8 +433,13 @@
     <Content Include="images\icons\idgenerator.png" />
     <Content Include="images\icons\student.png" />
     <Content Include="images\icons\attendance.png" />
+    <Content Include="images\id\logo.png" />
+    <Content Include="images\id\sample.jpg" />
     <Content Include="images\logomnhs.png" />
     <Content Include="js\attendance.js" />
+    <Content Include="js\generate_id.js" />
+    <Content Include="scripts\html2canvas.js" />
+    <Content Include="scripts\html2canvas.min.js" />
     <Content Include="js\student.js" />
     <Content Include="mnhs.aspx" />
     <Content Include="styles\attendance.css" />
@@ -461,6 +466,8 @@
     <Content Include="attendance.aspx" />
     <Content Include="dashboard.aspx" />
     <Content Include="styles\dashboard.css" />
+    <Content Include="styles\idLayout.css" />
+    <Content Include="generateid.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -473,12 +480,8 @@
     <Compile Include="Controllers\parentController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\mnhsController.cs" />
-    <Compile Include="Controllers\QueueController.cs" />
-    <Compile Include="Controllers\QueueReportsController.cs" />
-    <Compile Include="Controllers\QueueTicketController.cs" />
+    <Compile Include="Controllers\generateidController.cs" />
     <Compile Include="Controllers\QueueTicketDoneController.cs" />
-    <Compile Include="Controllers\RecallController.cs" />
-    <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -503,7 +506,6 @@
     <Compile Include="Models\reportfilter.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="Controllers\VideoController.cs" />
     <Compile Include="Models\Videos.cs" />
     <Compile Include="Models\VideoSelectionRequest.cs" />
     <Compile Include="program.cs" />
@@ -523,6 +525,13 @@
     </Compile>
     <Compile Include="dashboard.aspx.designer.cs">
       <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="generateid.aspx.cs">
+      <DependentUpon>generateid.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="generateid.aspx.designer.cs">
+      <DependentUpon>generateid.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
