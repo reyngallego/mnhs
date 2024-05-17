@@ -3,32 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\idlayout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\styles\\idlayout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\scripts\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\scripts\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|c:\\users\\toman\\documents\\ojt moonwalk id system\\project\\mnhs_id_generator\\id generator maker\\dashboard\\generate_id.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\dashboard\\generate_id.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|c:\\users\\toman\\documents\\ojt moonwalk id system\\project\\mnhs_id_generator\\id generator maker\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|c:\\users\\toman\\documents\\ojt moonwalk id system\\project\\mnhs_id_generator\\id generator maker\\scripts\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\scripts\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\idlayout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\styles\\idlayout.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\dashboard_1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\styles\\dashboard_1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\styles\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\dashboard_1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\styles\\dashboard_1.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|solutionrelative:id generator maker\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{468E1913-CF3F-4032-8F4F-A2F9EAD091BC}|id generator maker\\id generator maker.csproj|C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\dashboard\\add_student_record.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -42,11 +42,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "dashboard.aspx",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\dashboard.aspx",
               "RelativeDocumentMoniker": "id generator maker\\dashboard.aspx",
@@ -54,51 +54,50 @@
               "RelativeToolTip": "id generator maker\\dashboard.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-05-16T07:06:05.267Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-16T07:06:05.267Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "idLayout.css",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\idLayout.css",
               "RelativeDocumentMoniker": "id generator maker\\styles\\idLayout.css",
               "ToolTip": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\idLayout.css",
               "RelativeToolTip": "id generator maker\\styles\\idLayout.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAMAAAAbAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAAE8AAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-05-15T01:04:21.37Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "generate_id.html",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\dashboard\\generate_id.html",
               "RelativeDocumentMoniker": "id generator maker\\dashboard\\generate_id.html",
               "ToolTip": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\dashboard\\generate_id.html",
               "RelativeToolTip": "id generator maker\\dashboard\\generate_id.html",
-              "ViewState": "AQIAAIQAAAAAAAAAAAAAAI8AAABCAAAA",
+              "ViewState": "AQIAADAAAAAAAAAAAAAAAD8AAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
               "WhenOpened": "2024-05-13T03:51:18.222Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "generate_id.js",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\Scripts\\generate_id.js",
               "RelativeDocumentMoniker": "id generator maker\\Scripts\\generate_id.js",
               "ToolTip": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\Scripts\\generate_id.js",
               "RelativeToolTip": "id generator maker\\Scripts\\generate_id.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAABAAAA",
+              "ViewState": "AQIAAB4AAAAAAAAAAAAAACcAAAATAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-05-16T05:18:19.865Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "GenerateIdController.cs",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\Controllers\\GenerateIdController.cs",
               "RelativeDocumentMoniker": "id generator maker\\Controllers\\GenerateIdController.cs",
@@ -106,12 +105,11 @@
               "RelativeToolTip": "id generator maker\\Controllers\\GenerateIdController.cs",
               "ViewState": "AQIAAD8AAAAAAAAAAAAowFAAAAAtAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-14T01:33:52.42Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-14T01:33:52.42Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 4,
               "Title": "dashboard_1.css",
               "DocumentMoniker": "C:\\Users\\toman\\Documents\\OJT Moonwalk ID System\\Project\\mnhs_id_generator\\id generator maker\\styles\\dashboard_1.css",
               "RelativeDocumentMoniker": "id generator maker\\styles\\dashboard_1.css",
@@ -131,8 +129,7 @@
               "RelativeToolTip": "id generator maker\\styles\\dashboard.css",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAACEAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-13T03:35:09.771Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-05-13T03:35:09.771Z"
             },
             {
               "$type": "Document",

@@ -9,14 +9,13 @@
     <link href="/styles/styles.css" rel="stylesheet" />
 </head>
 <body>
-    <div class="container mt-4">
+    <div class="container">
         <h2>ID Generator</h2>
 
         <!-- Button to trigger modal -->
         <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#generateIdModal">
             Generate ID
         </button>
-        <a href="/dashboard/idBack.html">Click here!</a>
 
         <!-- Table to display students -->
         <table class="table table-sm mt-4">
@@ -48,7 +47,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="id-preview-modal">
+                <div class="id-preview-modal" id="id-preview-modal">
                     <!-- Previewing the ID with student credentials -->
 
                     <div class="id-card-front" id="id-card-front">
@@ -107,17 +106,17 @@
 
                 <!-- Modal Footer -->
                 <div class="modal-footer">
-                    <button id="print-id" type="button" class="btn btn-primary" onclick="printID()">Print ID</button>
+                    <button id="print-id" class="btn btn-primary">Print ID</button>
                 </div>
             </div>
         </div>
     </div>
     <!-- Bootstrap JS dependencies (jQuery, Popper.js, Bootstrap JS) -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.min.js"></script>
+    <script src="../Scripts/html2canvas.js"></script>
     <script src="../Scripts/generate_id.js"></script>
-    <script src="../Scripts/html2canvas.min.js"></script>
     <script>
 
         function generateQRCode(identifier) {

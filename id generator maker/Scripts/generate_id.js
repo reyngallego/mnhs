@@ -1,4 +1,6 @@
-﻿var node = document.getElementById('id-card-front');
+﻿/*
+
+var node = document.getElementById('id-card-front');
 var counter = 0;
 
 function htmlToImg() {
@@ -23,3 +25,29 @@ function imgDown(imgUrl) {
     a.click();
     ++counter;
 }
+
+*/
+
+
+let printBtn = document.querySelector("#print-id");
+var counter = 1
+
+printBtn.addEventListener("click", function () {
+    html2canvas(document.querySelector("#id-modal-preview")).then(function (canvas) {
+        var link = document.querySelector("#id-modal-preview");
+        link.setAttribute("download", "htmlToImg"+ counter +".png");
+        link.setAttribute(
+            "href",
+            canvas.toDataURL("image/png").replace("image/png", "image/octet-stream")
+        );
+        link.click();
+    });
+
+    ++counter;
+
+    window.print();
+});
+
+saveBtn.addEventListener("click", function () {
+    
+});

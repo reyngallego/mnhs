@@ -10,6 +10,7 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS for Admin Dashboard -->
     <link href="styles/styles.css" rel="stylesheet">
+    <link href="styles/idLayout.css" rel="stylesheet"/>
     <!-- <link href="styles/dashboard_1.css" rel="stylesheet"> -->
 </head>
 <body>
@@ -61,39 +62,34 @@
         });
 
         function printID() {
-            // Capture modal-header as canvas
-            html2canvas(document.querySelector('.modal-header')).then(function (canvas) {
-                var modalHeaderCanvas = canvas;
+            // Capture id-card-front as canvas
+            html2canvas(document.getElementById('id-card-front')).then(function (canvasFront) {
+                // Capture id-card-back as canvas
+                html2canvas(document.getElementById('id-card-back')).then(function (canvasBack) {
+                    // Create a new canvas to combine id-card-front and id-card-back
+                    var combinedCanvas = document.createElement('canvas');
+                    var combinedContext = combinedCanvas.getContext('2d');
 
-                // Create a new canvas to combine modal-header and id-card-front
-                var combinedCanvas = document.createElement('canvas');
-                var combinedContext = combinedCanvas.getContext('2d');
+                    // Set the combined canvas size
+                    combinedCanvas.width = Math.max(canvasFront.width, canvasBack.width);
+                    combinedCanvas.height = canvasFront.height + canvasBack.height;
 
-                // Set the combined canvas size
-                combinedCanvas.width = modalHeaderCanvas.width;
-                combinedCanvas.height = modalHeaderCanvas.height + document.getElementById('id-card-front').offsetHeight;
+                    // Draw id-card-front and id-card-back on the combined canvas
+                    combinedContext.drawImage(canvasFront, 0, 0);
+                    combinedContext.drawImage(canvasBack, 0, canvasFront.height);
 
-                // Draw modal-header and id-card-front on the combined canvas
-                combinedContext.drawImage(modalHeaderCanvas, 0, 0);
-                combinedContext.drawImage(document.getElementById('id-card-front'), 0, modalHeaderCanvas.height);
+                    // Convert the combined canvas to an image
+                    var imgData = combinedCanvas.toDataURL('image/png');
 
-                // Convert the combined canvas to an image and trigger the print dialog
-                var imgData = combinedCanvas.toDataURL('image/png');
-                var windowContent = '<!DOCTYPE html>';
-                windowContent += '<html>'
-                windowContent += '<head><title>Print ID</title></head>';
-                windowContent += '<body>'
-                windowContent += '<img src="' + imgData + '">';
-                windowContent += '</body>';
-                windowContent += '</html>';
+                    // Open a new window with the image for printing
+                    var printWindow = window.open('', '_blank');
+                    printWindow.document.open();
+                    printWindow.document.write('<img src="' + imgData + '" style="display: block; margin: 0 auto;">');
+                    printWindow.document.close();
 
-                var printWin = window.open('', '', 'width=' + combinedCanvas.width + ',height=' + combinedCanvas.height);
-                printWin.document.open();
-                printWin.document.write(windowContent);
-                printWin.document.close();
-                printWin.focus();
-                printWin.print();
-                printWin.close();
+                    // Trigger the print dialog
+                    printWindow.print();
+                });
             });
         }
 
