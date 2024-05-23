@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 
 namespace WebApplication3
 {
@@ -11,7 +7,23 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // Check if user is logged in
+            if (Session["Username"] == null)
+            {
+                // If not, redirect to login page
+                Response.Redirect("login.aspx");
+            }
+        }
 
+        protected void Logout_Click(object sender, EventArgs e)
+        {
+            // Clear the session
+            Session.Clear();
+            Session.Abandon();
+            Session.RemoveAll();
+
+            // Redirect to login page
+            Response.Redirect("login.aspx");
         }
     }
 }

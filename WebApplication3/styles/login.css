@@ -1,0 +1,64 @@
+﻿/* Custom styles */
+
+body {
+    background-color: #f8f9fa; /* Light gray background */
+    font-family: Arial, sans-serif; /* Use a sans-serif font */
+    background-image: url(../images/MWB1.png); /* Background image */
+    background-size: cover;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #28a745;
+    border-color: #007bff;
+}
+
+.login-container {
+    background-color: rgba(255, 255, 255, 0.6);
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    width: 400px;
+    height: 450px;
+    margin-left: 60px;
+}
+
+h2 {
+    margin-top: 0; /* Remove default margin */
+    color: #333; /* Dark text color */
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: bold;
+    color: #333; /* Dark text color */
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ced4da; /* Gray border */
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    background-color: #008000;
+    border: none;
+    border-radius: 4px;
+    color: #fff; /* White text */
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    button:hover {
+        background-color: #008000; /* Darker blue on hover */
+    }

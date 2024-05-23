@@ -436,8 +436,10 @@
     <Content Include="images\id\logo.png" />
     <Content Include="images\id\sample.jpg" />
     <Content Include="images\logomnhs.png" />
+    <Content Include="images\MWB1.png" />
     <Content Include="js\attendance.js" />
     <Content Include="js\generate_id.js" />
+    <Content Include="login.aspx" />
     <Content Include="scripts\html2canvas.js" />
     <Content Include="scripts\html2canvas.min.js" />
     <Content Include="js\student.js" />
@@ -468,6 +470,8 @@
     <Content Include="styles\dashboard.css" />
     <Content Include="styles\idLayout.css" />
     <Content Include="generateid.aspx" />
+    <Content Include="styles\idgenerator.css" />
+    <Content Include="styles\login.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -487,6 +491,13 @@
     </Compile>
     <Compile Include="Controllers\Employeecontroller.cs" />
     <Compile Include="Controllers\EmployeeDataAccess.cs" />
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mnhs.aspx.cs">
       <DependentUpon>mnhs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -602,7 +613,6 @@
   <ItemGroup>
     <Folder Include="api\" />
     <Folder Include="App_Data\" />
-    <Folder Include="Videos\" />
     <Folder Include="Views\admin\" />
     <Folder Include="Views\Purpose\" />
   </ItemGroup>

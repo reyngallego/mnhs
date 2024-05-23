@@ -7,7 +7,12 @@ namespace WebApplication3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            // Check if user is logged in
+            if (Session["Username"] == null)
+            {
+                // If not, redirect to login page
+                Response.Redirect("login.aspx");
+            }
         }
 
       

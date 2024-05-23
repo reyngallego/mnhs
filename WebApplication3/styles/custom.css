@@ -30,7 +30,8 @@ body {
 }
 
 .main-content {
-    padding-top: 1rem; /* Adjust the top padding according to your needs */
+    
+
 }
 
 /* Styles for logo */
@@ -44,10 +45,11 @@ img.logo {
 @media (min-width: 768px) {
     .sidebar {
         width: 240px; /* Adjust the sidebar width according to your needs */
+        position: fixed; /* Keep sidebar fixed */
     }
 
     .main-content {
-        margin-left: 240px; /* Same as sidebar width */
+
     }
 }
 /* Logo and Title styles */
