@@ -5,6 +5,8 @@ body {
     font-family: Arial, sans-serif; /* Use a sans-serif font */
     background-image: url(../images/MWB1.png); /* Background image */
     background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed; /* Ensure the background image stays fixed */
 }
 
 .btn-primary {
@@ -15,14 +17,13 @@ body {
 
 .login-container {
     background-color: rgba(255, 255, 255, 0.6);
-    background-size: cover; /* Cover the entire container */
-    background-position: center; /* Center the background image */
-    padding: 10px;
+    padding: 20px;
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Shadow effect */
-    width: 400px;
-    height: 450px;
-    margin-left: 60px;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 20px auto;
 }
 
 h2 {
@@ -60,5 +61,24 @@ button {
 }
 
     button:hover {
-        background-color: #008000; /* Darker blue on hover */
+        background-color: #006400; /* Darker green on hover */
     }
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    .login-container {
+        padding: 15px;
+        margin: 15px;
+        width: 100%;
+    }
+
+    h2 {
+        font-size: 1.5em; /* Smaller font size for smaller screens */
+    }
+
+    input[type="text"],
+    input[type="password"],
+    button {
+        padding: 8px;
+    }
+}

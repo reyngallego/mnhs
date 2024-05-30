@@ -1,5 +1,9 @@
 ﻿/* Custom styles for the attendance page */
 
+h1 {
+    background-color: forestgreen;
+}
+
 /* Container styles */
 .container {
     margin-left: 0; /* Set margin-left to 0 to position it at the leftmost */
@@ -38,3 +42,4 @@
     border-color: #f5c6cb;
     color: #721c24;
 }
+

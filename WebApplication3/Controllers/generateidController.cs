@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Web.Http;
-using WebApplication3.Models;
-using System.Globalization;
 using System.Net;
 using System.Net.Http;
 using static WebApplication3.Controllers.mnhsController;

@@ -47,8 +47,8 @@
                                     <span style="font-size: 20px; color: black;">Student</span>
                                 </a>
                             </li>
-                            <li class="nav-item" style="margin-bottom: 10px; width: auto;">
-                                <a class="nav-link" href="#">
+                            <li class="nav-item" style="margin-bottom: 10px;">
+                                <a class="nav-link" href="reports.aspx" data-page="reports.aspx">
                                     <img src="/images/icons/reports.png" alt="Reports" style="width: 20px; height: 20px; vertical-align: middle;"> 
                                     <span style="font-size: 20px; color: black;">Reports</span>
                                 </a>

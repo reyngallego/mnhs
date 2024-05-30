@@ -11,7 +11,6 @@ public class AttendanceController : ApiController
 {
     private string connectionString = "Data Source=DESKTOP-1K0L57N;Initial Catalog=capstone;Integrated Security=True";
 
-   
     [HttpGet]
     [Route("api/attendance/getattendancedata")]
     public HttpResponseMessage GetAttendanceData()
@@ -22,7 +21,10 @@ public class AttendanceController : ApiController
 
             using (SqlConnection con = new SqlConnection(connectionString))
             {
-                string query = "SELECT LRN, FirstName, LastName, TimeIn, TimeOut, Date, Grade, Section FROM StudentAttendance";
+                string query = "SELECT LRN, FirstName, LastName, TimeIn, TimeOut, Date, Grade, Section " +
+                               "FROM StudentAttendance " +
+                               "WHERE CAST(Date AS DATE) = CAST(GETDATE() AS DATE)";
+
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
                     con.Open();
@@ -59,57 +61,77 @@ public class AttendanceController : ApiController
     {
         try
         {
-            // Check if LRN exists in the mnhs table
             if (!IsLRNExistInMnhs(lrn))
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "LRN does not exist in mnhs table.");
             }
 
-            // Check if LRN has already signed in
-            if (IsLRNAlreadySignedIn(lrn))
+            if (IsLRNAlreadySignedInToday(lrn))
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have already signed in.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have already signed in today.");
             }
 
-            // Create a connection to the database
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                // Create a SQL command to insert LRN, current time, and today's date
+                // Insert into StudentAttendance
                 string query = "INSERT INTO StudentAttendance (LRN, TimeIn, Date) VALUES (@LRN, GETDATE(), CONVERT(date, GETDATE()))";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@LRN", lrn); // Add LRN as parameter
-
-                    // Execute the command
+                    cmd.Parameters.AddWithValue("@LRN", lrn);
                     cmd.ExecuteNonQuery();
+                }
+
+                // Retrieve student details from mnhs table
+                string selectQuery = "SELECT FirstName, LastName FROM mnhs WHERE LRN = @LRN";
+                string firstName = "", lastName = "";
+                using (SqlCommand selectCmd = new SqlCommand(selectQuery, con))
+                {
+                    selectCmd.Parameters.AddWithValue("@LRN", lrn);
+                    using (SqlDataReader reader = selectCmd.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            firstName = reader["FirstName"].ToString();
+                            lastName = reader["LastName"].ToString();
+                        }
+                    }
+                }
+
+                // Insert into AttendanceReport
+                string reportQuery = "INSERT INTO AttendanceReport (LRN, FirstName, LastName, AttendanceDate, DayOfWeek, AttendanceStatus, TimeIn) " +
+                                     "VALUES (@LRN, @FirstName, @LastName, CONVERT(date, GETDATE()), DATENAME(dw, GETDATE()), 'Present', GETDATE())";
+                using (SqlCommand reportCmd = new SqlCommand(reportQuery, con))
+                {
+                    reportCmd.Parameters.AddWithValue("@LRN", lrn);
+                    reportCmd.Parameters.AddWithValue("@FirstName", firstName);
+                    reportCmd.Parameters.AddWithValue("@LastName", lastName);
+                    reportCmd.ExecuteNonQuery();
                 }
             }
 
-            // Return success response
             return Request.CreateResponse(HttpStatusCode.OK, "Attendance entered successfully");
         }
         catch (SqlException ex)
         {
-            if (ex.Number == 2627) // Unique constraint violation error number
+            if (ex.Number == 2627)
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "LRN already exists in the attendance records.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have already signed in today.");
             }
             else
             {
-                // Return error response for other exceptions
                 return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }
     }
-    // Method to check if LRN has already signed in
-    private bool IsLRNAlreadySignedIn(string lrn)
+
+    private bool IsLRNAlreadySignedInToday(string lrn)
     {
         using (SqlConnection con = new SqlConnection(connectionString))
         {
             con.Open();
-            string query = "SELECT COUNT(1) FROM StudentAttendance WHERE LRN = @LRN";
+            string query = "SELECT COUNT(1) FROM StudentAttendance WHERE LRN = @LRN AND CAST(Date AS DATE) = CAST(GETDATE() AS DATE)";
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
                 cmd.Parameters.AddWithValue("@LRN", lrn);
@@ -119,8 +141,6 @@ public class AttendanceController : ApiController
         }
     }
 
-
-    // Method to check if LRN exists in the mnhs table
     private bool IsLRNExistInMnhs(string lrn)
     {
         using (SqlConnection con = new SqlConnection(connectionString))
@@ -135,55 +155,57 @@ public class AttendanceController : ApiController
             }
         }
     }
+
     [HttpPost]
     [Route("api/attendance/leaveattendance")]
     public HttpResponseMessage LeaveAttendance([FromBody] string lrn)
     {
         try
         {
-            // Check if LRN exists in the mnhs table
             if (!IsLRNExistInMnhs(lrn))
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "LRN does not exist in mnhs table.");
             }
 
-            // Check if LRN has not signed in yet
-            if (!IsLRNAlreadySignedIn(lrn))
+            if (!IsLRNAlreadySignedInToday(lrn))
             {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have not signed in yet.");
+                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have not signed in yet today.");
             }
 
-            // Create a connection to the database
             using (SqlConnection con = new SqlConnection(connectionString))
             {
                 con.Open();
 
-                // Create a SQL command to update TimeOut for the specified LRN
-                string query = "UPDATE StudentAttendance SET TimeOut = GETDATE() WHERE LRN = @LRN AND TimeOut IS NULL";
+                // Update TimeOut in StudentAttendance
+                string query = "UPDATE StudentAttendance SET TimeOut = GETDATE() WHERE LRN = @LRN AND TimeOut IS NULL AND CAST(Date AS DATE) = CAST(GETDATE() AS DATE)";
                 using (SqlCommand cmd = new SqlCommand(query, con))
                 {
-                    cmd.Parameters.AddWithValue("@LRN", lrn); // Add LRN as parameter
-
-                    // Execute the command
+                    cmd.Parameters.AddWithValue("@LRN", lrn);
                     int rowsAffected = cmd.ExecuteNonQuery();
 
-                    // Check if no rows were affected (LRN already timed out)
                     if (rowsAffected == 0)
                     {
                         return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have already signed out.");
                     }
                 }
+
+                // Update TimeOut in AttendanceReport
+                string reportQuery = "UPDATE AttendanceReport SET TimeOut = GETDATE() WHERE LRN = @LRN AND TimeIn IS NOT NULL AND TimeOut IS NULL AND CAST(AttendanceDate AS DATE) = CAST(GETDATE() AS DATE)";
+                using (SqlCommand reportCmd = new SqlCommand(reportQuery, con))
+                {
+                    reportCmd.Parameters.AddWithValue("@LRN", lrn);
+                    reportCmd.ExecuteNonQuery();
+                }
             }
 
-            // Return success response
             return Request.CreateResponse(HttpStatusCode.OK, "Attendance left successfully");
         }
         catch (Exception ex)
         {
-            // Return error response if an exception occurs
             return Request.CreateErrorResponse(HttpStatusCode.InternalServerError, ex.Message);
         }
     }
+
     public class AttendanceData
     {
         public string LRN { get; set; }
@@ -195,5 +217,4 @@ public class AttendanceController : ApiController
         public string Grade { get; set; }
         public string Section { get; set; }
     }
-
 }

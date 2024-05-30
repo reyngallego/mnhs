@@ -5,7 +5,7 @@
 <head runat="server">
     <title>Login</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-        <link href="styles/login.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
+    <link href="styles/login.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
 
     <script type="text/javascript">
         function validateForm() {
