@@ -423,6 +423,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\icons\alert.jpg" />
     <Content Include="images\icons\dashboard.png" />
     <Content Include="images\icons\dashboard\attendance.png" />
     <Content Include="images\icons\dashboard\day.png" />
@@ -433,7 +434,12 @@
     <Content Include="images\icons\idgenerator.png" />
     <Content Include="images\icons\student.png" />
     <Content Include="images\icons\attendance.png" />
+    <Content Include="images\icons\sunncload.jpg" />
+    <Content Include="images\icons\time-in.jpg" />
+    <Content Include="images\icons\time-out.jpg" />
     <Content Include="images\logomnhs.png" />
+    <Content Include="dashboard.aspx" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\attendance.js" />
     <Content Include="js\student.js" />
     <Content Include="mnhs.aspx" />
@@ -459,7 +465,6 @@
     <Content Include="scripts\realtime.js" />
     <Content Include="scripts\WebSocketManager.js" />
     <Content Include="attendance.aspx" />
-    <Content Include="dashboard.aspx" />
     <Content Include="styles\dashboard.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -470,7 +475,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
-    <Compile Include="Controllers\parentController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\mnhsController.cs" />
     <Compile Include="Controllers\QueueController.cs" />
@@ -484,6 +488,13 @@
     </Compile>
     <Compile Include="Controllers\Employeecontroller.cs" />
     <Compile Include="Controllers\EmployeeDataAccess.cs" />
+    <Compile Include="dashboard.aspx.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="dashboard.aspx.designer.cs">
+      <DependentUpon>dashboard.aspx</DependentUpon>
+    </Compile>
     <Compile Include="mnhs.aspx.cs">
       <DependentUpon>mnhs.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -516,13 +527,6 @@
     </Compile>
     <Compile Include="attendance.aspx.designer.cs">
       <DependentUpon>attendance.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="dashboard.aspx.cs">
-      <DependentUpon>dashboard.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="dashboard.aspx.designer.cs">
-      <DependentUpon>dashboard.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

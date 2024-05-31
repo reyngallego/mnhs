@@ -1,14 +1,26 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\mnhs\\",
+  "WorkspaceRootPath": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|c:\\users\\reynm\\onedrive\\desktop\\new folder\\mnhs\\webapplication3\\styles\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|c:\\users\\jaosh\\desktop\\mnhssystem\\mnhs\\webapplication3\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\webapplication3\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\js\\dashboard.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\webapplication3\\styles\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\styles\\dashboard.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|c:\\users\\reynm\\onedrive\\desktop\\new folder\\mnhs\\webapplication3\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\dashboard.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\webapplication3\\attendance.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\attendance.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,34 +30,68 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
+              "Title": "attendance.aspx",
+              "DocumentMoniker": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\attendance.aspx",
+              "RelativeDocumentMoniker": "WebApplication3\\attendance.aspx",
+              "ToolTip": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\attendance.aspx",
+              "RelativeToolTip": "WebApplication3\\attendance.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-27T08:27:30.459Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "mnhs.aspx",
+              "DocumentMoniker": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\mnhs.aspx",
+              "RelativeDocumentMoniker": "WebApplication3\\mnhs.aspx",
+              "ToolTip": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\mnhs.aspx",
+              "RelativeToolTip": "WebApplication3\\mnhs.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-17T03:03:50.979Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "dashboard.css",
-              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\mnhs\\WebApplication3\\styles\\dashboard.css",
+              "DocumentMoniker": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\styles\\dashboard.css",
               "RelativeDocumentMoniker": "WebApplication3\\styles\\dashboard.css",
-              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\mnhs\\WebApplication3\\styles\\dashboard.css",
+              "ToolTip": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\styles\\dashboard.css",
               "RelativeToolTip": "WebApplication3\\styles\\dashboard.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAYAAAA",
+              "ViewState": "AQIAAE8AAAAAAAAAAAAAAFgAAAAYAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-05-16T06:42:45.045Z",
-              "IsPinned": true,
+              "WhenOpened": "2024-05-27T02:25:28.369Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "dashboard.aspx",
+              "DocumentMoniker": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\dashboard.aspx",
+              "RelativeDocumentMoniker": "WebApplication3\\dashboard.aspx",
+              "ToolTip": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\dashboard.aspx",
+              "RelativeToolTip": "WebApplication3\\dashboard.aspx",
+              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
+              "WhenOpened": "2024-05-17T06:13:43.476Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "dashboard.aspx",
-              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\mnhs\\WebApplication3\\dashboard.aspx",
-              "RelativeDocumentMoniker": "WebApplication3\\dashboard.aspx",
-              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\mnhs\\WebApplication3\\dashboard.aspx",
-              "RelativeToolTip": "WebApplication3\\dashboard.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-05-16T06:36:47.783Z",
-              "EditorCaption": ""
+              "Title": "dashboard.js",
+              "DocumentMoniker": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\js\\dashboard.js",
+              "RelativeDocumentMoniker": "WebApplication3\\js\\dashboard.js",
+              "ToolTip": "C:\\Users\\jaosh\\Desktop\\mnhssystem\\mnhs\\WebApplication3\\js\\dashboard.js",
+              "RelativeToolTip": "WebApplication3\\js\\dashboard.js",
+              "ViewState": "AQIAAAIAAAAAAAAAAAAQwEcAAABGAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-05-27T08:27:10.105Z"
             }
           ]
         }

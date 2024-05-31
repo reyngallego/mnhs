@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication3 {
-    
-    
-    public partial class mnhs {
-        
+namespace YourNamespace
+{
+
+
+    public partial class Default
+    {
+
         /// <summary>
         /// form1 control.
         /// </summary>
