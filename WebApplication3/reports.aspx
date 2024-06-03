@@ -101,7 +101,7 @@
 
 
             </div>
-            <div class="studentdata">
+            <div class="studentdata1">
                 <h4 id="studentName">Student Name: </h4>
                 <h4 id="learnerReferenceNumber">Learner Reference Number: </h4>
                 <h4 id="gradeAndSection">Grade and Section:</h4>
@@ -111,7 +111,7 @@
     </div>
 
     <div id="report-details">
-        <div class="box">
+        <div class="box1">
             <!-- Detailed Data -->
             <h4>Detailed Data</h4>
             <table id="attendanceTable">

@@ -441,6 +441,7 @@
     <Content Include="images\logomnhs.png" />
     <Content Include="images\MWB1.png" />
     <Content Include="js\attendance.js" />
+    <Content Include="js\dashboard.js" />
     <Content Include="js\generate_id.js" />
     <Content Include="login.aspx" />
     <Content Include="scripts\html2canvas.js" />
@@ -477,6 +478,7 @@
     <Content Include="styles\idgenerator.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reports.css" />
+    <Content Include="styles\studentlist.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>

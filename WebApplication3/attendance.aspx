@@ -58,8 +58,12 @@
   </script>
 </head>
 <body>
+    <header>
+      <div class="header1">
+     <h1>Attendance</h1>
+          </div>
+ </header>
     <div class="container">
-        <h1 class="mt-5">Attendance</h1>
         <div class="form-group">
             <label for="searchInput">Enter/Leave Student LRN:</label>
             <div class="input-group">
