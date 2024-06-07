@@ -8,7 +8,7 @@ namespace WebApplication3.Controllers
     public class parentController : ApiController
     {
         // Connection string to your database
-        private string connectionString = "Data Source=DESKTOP-1K0L57N;Initial Catalog=capstone;Integrated Security=True";
+        private string connectionString = "Data Source=ULUPONG-DESKTOP\\SQLEXPRESS;Initial Catalog=moonwalk;Integrated Security=True";
 
         // Endpoint to fetch parent contact by LRN
         [HttpGet]

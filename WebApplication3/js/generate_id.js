@@ -16,9 +16,9 @@
                         <td>${student.Section}</td>
                         <td>${student.Adviser}</td>
                         <td>
-                      <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#generateIdModal" onclick="generateIdModal('${student.LRN}')">
-    Generate ID
-</button>
+                            <button type="button" class="btn btn-primary btn-sm mb-3" data-toggle="modal" data-target="#generateIdModal" onclick="generateIdModal('${student.LRN}')">
+                                Generate ID
+                            </button>
                         </td>
                     </tr>`;
                 $("#studentTable tbody").append(row);
@@ -57,8 +57,6 @@ function generateIdModal(LRN) {
         }
     });
 }
-
-
 
 // Ensure that the table is populated on document ready
 $(document).ready(function () {

@@ -434,6 +434,7 @@
     <Content Include="images\icons\reports.png" />
     <Content Include="images\icons\logout.png" />
     <Content Include="images\icons\idgenerator.png" />
+    <Content Include="images\icons\search.png" />
     <Content Include="images\icons\student.png" />
     <Content Include="images\icons\attendance.png" />
     <Content Include="images\id\logo.png" />
@@ -475,7 +476,7 @@
     <Content Include="styles\dashboard.css" />
     <Content Include="styles\idLayout.css" />
     <Content Include="generateid.aspx" />
-    <Content Include="styles\idgenerator.css" />
+    <Content Include="styles\idGenerator.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reports.css" />
     <Content Include="styles\studentlist.css" />

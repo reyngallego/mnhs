@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="studentlist.aspx.cs" Inherits="WebApplication3.studentlist" %>
+﻿﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="studentlist.aspx.cs" Inherits="WebApplication3.studentlist" %>
 
 <!DOCTYPE html>
 
@@ -14,9 +14,9 @@
     <script src="js/student.js"></script>
 
     <script>
-      
-         
-    </script>
+
+
+</script>
 </head>
 <body>
 <header>
