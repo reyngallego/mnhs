@@ -126,6 +126,8 @@ public class AttendanceController : ApiController
         }
     }
 
+
+
     private bool IsLRNAlreadySignedInToday(string lrn)
     {
         using (SqlConnection con = new SqlConnection(connectionString))
@@ -189,8 +191,19 @@ public class AttendanceController : ApiController
                     }
                 }
 
-                // Update TimeOut in AttendanceReport
-                string reportQuery = "UPDATE AttendanceReport SET TimeOut = GETDATE() WHERE LRN = @LRN AND TimeIn IS NOT NULL AND TimeOut IS NULL AND CAST(AttendanceDate AS DATE) = CAST(GETDATE() AS DATE)";
+                // Update TimeOut in AttendanceReport, increment TotalPresent, and set ReportMonth and ReportYear
+                string reportQuery = @"
+                UPDATE AttendanceReport 
+                SET 
+                    TimeOut = GETDATE(), 
+                    TotalPresent = CASE WHEN AttendanceStatus = 'Present' THEN TotalPresent + 1 ELSE TotalPresent END,
+                    ReportMonth = DATENAME(MONTH, GETDATE()),
+                    ReportYear = YEAR(GETDATE())
+                WHERE 
+                    LRN = @LRN 
+                    AND TimeIn IS NOT NULL 
+                    AND TimeOut IS NULL 
+                    AND CAST(AttendanceDate AS DATE) = CAST(GETDATE() AS DATE)";
                 using (SqlCommand reportCmd = new SqlCommand(reportQuery, con))
                 {
                     reportCmd.Parameters.AddWithValue("@LRN", lrn);

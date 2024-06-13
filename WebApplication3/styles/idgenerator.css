@@ -5,6 +5,7 @@
     flex-direction: column; /* Arrange items vertically */
     align-items: flex-start; /* Align items to the left */
     background-color:aquamarine!important;
+    width:100%!important;
 }
 
 id-preview-modal {

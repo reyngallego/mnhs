@@ -434,6 +434,7 @@
     <Content Include="images\icons\reports.png" />
     <Content Include="images\icons\logout.png" />
     <Content Include="images\icons\idgenerator.png" />
+    <Content Include="images\icons\search.png" />
     <Content Include="images\icons\student.png" />
     <Content Include="images\icons\attendance.png" />
     <Content Include="images\id\logo.png" />
@@ -488,6 +489,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\parentController.cs" />
     <Compile Include="Controllers\mnhsController.cs" />
     <Compile Include="Controllers\generateidController.cs" />
@@ -619,6 +621,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
     <Folder Include="Views\admin\" />
+    <Folder Include="Views\Dashboard\" />
     <Folder Include="Views\Purpose\" />
     <Folder Include="Views\Student\" />
   </ItemGroup>

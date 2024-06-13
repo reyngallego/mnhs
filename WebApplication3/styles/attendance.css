@@ -1,8 +1,5 @@
 ﻿/* Custom styles for the attendance page */
 
-h1 {
-    background-color: forestgreen;
-}
 
 /* Container styles */
 .container {
@@ -12,12 +9,18 @@ h1 {
     flex-direction: column; /* Arrange items vertically */
     align-items: flex-start; /* Align items to the left */
 }
-
+.header2{
+    margin-top:20px;
+    margin-bottom:20px;
+    
+}
 /* Search input styles */
 .form-group {
     margin-bottom: 20px;
 }
-
+.long-input {
+    width: 800px; /* Adjust the value as needed */
+}
 /* Table styles */
 #attendanceTable {
     width: 100%;
@@ -42,4 +45,20 @@ h1 {
     border-color: #f5c6cb;
     color: #721c24;
 }
+/*table*/
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+    table thead {
+        background-color: green;
+        color: white;
+    }
+
+    table th, table td {
+        padding: 8px;
+        text-align: left;
+    }
 

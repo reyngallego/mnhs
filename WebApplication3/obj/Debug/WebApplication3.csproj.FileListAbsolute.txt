@@ -332,6 +332,8 @@ C:\Users\reyntot\Documents\mnhs\WebApplication3\WebApplication3\bin\ru-ru\JavaSc
 C:\Users\reyntot\Documents\mnhs\WebApplication3\WebApplication3\obj\Debug\WebApplication3.dll
 C:\Users\reyntot\Documents\mnhs\WebApplication3\WebApplication3\obj\Debug\WebApplication3.pdb
 C:\Users\reyntot\Documents\mnhs\WebApplication3\WebApplication3\obj\Debug\WebApplication3.csprojResolveAssemblyReference.cache
+C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.csproj.AssemblyReference.cache
+C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.csproj.CoreCompileInputs.cache
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\ApplicationInsights.config
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\roslyn\csc.exe
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
@@ -509,8 +511,6 @@ C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\System.Web.W
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\System.Web.Helpers.xml
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\System.Web.Mvc.xml
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\bin\ru-ru\JavaScriptEngineSwitcher.Core.resources.dll
-C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.csproj.AssemblyReference.cache
-C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.csproj.CoreCompileInputs.cache
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebAppli.18867FDF.Up2Date
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.dll
 C:\Users\reynm\OneDrive\Desktop\New folder\mnhs\WebApplication3\obj\Debug\WebApplication3.pdb

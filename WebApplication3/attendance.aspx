@@ -65,9 +65,12 @@
  </header>
     <div class="container">
         <div class="form-group">
-            <label for="searchInput">Enter/Leave Student LRN:</label>
+            <div class="header2">
+            <h1>SCAN RESULT</h1>
+             </div>
+            <label for="searchInput">Scan Student LRN:</label>
             <div class="input-group">
-                <input type="text" id="lrnInput" placeholder="Enter LRN">
+    <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input">
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button" onclick="scanLRN()">Scan</button>
                 </div>
