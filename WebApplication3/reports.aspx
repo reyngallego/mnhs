@@ -7,12 +7,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
-<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/moment/min/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <script type="text/javascript" src="../js/reports.js"></script>
 
-
+    
     <link href="styles/reports.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
     <link href="styles/custom.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
 
@@ -89,17 +90,18 @@
                 <div id="actions">
                     <img src="/images/icons/export.png" alt="Share" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 5px"> <span style="font-size: 20px; color: black;"></span>
                     <img src="/images/icons/download.png" alt="Download" style="width: 20px; height: 25px; vertical-align: middle;margin:0px 5px"> <span style="font-size: 20px; color: black;"></span>
-                    <img src="/images/icons/printer.png" alt="Printer" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 10px"> <span style="font-size: 20px; color: black;"></span>
+                    <button id="print-button" type="button" style="border: none; background: none;">
+                        <img src="/images/icons/printer.png" alt="Printer" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 10px">
+                        <span style="font-size: 20px; color: black;"></span>
+                    </button>
                 </div>
-           <div class="search-container">
-    <form action="javascript:searchStudent();">
-        <input type="text" placeholder="Search Student" name="search">
-        <span class="calendar-icon" id="calendarIcon" style="cursor: pointer;">&#128197;</span> <!-- Calendar icon -->
-        <input type="text" id="dateRange" style="display:none;">
-    </form>
-</div>
-
-
+                <div class="search-container">
+                    <form action="javascript:searchStudent();">
+                        <input type="text" placeholder="Search Student" name="search">
+                        <span class="calendar-icon" id="calendarIcon" style="cursor: pointer;">&#128197;</span> <!-- Calendar icon -->
+                        <input type="text" id="dateRange" style="display:none;">
+                    </form>
+                </div>
             </div>
             <div class="studentdata1">
                 <h4 id="studentName">Student Name: </h4>

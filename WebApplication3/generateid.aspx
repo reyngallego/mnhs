@@ -8,34 +8,6 @@
     <link href="/styles/idLayout.css" rel="stylesheet" />
     <link href="/styles/idGenerator.css" rel="stylesheet" />
     <link href="/styles/custom.css" rel="stylesheet" />
-    <style>
-        #id-generator-search {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .filter-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .search-input {
-            height: 35px;
-            border: 1px solid black;
-            background-color: white;
-            border-radius: 5px;
-            width: 300px;
-        }
-        .search-icon {
-            height: 35px;
-            margin-left: 5px;
-        }
-    </style>
 </head>
 <body>
     <header>
@@ -47,10 +19,10 @@
             <form action="/search" method="GET" class="search-container">
                 <input type="text" placeholder="Search students..." class="search-input" id="search-input">
                 <img src="/images/icons/search.png" alt="Search" class="search-icon"> 
-                <button type="submit" class="filter-button">Filter</button>
+                <label class="filter-label"><strong>Filter</strong></label>
             </form>
             <div class="filter-section">
-                <label for="grade-filter">Grade:</label>
+                <label for="grade-filter" class="filter-label" >Grade:</label>
                 <select id="grade-filter" class="form-control">
                     <option value="all">All</option>
                     <option value="Grade 7">Grade 7</option>
@@ -58,7 +30,7 @@
                     <option value="Grade 9">Grade 9</option>
                     <option value="Grade 10">Grade 10</option>
                 </select>
-                <label for="section-filter">Section:</label>
+                <label for="section-filter" class="filter-label">Section:</label>
                 <select id="section-filter" class="form-control">
                     <option value="all">All</option>
                 </select>

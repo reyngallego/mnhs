@@ -42,7 +42,7 @@ function generateIdModal(LRN) {
             // Populate the modal fields with student data
             $("#student-lrn").text(" LRN: " + LRN);
             $("#student-name").text(" " + student.FirstName + " " + student.LastName);
-            $("#student-grade-section").text("" + student.Grade + " " + student.Section);
+            $("#student-grade-section").text("" + student.Grade + " - " + student.Section);
             $("#student-adviser").text(" " + student.Adviser);
             $("#ParentFullName").text(" " + student.ParentFullName);
             $("#studentaddress").text(" " + student.Address);
