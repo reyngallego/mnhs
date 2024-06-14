@@ -444,6 +444,7 @@
     <Content Include="js\attendance.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\generate_id.js" />
+    <Content Include="js\reports.js" />
     <Content Include="login.aspx" />
     <Content Include="scripts\html2canvas.js" />
     <Content Include="scripts\html2canvas.min.js" />

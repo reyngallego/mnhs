@@ -216,3 +216,9 @@ h4 {
         padding: 6px;
     }
 }
+
+@media print {
+    h2, .topnav {
+        display: none;
+    }
+}
