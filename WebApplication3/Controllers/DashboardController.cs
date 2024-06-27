@@ -9,7 +9,7 @@ namespace WebApplication3.Controllers
 {
     public class DashboardController : ApiController
     {
-        private string connectionString = "Data Source=DESKTOP-1K0L57N;Initial Catalog=capstone;Integrated Security=True";
+        private string connectionString = "Data Source=ULUPONG-DESKTOP\\SQLEXPRESS;Initial Catalog=moonwalk;Integrated Security=True";
 
         [HttpGet]
         [Route("api/generateid/GetDashboardData")]

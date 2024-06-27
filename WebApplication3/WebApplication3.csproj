@@ -423,6 +423,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\moonwalkLogo.jpeg" />
     <Content Include="images\icons\dashboard.png" />
     <Content Include="images\icons\dashboard\attendance.png" />
     <Content Include="images\icons\dashboard\day.png" />
@@ -440,7 +441,11 @@
     <Content Include="images\id\logo.png" />
     <Content Include="images\id\sample.jpg" />
     <Content Include="images\logomnhs.png" />
+    <Content Include="images\logopup.png" />
+    <Content Include="images\moonwalkLogo.png" />
     <Content Include="images\MWB1.png" />
+    <Content Include="images\malasaquitLogo.png" />
+    <Content Include="index.aspx" />
     <Content Include="js\attendance.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\generate_id.js" />
@@ -478,6 +483,7 @@
     <Content Include="styles\idLayout.css" />
     <Content Include="generateid.aspx" />
     <Content Include="styles\idgenerator.css" />
+    <Content Include="styles\index.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reports.css" />
     <Content Include="styles\studentlist.css" />
@@ -497,6 +503,13 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>

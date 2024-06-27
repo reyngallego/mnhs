@@ -10,7 +10,7 @@ namespace WebApplication3.Controllers
 {
     public class mnhsController : ApiController
     {
-        private string connectionString = "Data Source=DESKTOP-1K0L57N;Initial Catalog=capstone;Integrated Security=True";
+        private string connectionString = "Data Source=ULUPONG-DESKTOP\\SQLEXPRESS;Initial Catalog=moonwalk;Integrated Security=True";
 
         [HttpPost]
         [Route("api/mnhs/InsertData")]
