@@ -3,67 +3,73 @@
     height: 100%;
     margin: 0;
     padding: 0;
+    overflow: hidden; /* Disable scrolling */
 }
 
-form {
+/* LEFT PANE */
+.left-column {
     display: flex;
-    width: 100%;
-}
-
-.left-pane, .right-pane {
-    width: 50%;
-    height: 100%;
-    position: relative;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Make sure the left column takes the full height of the viewport */
+    background-color: #f8f8f8;
 }
 
 .left-pane {
-    background-image: url('../images/MWB1.png');
-    background-size: cover;
-    background-position: center;
-}
-
-.overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: #FFFFFF; /* White in hex */
-    opacity: 0.4; /* 40% opacity */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Make sure the pane grows to fill the available space */
 }
 
 .left-pane-content {
-    position: relative;
-    z-index: 1;
     text-align: center;
-    width: 80%; /* 80% width */
-    margin: 0 auto; /* Center horizontally */
-    height: 100%;
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    transform: translateY(-15%); /* Move upwards by 15% */
 }
 
-.logo {
-    width: 250px;
-    height: 250px;
-    margin-bottom: 10px;
+.landing-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    margin-top: 150px;
+    border-radius: 50%; /* Make the logo circular */
+    -webkit-box-shadow: 0 7px 18px rgba(0, 0, 0, 0.4); /* Add shadow to logo */
+    -moz-box-shadow: 0 7px 18px rgba(0, 0, 0, 0.4);
+    box-shadow: 0 7px 18px rgba(0, 0, 0, 0.4);
+}
+
+.landing-logo img {
+    width: 200px;
+    height: 200px;
 }
 
 .title {
-    font-size: 50px;
+    font-size: 40px;
+    width: 70%;
     color: #000000; /* Black in hex */
     margin-bottom: 20px;
-    line-height: 4rem;
+    line-height: 3rem;
+    -webkit-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); /* Add shadow to title */
+    -moz-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    -ms-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    -o-text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .search-container {
     display: flex;
     width: 100%;
     max-width: 550px;
-    max-height: 50px;
+    height: 50px;
+    -webkit-box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3); /* Add shadow to search bar container */
+    -moz-box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px; /* Add border radius to container */
 }
 
 .search-bar {
@@ -76,44 +82,88 @@ form {
 }
 
 .search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 80px;
     padding: 10px;
     font-size: 16px;
-    border: 1px solid #CCCCCC; /* Light gray in hex */
+    border: none;
     border-radius: 0 5px 5px 0;
-    background-color: #4C844B; /* Green in hex */
-    color: #FFFFFF; /* White in hex */
+    background-color: #4C844B;
     cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Add transition for background color */
 }
 
-.search-icon {
-    height: 25px;
-}
+    .search-button .search-icon {
+        background-image: url(../images/icons/search-white.png);
+        background-size: cover; /* Ensure the image covers the entire div */
+        height: 25px; /* Adjust height */
+        width: 26px; /* Adjust width */
+    }
+
+    .search-button:hover {
+        border: 1px solid #4C844B;
+        background-color: #FFFFFF;
+    }
+
+        .search-button:hover .search-icon {
+            background-image: url(../images/icons/search-green.png);
+        }
 
 .footer-landing {
-    position: absolute;
-    bottom: 10px;
-    width: 100%;
+    padding: 20px 0 5px 0;
+    margin-top: 20px;
     text-align: center;
+    background-color: #4C844B;
+    width: 120%;
+    margin-left: -10%;
 }
 
 .footer-images {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    margin-bottom: 10px; /* Add some space between the images and the caption */
+    gap: 30px;
+    margin-bottom: 20px; /* Add some space between the images and the caption */
 }
 
 .footer-logo {
-    height: 80px;
+    height: 60px;
 }
 
 .footer-caption {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 400;
-    color: #000000; /* Black in hex */
+    color: #ffffff;
+    width: 80%;
+    margin: auto;
 }
 
-.right-pane {
-    background-color: #FFFFFF; /* White in hex */
+/* RIGHT PANE */
+.main-content {
+    background-image: url(../images/MWB1.png);
+    background-size: cover;
+    background-position: center;
+    margin: 5px; /* Add margin to shrink the right pane */
+    border-radius: 10px; /* Add border radius */
+}
+
+/* Disable horizontal and vertical scrolling */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Media Query for screens 320px or smaller */
+@media only screen and (max-width: 680px) {
+    .main-content {
+        display: none; /* Hide the right pane */
+    }
+
+    .left-column {
+        width: 100%; /* Ensure the left pane takes the full width */
+    }
+
+    .landing-logo {
+        margin-top: 100px;
+    }
 }

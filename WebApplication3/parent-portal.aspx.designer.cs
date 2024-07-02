@@ -11,7 +11,7 @@ namespace WebApplication3
 {
 
 
-    public partial class index
+    public partial class parent_portal
     {
 
         /// <summary>

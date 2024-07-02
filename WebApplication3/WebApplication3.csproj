@@ -423,6 +423,11 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="images\icons\admin-green.png" />
+    <Content Include="images\icons\admin-white.png" />
+    <Content Include="images\icons\faculty-green.png" />
+    <Content Include="images\icons\faculty-white.png" />
+    <Content Include="images\icons\search-green.png" />
     <Content Include="images\moonwalkLogo.jpeg" />
     <Content Include="images\icons\dashboard.png" />
     <Content Include="images\icons\dashboard\attendance.png" />
@@ -445,16 +450,20 @@
     <Content Include="images\moonwalkLogo.png" />
     <Content Include="images\MWB1.png" />
     <Content Include="images\malasaquitLogo.png" />
+    <Content Include="images\icons\search-white.png" />
     <Content Include="index.aspx" />
     <Content Include="js\attendance.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\generate_id.js" />
     <Content Include="js\reports.js" />
     <Content Include="login.aspx" />
+    <Content Include="parent-portal.aspx" />
     <Content Include="scripts\html2canvas.js" />
     <Content Include="scripts\html2canvas.min.js" />
     <Content Include="js\student.js" />
     <Content Include="mnhs.aspx" />
+    <Content Include="stud-attendance-summary.aspx" />
+    <Content Include="stud-search-list.aspx" />
     <Content Include="styles\attendance.css" />
     <Content Include="studentlist.aspx" />
     <Content Include="scripts\ai.0.22.9-build00167.js" />
@@ -486,6 +495,7 @@
     <Content Include="styles\index.css" />
     <Content Include="styles\login.css" />
     <Content Include="styles\reports.css" />
+    <Content Include="styles\stud-attendance-summary.css" />
     <Content Include="styles\studentlist.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -524,6 +534,27 @@
     </Compile>
     <Compile Include="mnhs.aspx.designer.cs">
       <DependentUpon>mnhs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="parent-portal.aspx.cs">
+      <DependentUpon>parent-portal.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="parent-portal.aspx.designer.cs">
+      <DependentUpon>parent-portal.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stud-attendance-summary.aspx.cs">
+      <DependentUpon>stud-attendance-summary.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stud-attendance-summary.aspx.designer.cs">
+      <DependentUpon>stud-attendance-summary.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="stud-search-list.aspx.cs">
+      <DependentUpon>stud-search-list.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="stud-search-list.aspx.designer.cs">
+      <DependentUpon>stud-search-list.aspx</DependentUpon>
     </Compile>
     <Compile Include="studentlist.aspx.cs">
       <DependentUpon>studentlist.aspx</DependentUpon>
