@@ -14,10 +14,28 @@
                 <img src="images/logomnhs.png" alt="Logo" class="banner-logo">
             </div>
         </div>
-        <div>
-            <!-- Content goes here -->
+        <div class="container">
+            <h1>Student Search Results</h1>
+            <table id="stud-search-res">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Grade and Section</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Harris, Leanne  F.</td>
+                        <td>11 - Gold</td>
+                    </tr>
+                    <tr>
+                        <td>Harris, Mohammad Jaoshannee O.</td>
+                        <td>11 - Aluminum</td>
+                    </tr>
+                </tbody>
+            </table>
+            <button type="button" class="close-button">Close</button>
         </div>
     </form>
 </body>
 </html>
- 

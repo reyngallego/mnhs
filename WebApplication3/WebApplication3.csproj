@@ -457,6 +457,7 @@
     <Content Include="js\generate_id.js" />
     <Content Include="js\reports.js" />
     <Content Include="login.aspx" />
+    <Content Include="parent-portal-placeholder.aspx" />
     <Content Include="parent-portal.aspx" />
     <Content Include="scripts\html2canvas.js" />
     <Content Include="scripts\html2canvas.min.js" />
@@ -494,6 +495,7 @@
     <Content Include="styles\idgenerator.css" />
     <Content Include="styles\index.css" />
     <Content Include="styles\login.css" />
+    <Content Include="styles\parent-portal-placeholder.css" />
     <Content Include="styles\reports.css" />
     <Content Include="styles\stud-attendance-summary.css" />
     <Content Include="styles\stud-search-list.css" />
@@ -535,6 +537,13 @@
     </Compile>
     <Compile Include="mnhs.aspx.designer.cs">
       <DependentUpon>mnhs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="parent-portal-placeholder.aspx.cs">
+      <DependentUpon>parent-portal-placeholder.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="parent-portal-placeholder.aspx.designer.cs">
+      <DependentUpon>parent-portal-placeholder.aspx</DependentUpon>
     </Compile>
     <Compile Include="parent-portal.aspx.cs">
       <DependentUpon>parent-portal.aspx</DependentUpon>

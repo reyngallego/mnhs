@@ -20,7 +20,9 @@
             <div class="row no-scroll">
                 <!-- LEFT PANE -->
                 <div class="col-md-6 left-column">
+                    
                     <div class="left-pane">
+                        <div class="left-pane-overlay"></div>
                         <div class="left-pane-content">
                             <img src="images/logomnhs.png" alt="Logo" class="landing-logo">
                             <label class="title">Student Attendance Monitoring System</label>
@@ -57,7 +59,7 @@
             var isContentLoading = false;
 
             // Load the student summary content on page load
-            $(".content-wrapper").load("stud-attendance-summary.aspx", function () {
+            $(".content-wrapper").load("stud-search-list.aspx", function () {
                 isContentLoading = false;
                 attachEventHandlers();
             });
