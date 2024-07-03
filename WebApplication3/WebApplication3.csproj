@@ -496,6 +496,7 @@
     <Content Include="styles\login.css" />
     <Content Include="styles\reports.css" />
     <Content Include="styles\stud-attendance-summary.css" />
+    <Content Include="styles\stud-search-list.css" />
     <Content Include="styles\studentlist.css" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

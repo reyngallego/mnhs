@@ -144,7 +144,6 @@
     background-image: url(../images/MWB1.png);
     background-size: cover;
     background-position: center;
-    margin: 5px; /* Add margin to shrink the right pane */
     border-radius: 10px; /* Add border radius */
 }
 
