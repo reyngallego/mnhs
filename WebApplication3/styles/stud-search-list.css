@@ -12,7 +12,7 @@
 
 .content-wrapper {
     width: 110%;
-    transform: translateX(-15px);
+    transform: translateX(-1.5%);
 }
 
 .banner {
@@ -25,7 +25,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.6); /* White with 50% opacity */
+    background-color: rgba(255, 255, 255, 0.6); /* White with 60% opacity */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -49,18 +49,17 @@
 
 /* Styles for the container and its contents */
 .container {
-    width: 80%; /* Width of the container */
-    margin: auto; /* Center the container */
-    background-color: #FFFFFF; /* Background color */
-    padding: 20px; /* Padding around the content */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Optional: Add some shadow */
-    margin-top: 20px; /* Optional: Add some margin at the top */
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    transform: translateX(-3%);
+    width: 80%;
+    height: 94%;
+    margin-left: 7%;
+    margin-top: 3%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
 }
+
 
     .container h1 {
         font-size: 24px; /* Font size */
@@ -69,58 +68,40 @@
     }
 
 #stud-search-res {
-    width: 100%; /* Table width */
-    border-collapse: collapse; /* Collapse borders */
-    margin-bottom: 20px; /* Margin bottom */
-
-    border-radius: 5px;
+    width: 100%; /* Make the table cover the entire width of the container */
+    border-collapse: collapse; /* Remove space between table cells */
 }
 
+    #stud-search-res thead {
+        background-color: #f2f2f2; /* Light gray background for the header */
+    }
+
     #stud-search-res th, #stud-search-res td {
-        border-bottom: 1px solid #000000; /* Border bottom only */
+        padding: 10px; /* Padding inside cells */
+        text-align: left; /* Left-align text */
     }
 
     #stud-search-res th {
-        background-color: #054e00; /* Background color */
-        color: #FFFFFF; /* Font color */
-        font-size: 16px; /* Font size */
-        font-weight: 600; /* Font weight */
-        padding: 10px; /* Padding */
-        border-top: 1px solid #000000; /* Border top */
+        width: 60%; /* 6:4 ratio for table headers */
     }
 
     #stud-search-res td {
-        font-size: 16px; /* Font size */
-        font-weight: 400; /* Font weight */
-        padding: 10px; /* Padding */
+        width: 40%; /* 6:4 ratio for table cells */
+        border-bottom: 1px solid #ddd; /* Light gray border for table rows */
     }
 
-        /* Adjust column widths to 6:4 ratio */
-        #stud-search-res th:nth-child(1),
-        #stud-search-res td:nth-child(1) {
-            width: 60%;
-        }
-
-        #stud-search-res th:nth-child(2),
-        #stud-search-res td:nth-child(2) {
-            width: 40%;
-        }
+#footer-button {
+    margin-top: 20px; /* Add some margin at the top */
+}
 
 .close-button {
-    background-color: #D40000; /* Background color */
-    color: #FFFFFF; /* Font color */
-    font-weight: 600; /* Font weight */
-    font-size: 16px; /* Font size */
-    width: 100%; /* Full width */
-    padding: 10px; /* Padding */
-    border: none; /* Remove border */
-    border-radius: 5px; /* Border radius */
-    cursor: pointer; /* Pointer cursor */
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor on hover */
 }
 
     .close-button:hover {
-        background-color: #FFFFFF;
-        border: 1px solid #D40000;
-        color: #D40000;
-        transition: background-color 0.2s ease-in-out;
+        background-color: #0056b3; /* Darker blue on hover */
     }

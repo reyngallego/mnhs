@@ -20,7 +20,6 @@
             <div class="row no-scroll">
                 <!-- LEFT PANE -->
                 <div class="col-md-6 left-column">
-                    
                     <div class="left-pane">
                         <div class="left-pane-overlay"></div>
                         <div class="left-pane-content">
@@ -58,11 +57,25 @@
         $(document).ready(function () {
             var isContentLoading = false;
 
-            // Load the student summary content on page load
+            // Load the student search list content on page load
             $(".content-wrapper").load("stud-search-list.aspx", function () {
                 isContentLoading = false;
                 attachEventHandlers();
             });
+
+            // Attach event handlers
+            function attachEventHandlers() {
+                $('.close-button').on('click', function (event) {
+                    loadContent('stud-search-list.aspx', event);
+                });
+
+                $('#search-table tbody tr').on('click', function (event) {
+                    var studentId = $(this).data('id');
+                    if (studentId) {
+                        loadContent('stud-attendance-summary.aspx?studentId=' + studentId, event);
+                    }
+                });
+            }
 
             // Function to load page content into main content area
             function loadContent(page, event) {
