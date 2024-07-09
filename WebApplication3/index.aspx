@@ -59,7 +59,7 @@
             var isContentLoading = false;
 
             // Load the student summary content on page load
-            $(".content-wrapper").load("stud-search-list.aspx", function () {
+            $(".content-wrapper").load("parent-portal-placeholder.aspx", function () {
                 isContentLoading = false;
                 attachEventHandlers();
             });
