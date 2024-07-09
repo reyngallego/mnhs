@@ -21,42 +21,68 @@
                     $("#studentTable tbody").append(row);
                 });
 
-                // Add click event listener to edit buttons
                 // Unbind previously bound event handlers to avoid multiple bindings
                 $(document).off("click", ".edit-btn");
                 $(document).off("click", "#addStudentBtn");
-                $(document).off("click", "#delete-btn");
+                $(document).off("click", ".delete-btn");
 
                 // Rebind event handlers
                 $(document).on("click", ".edit-btn", function (event) {
+                    console.log("Edit button clicked"); // Log when the edit button is clicked
+
                     // Prevent default behavior of the button
+                    event.preventDefault();
+                    console.log("Default behavior prevented"); // Log after preventing default behavior
+
                     var studentId = $(this).data("student-id");
+                    console.log("Student ID: " + studentId); // Log the student ID
+
                     // Display confirmation dialog
                     var confirmEdit = confirm("Are you sure you want to edit this student?");
+                    console.log("User confirmation: " + confirmEdit); // Log the user's confirmation response
+
                     if (confirmEdit) {
+                        console.log("User confirmed to edit the student with ID: " + studentId); // Log if the user confirms
                         openEditModal(studentId);
+                    } else {
+                        console.log("User canceled the edit action for student with ID: " + studentId); // Log if the user cancels
                     }
-                    event.preventDefault();
                 });
 
-                $("#addStudentBtn").click(function () {
+                $("#addStudentBtn").click(function (event) {
                     event.preventDefault();
+                    console.log("Add Student button clicked"); // Log the button click
+
                     // Display confirmation dialog
                     var confirmAdd = confirm("Are you sure you want to add a new student?");
+                    console.log("User confirmation: " + confirmAdd); // Log the user's confirmation response
+
                     if (confirmAdd) {
+                        console.log("User confirmed to add a new student"); // Log if the user confirms
                         // Open the "Add Student" modal only if the user confirms
                         $('#addStudentModal').modal('show');
                     } else {
+                        console.log("User canceled the add student action"); // Log if the user cancels
                         // If the user cancels, do nothing (no need to open the modal)
                     }
                 });
-                // Add click event listener to delete buttons
+
+
                 $(document).on("click", ".delete-btn", function (event) {
+                    console.log("Delete button clicked"); // Log when the delete button is clicked
+
                     event.preventDefault(); // Prevent default behavior of the button
+                    console.log("Default behavior prevented"); // Log after preventing default behavior
+
                     var studentId = $(this).data("student-id");
+                    console.log("Student ID: " + studentId); // Log the student ID
+
                     // Display confirmation dialog
                     var confirmDelete = confirm("Are you sure you want to delete this student?");
+                    console.log("User confirmation: " + confirmDelete); // Log the user's confirmation response
+
                     if (confirmDelete) {
+                        console.log("User confirmed to delete the student with ID: " + studentId); // Log if the user confirms
                         // If user confirms deletion, proceed with AJAX call to delete student
                         $.ajax({
                             type: "DELETE",
@@ -72,6 +98,8 @@
                                 alert("Error: " + errorThrown); // Alert error message
                             }
                         });
+                    } else {
+                        console.log("User canceled the delete action for student with ID: " + studentId); // Log if the user cancels
                     }
                 });
             },
@@ -174,7 +202,19 @@
     });
 
     // Function to handle form submission for adding a new student
-    $("#btnSaveChanges").click(function () {
+    $("#btnSaveChanges").click(function (event) {
+        event.preventDefault(); // Prevent default behavior of the button
+        console.log("Add Student button clicked"); // Log when the Add Student button is clicked
+
+        // Display confirmation dialog
+        var confirmAdd = confirm("Are you sure you want to add a new student?");
+        console.log("User confirmation: " + confirmAdd); // Log the user's confirmation response
+
+        if (!confirmAdd) {
+            console.log("User canceled the add student action"); // Log if the user cancels
+            return; // If the user cancels, do nothing
+        }
+
         var formData = {
             LRN: $("#STUD_LRN").val(),
             FirstName: $("#STUD_FNAME").val(),

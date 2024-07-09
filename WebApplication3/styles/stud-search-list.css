@@ -1,0 +1,107 @@
+﻿﻿body, html, form {
+    font-family: Poppins;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%; /* Ensure full width */
+}
+
+#form1 {
+    background-color: #f8f8f8;
+}
+
+.content-wrapper {
+    width: 110%;
+    transform: translateX(-1.5%);
+}
+
+.banner {
+    visibility: hidden;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.6); /* White with 60% opacity */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.banner-logo {
+    width: 80px;
+    height: 80px;
+}
+
+@media (max-width: 800px) {
+    .banner {
+        position: relative;
+        width: 100%; /* Make sure the banner takes the full width */
+        height: 100px;
+        background-image: url('../images/MWB1.png');
+        background-size: cover;
+        background-position: center;
+    }
+}
+
+/* Styles for the container and its contents */
+.container {
+    width: 80%;
+    height: 94%;
+    margin-left: 7%;
+    margin-top: 3%;
+    background-color: #FFFFFF;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    text-align: center;
+}
+
+
+    .container h1 {
+        font-size: 24px; /* Font size */
+        font-weight: 400; /* Font weight */
+        margin-bottom: 10px; /* Margin bottom */
+    }
+
+#stud-search-res {
+    width: 100%; /* Make the table cover the entire width of the container */
+    border-collapse: collapse; /* Remove space between table cells */
+}
+
+    #stud-search-res thead {
+        background-color: #f2f2f2; /* Light gray background for the header */
+    }
+
+    #stud-search-res th, #stud-search-res td {
+        padding: 10px; /* Padding inside cells */
+        text-align: left; /* Left-align text */
+    }
+
+    #stud-search-res th {
+        width: 60%; /* 6:4 ratio for table headers */
+    }
+
+    #stud-search-res td {
+        width: 40%; /* 6:4 ratio for table cells */
+        border-bottom: 1px solid #ddd; /* Light gray border for table rows */
+    }
+
+#footer-button {
+    margin-top: 20px; /* Add some margin at the top */
+}
+
+.close-button {
+    padding: 10px 20px; /* Padding for the button */
+    background-color: #007BFF; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Remove default border */
+    cursor: pointer; /* Change cursor on hover */
+}
+
+    .close-button:hover {
+        background-color: #0056b3; /* Darker blue on hover */
+    }

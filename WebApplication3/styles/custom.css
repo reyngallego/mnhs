@@ -3,6 +3,7 @@
 /* Example custom styles */
 body {
     font-family: Arial, sans-serif;
+    overflow: hidden;
 }
 
 .sidebar {
@@ -29,9 +30,13 @@ body {
     padding-bottom: 20px;
 }
 
-.main-content {
-    
+/* Nav */
 
+.nav .nav-item .nav-link img.nav-icon {
+    width: 20px;
+    height: 20px;
+    vertical-align: middle;
+    margin-bottom: 5px;
 }
 
 /* Styles for logo */

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.SqlClient;
 using System.Web.Http;
 
@@ -36,51 +35,95 @@ namespace WebApplication3.Controllers
         [Route("api/student/search")]
         public IHttpActionResult SearchStudent(string lrn)
         {
+            DateTime startDate = new DateTime(2024, 6, 13);
+            DateTime endDate = DateTime.Now; // Set endDate to the present date
             Student student = null;
 
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
 
-                // Query to get student information and attendance records
+                // Query to check if the student exists
+                string studentQuery = @"
+                    SELECT LRN, FirstName, LastName
+                    FROM AttendanceReport
+                    WHERE LRN = @LRN";
+
+                using (SqlCommand studentCommand = new SqlCommand(studentQuery, connection))
+                {
+                    studentCommand.Parameters.AddWithValue("@LRN", lrn);
+
+                    using (SqlDataReader studentReader = studentCommand.ExecuteReader())
+                    {
+                        if (studentReader.Read())
+                        {
+                            student = new Student
+                            {
+                                LRN = studentReader["LRN"].ToString(),
+                                FirstName = studentReader["FirstName"].ToString(),
+                                LastName = studentReader["LastName"].ToString(),
+                                TotalPresent = 0,
+                                TotalAbsent = 0,
+                                AttendanceRecords = new List<AttendanceRecord>()
+                            };
+                        }
+                        else
+                        {
+                            return NotFound(); // Student not found
+                        }
+                    }
+                }
+
+                // Query to get student attendance records within the date range
                 string query = @"
                     SELECT 
-                        LRN, FirstName, LastName, TotalPresent, TotalAbsent,
-                        AttendanceDate, DayOfWeek, AttendanceStatus, TimeIn, TimeOut
+                        AttendanceReportID, LRN, AttendanceDate, DayOfWeek, AttendanceStatus, TimeIn, TimeOut
                     FROM 
                         AttendanceReport
                     WHERE 
-                        LRN = @LRN";
+                        LRN = @LRN AND
+                        AttendanceDate BETWEEN @StartDate AND @EndDate";
 
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {
                     command.Parameters.AddWithValue("@LRN", lrn);
+                    command.Parameters.AddWithValue("@StartDate", startDate);
+                    command.Parameters.AddWithValue("@EndDate", endDate);
 
                     using (SqlDataReader reader = command.ExecuteReader())
                     {
+                        Dictionary<DateTime, bool> attendanceMap = new Dictionary<DateTime, bool>();
+
                         while (reader.Read())
                         {
-                            if (student == null)
+                            DateTime attendanceDate = Convert.ToDateTime(reader["AttendanceDate"]);
+                            string status = reader["AttendanceStatus"].ToString();
+                            if (status.Equals("Present", StringComparison.OrdinalIgnoreCase))
                             {
-                                student = new Student
-                                {
-                                    LRN = reader["LRN"].ToString(),
-                                    FirstName = reader["FirstName"].ToString(),
-                                    LastName = reader["LastName"].ToString(),
-                                    TotalPresent = Convert.ToInt32(reader["TotalPresent"]),
-                                    TotalAbsent = Convert.ToInt32(reader["TotalAbsent"]),
-                                    AttendanceRecords = new List<AttendanceRecord>()
-                                };
+                                student.TotalPresent++;
+                                attendanceMap[attendanceDate] = true;
                             }
 
                             student.AttendanceRecords.Add(new AttendanceRecord
                             {
-                                Date = Convert.ToDateTime(reader["AttendanceDate"]),
+                                Date = attendanceDate,
                                 Day = reader["DayOfWeek"].ToString(),
-                                Status = reader["AttendanceStatus"].ToString(),
+                                Status = status,
                                 TimeIn = reader["TimeIn"].ToString(),
                                 TimeOut = reader["TimeOut"].ToString()
                             });
+                        }
+
+                        // Iterate over the date range to count weekdays
+                        for (DateTime date = startDate; date <= endDate; date = date.AddDays(1))
+                        {
+                            if (date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday)
+                            {
+                                if (!attendanceMap.ContainsKey(date))
+                                {
+                                    student.TotalAbsent++;
+                                }
+                            }
                         }
                     }
                 }

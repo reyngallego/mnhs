@@ -1,0 +1,28 @@
+﻿﻿body, html {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: Poppins;
+    background-color: #fefefe;
+}
+
+.content {
+    position: relative;
+    z-index: 2; /* Set a higher z-index */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #000; /* Adjust the text color if needed */
+    width: 90%;
+    height: 100vh; /* Ensure content takes the full height of the viewport */
+    margin: 0 auto; /* Center horizontally */
+    padding: 20px;
+}
+
+#landing-label {
+    font-size: 30px;
+    font-weight: 400;
+    color: #000000;
+}

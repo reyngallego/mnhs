@@ -114,7 +114,7 @@
                         <input type="text" class="form-control" id="edit_STUD_FNAME" required>
                     </div>
                     <div class="form-group">
-                        <label for="edit_STUD_MNAME">Middle Name:</label>
+                        <label for="edit_STUD_MNAME">Middle Name: (Leave blank if NONE)</label>
                         <input type="text" class="form-control" id="edit_STUD_MNAME">
                     </div>
                     <div class="form-group">
@@ -122,7 +122,7 @@
                         <input type="text" class="form-control" id="edit_STUD_LNAME" required>
                     </div>
                     <div class="form-group">
-                        <label for="edit_STUD_EXT">Name Extension:</label>
+                        <label for="edit_STUD_EXT">Name Extension: (Leave blank if NONE)</label>
                         <input type="text" class="form-control" id="edit_STUD_EXT">
                     </div>
                     <div class="form-group">
@@ -280,7 +280,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" id="btnSaveChanges" class="btn btn-primary">Save changes</button>
+                <button type="button" id="btnSaveChanges" class="btn btn-primary">Add Student</button>
             </div>
         </div>
     </div>

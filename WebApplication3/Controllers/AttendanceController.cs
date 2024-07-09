@@ -57,16 +57,16 @@ public class AttendanceController : ApiController
 
     [HttpPost]
     [Route("api/attendance/enterattendance")]
-    public HttpResponseMessage EnterAttendance([FromBody] string lrn)
+    public HttpResponseMessage EnterAttendance([FromBody] dynamic data)
     {
         try
         {
-            if (!IsLRNExistInMnhs(lrn))
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "LRN does not exist in mnhs table.");
-            }
+            string lrn = data.lrn;
+            Console.WriteLine("Received LRN: " + lrn); // Log the LRN
 
-            if (IsLRNAlreadySignedInToday(lrn))
+           
+
+            if (!IsLRNExistInMnhs(lrn))
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, "You have already signed in today.");
             }
@@ -148,7 +148,7 @@ public class AttendanceController : ApiController
         using (SqlConnection con = new SqlConnection(connectionString))
         {
             con.Open();
-            string query = "SELECT COUNT(1) FROM mnhs WHERE LRN = @LRN";
+            string query = "SELECT COUNT(*) FROM mnhs WHERE LRN = @LRN";
             using (SqlCommand cmd = new SqlCommand(query, con))
             {
                 cmd.Parameters.AddWithValue("@LRN", lrn);
@@ -157,6 +157,7 @@ public class AttendanceController : ApiController
             }
         }
     }
+
 
     [HttpPost]
     [Route("api/attendance/leaveattendance")]

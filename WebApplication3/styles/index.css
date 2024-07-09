@@ -1,0 +1,197 @@
+﻿﻿body, html, form {
+    font-family: Poppins;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow: hidden; /* Disable scrolling */
+}
+
+/* LEFT PANE */
+.left-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100vh; /* Make sure the left column takes the full height of the viewport */
+    background-image: url(../images/MWB1.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.left-pane-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #FFFFFF; /* White */
+    opacity: 0.4; /* Adjust the opacity to your preference */
+    z-index: 1; /* Set a lower z-index */
+}
+
+.left-pane {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    flex-grow: 1; /* Make sure the pane grows to fill the available space */
+}
+
+.left-pane-content {
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
+.landing-logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    margin-top: 150px;
+    border-radius: 50%; /* Make the logo circular */
+}
+
+    .landing-logo img {
+        width: 200px;
+        height: 200px;
+    }
+
+.title {
+    font-size: 40px;
+    width: 70%;
+    color: #000000; /* Black in hex */
+    margin-bottom: 20px;
+    line-height: 3rem;
+}
+
+.search-container {
+    display: flex;
+    width: 100%;
+    max-width: 550px;
+    height: 50px;
+    border-radius: 5px; /* Add border radius to container */
+}
+
+.search-bar {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #054e00; /* Light gray in hex */
+    border-radius: 5px 0 0 5px;
+    border-right: none; /* Remove right border */
+}
+
+.search-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    background-color: #054e00;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out; /* Add transition for background color */
+}
+
+    .search-button .search-icon {
+        background-image: url(../images/icons/search-white.png);
+        background-size: cover; /* Ensure the image covers the entire div */
+        height: 25px; /* Adjust height */
+        width: 26px; /* Adjust width */
+    }
+
+    .search-button:hover {
+        border: 1px solid #4C844B;
+        background-color: #FFFFFF;
+    }
+
+        .search-button:hover .search-icon {
+            background-image: url(../images/icons/search-green.png);
+        }
+
+.footer-landing {
+    padding: 20px 0 5px 0;
+    margin-top: 20px;
+    text-align: center;
+    width: 120%;
+    margin-left: -10%;
+    z-index: 2;
+}
+
+.footer-images {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-bottom: 10px; /* Add some space between the images and the caption */
+}
+
+.footer-logo {
+    height: 60px;
+}
+
+.footer-caption {
+    font-size: 14px;
+    font-weight: 400;
+    width: 80%;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+/* RIGHT PANE */
+
+
+#landing-label {
+    font-size: 30px;
+    font-weight: 400;
+    color: #ffffff;
+}
+
+/* Disable horizontal and vertical scrolling */
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 800px) {
+    .left-column {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .main-content {
+        display: none;
+    }
+
+    .left-pane-content {
+        width: 100%;
+    }
+}
+
+@media (max-width: 400px) {
+    .landing-logo {
+        margin-top: 100px;
+        width: 150px;
+        height: 150px;
+    }
+
+    .title {
+        width: 100%;
+        font-size: 35px;
+        line-height: 2.5rem;
+        margin-bottom: 30px;
+    }
+
+    .footer-images {
+        gap: 15px;
+    }
+
+    .footer-logo {
+        height: 45px;
+    }
+}

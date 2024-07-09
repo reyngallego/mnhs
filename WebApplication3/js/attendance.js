@@ -36,31 +36,30 @@
 });
 function enterAttendance() {
     // Get the LRN value from the input field
-    var lrn = $('#lrnInput').val();
+    var lrn = $('#lrnInput').val().trim(); // Ensure there are no leading/trailing spaces
+    console.log('LRN to be sent:', lrn); // Log the LRN
 
     $.ajax({
         url: '/api/attendance/enterattendance',
         type: 'POST',
-        contentType: 'application/json', // Specify the content type
-        data: JSON.stringify(lrn), // Pass the LRN data in the request body as JSON
+        contentType: 'application/json',
+        data: JSON.stringify({ lrn: lrn }), // Pass the LRN as an object
         success: function (response) {
-            // Show the success message in the statusNotification div
             $('#statusNotification').removeClass('alert alert-danger').addClass('alert alert-success').text('Attendance entered successfully').show();
             console.log('Attendance entered successfully');
-            // Optionally, you can refresh the attendance table here
+            refreshAttendanceTable();
+            fetchParentContact(lrn);
 
+            // Optional: Refresh attendance table after successful entry
             refreshAttendanceTable();
 
-            // Now, fetch parent contact and LRN from the database
+            // Assuming you want to send an SMS notification to parents
             $.ajax({
-                url: '/api/parent/contact', // Assuming this is the endpoint to fetch parent contact
+                url: '/api/parent/contact',
                 type: 'GET',
-                data: { lrn: lrn }, // Pass the LRN to fetch corresponding parent contact
+                data: { lrn: lrn },
                 success: function (parentResponse) {
-                    // Extract parent contact numbers from the response
                     var parentContacts = parentResponse.contacts;
-
-                    // Prepare SMS payload
                     var smsPayload = {
                         messages: [
                             {
@@ -75,6 +74,7 @@ function enterAttendance() {
                     sendSMS(smsPayload);
                 },
                 error: function (xhr, textStatus, errorThrown) {
+                    handleAjaxError(xhr); // Handle error in fetching parent contact
                     console.error('Error fetching parent contact:', errorThrown);
                 }
             });
@@ -83,10 +83,8 @@ function enterAttendance() {
             if (xhr.status === 400) {
                 var responseText = JSON.parse(xhr.responseText);
                 if (responseText.Message === "You have already signed in.") {
-                    $('#statusNotification').removeClass('alert alert-success').addClass('alert alert-danger').text('You have already signed in.').show();
                 } else {
-                    // LRN does not exist
-                    $('#statusNotification').removeClass('alert alert-success').addClass('alert alert-danger').text('LRN does not exist').show();
+                    $('#statusNotification').removeClass('alert alert-success').addClass('alert alert-danger').text('Student Does not exist or Has Already Signed in').show();
                 }
             } else {
                 if (xhr.responseXML) {
@@ -101,7 +99,6 @@ function enterAttendance() {
         }
     });
 }
-
 // Function to send SMS
 function sendSMS(payload) {
     const myHeaders = new Headers();

@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>My Dashboard</title>
+    <title></title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
@@ -31,37 +31,37 @@
                         <ul class="nav">
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link active" href="dashboard.aspx" data-page="dashboard.aspx">
-                                    <img src="/images/icons/dashboard.png" alt="Dashboard" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/dashboard.png" alt="Dashboard" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">Dashboard</span>
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link" href="attendance.aspx" data-page="attendance.aspx">
-                                    <img src="/images/icons/attendance.png" alt="Attendance" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/attendance.png" alt="Attendance" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">Attendance</span>
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link" href="studentlist.aspx" data-page="studentlist.aspx">
-                                    <img src="/images/icons/student.png" alt="Student" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/student.png" alt="Student" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">Student</span>
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link" href="reports.aspx" data-page="reports.aspx">
-                                    <img src="/images/icons/reports.png" alt="Reports" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/reports.png" alt="Reports" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">Reports</span>
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link" href="generateid.aspx" data-page="generateid.aspx">
-                                    <img src="/images/icons/idgenerator.png" alt="ID Generator" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/idgenerator.png" alt="ID Generator" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">ID Generator</span>
                                 </a>
                             </li>
                             <li class="nav-item" style="margin-bottom: 10px;">
                                 <a class="nav-link" href="#" id="logoutLink">
-                                    <img src="/images/icons/logout.png" alt="Log Out" style="width: 20px; height: 20px; vertical-align: middle;"> 
+                                    <img src="/images/icons/logout.png" alt="Log Out" class="nav-icon"> 
                                     <span style="font-size: 20px; color: black;">Log Out</span>
                                 </a>
                             </li>
