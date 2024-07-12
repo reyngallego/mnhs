@@ -23,23 +23,37 @@
 <body>
     <form id="form1" runat="server" onsubmit="return validateForm()">
         <div class="container">
-            <div class="row justify-content-center align-items-center" style="height:90vh;">
-                <div class="col-md-6">
-                    <div class="login-container">
-                        <h2 class="text-center mb-4">Login</h2>
-                        <asp:Label ID="lblMessage" runat="server" Visible="false" CssClass="text-danger"></asp:Label>
-                        <div class="form-group">
-                            <label for="txtUsername">Username:</label>
-                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter your username"></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <label for="txtPassword">Password:</label>
-                            <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter your password"></asp:TextBox>
-                        </div>
-                        <div class="form-group">
-                            <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
-                        </div>
+            <div class="row justify-content-center align-items-center">
+                <div class="login-container">
+                    <h2 >Admin Login</h2>
+                    <h4>Please enter your details</h4>
+                    <asp:Label ID="lblMessage" runat="server" Visible="false" CssClass="text-danger"></asp:Label>
+
+                    <div class="form-group">
+                        <label for="txtUsername">Username:</label>
+                        <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Enter your username"></asp:TextBox>
                     </div>
+                    <div class="form-group">
+                        <label for="txtPassword">Password:</label>
+                        <asp:TextBox ID="txtPassword" runat="server" TextMode="Password" CssClass="form-control" placeholder="Enter your password"></asp:TextBox>
+                    </div>
+                    <div class="form-group">
+                        <asp:Button ID="btnLogin" runat="server" Text="Login" CssClass="btn btn-primary btn-block" OnClick="btnLogin_Click" />
+                    </div>
+                </div>
+                <div class="footer-landing">
+                    <div class="footer-images">
+                        <img src="images/moonwalkLogo.png" alt="Moonwalk Logo" class="footer-logo">
+                        <img src="images/malasaquitLogo.png" alt="Malasaquit Logo" class="footer-logo">
+                        <img src="images/logopup.png" alt="PUP Logo" class="footer-logo">
+                    </div>
+                    <h1 class="footer-caption">In partnership with Polytechnic University of the Philippines - Parañaque City Campus</h1>
+                </div>
+            </div>
+            <div class="right">
+                <img src="../images/logomnhs.png" alt="logo" class="logo" />
+                <div class="picture-form">
+                    <div class="right-overlay"></div>
                 </div>
             </div>
         </div>

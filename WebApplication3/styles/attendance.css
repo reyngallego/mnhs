@@ -1,19 +1,14 @@
 ﻿/* Custom styles for the attendance page */
 
-
 /* Container styles */
 .container {
-    margin-left: 0; /* Set margin-left to 0 to position it at the leftmost */
-    position: relative; /* Add position relative */
-    display: flex; /* Use flexbox */
-    flex-direction: column; /* Arrange items vertically */
-    align-items: flex-start; /* Align items to the left */
+    margin-left: 100px; 
+    position: relative; 
+    display: flex; 
+    flex-direction: column;
+    align-items: flex-start;
 }
-.header2{
-    margin-top:20px;
-    margin-bottom:20px;
-    
-}
+
 /* Search input styles */
 .form-group {
     margin-bottom: 20px;
@@ -22,8 +17,13 @@
     width: 800px; /* Adjust the value as needed */
 }
 /* Table styles */
+.stud-attendance {
+    width: 100%;
+}
+
 #attendanceTable {
     width: 100%;
+    flex-direction: column;
 }
 
 /* Status notification styles */

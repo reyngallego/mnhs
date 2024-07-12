@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="WebApplication3.mnhs" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="dashboard.aspx.cs" Inherits="WebApplication3.dashboard" %>
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -19,6 +19,8 @@
      <script>
          $(document).ready(function () {
              fetchDashboardData();
+             updateDateTime();
+             setInterval(updateDateTime, 1000);
          });
 
          function fetchDashboardData() {
@@ -35,6 +37,15 @@
                      alert('Failed to fetch dashboard data');
                  }
              });
+         }
+
+         function updateDateTime() {
+             const now = new Date();
+             const time = now.toLocaleTimeString();
+             const date = now.toLocaleDateString();
+
+             document.getElementById('timeDisplay').textContent = time;
+             document.getElementById('dateDisplay').textContent = date;
          }
 
          function renderStudentSummary(data) {
@@ -125,9 +136,7 @@
                  }
              });
          }
-     </script>
-
-<body>
+    </script>
     <header>
         <div class="header1">
             <div class="header-overlay"></div>
@@ -135,7 +144,7 @@
         </div>
     </header>
 
-    <div class="container">
+  <div class="container">
         <div class="content">
             <div class="box">
                 <div class="timebox">
@@ -148,14 +157,13 @@
                 </div>
             </div>
         </div>
-    
     <div class="content">
         <div class="colorbox2">
             <div class="img_case">
                 <img src="/images/icons/student.png" alt="icon" width="80px" height="80px">
             </div>
             <div class="innerbox">
-                <h1 id="enrolled">Enrolled Students</h1>
+                <h1>Enrolled Students</h1>
                 <h3 id="totalStudents">Loading...</h3>
             </div>
         </div>

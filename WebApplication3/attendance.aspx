@@ -59,51 +59,54 @@
 </head>
 <body>
     <header>
-      <div class="header1">
-     <h1>Attendance</h1>
-          </div>
- </header>
+        <div class="header1">
+            <div class="header-overlay"></div>
+            <h1>Attendance</h1>
+        </div>
+    </header>
     <div class="container">
         <div class="form-group">
             <div class="header2">
-            <h1>SCAN RESULT</h1>
-             </div>
+                <h1>SCAN RESULT</h1>
+            </div>
             <label for="searchInput">Scan Student LRN:</label>
             <div class="input-group">
-    <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input">
+                <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input" />
                 <div class="input-group-append">
                     <button class="btn btn-primary" type="button" onclick="scanLRN()">Scan</button>
                 </div>
             </div>
         </div>
 
-<button id="toggleButton" class="btn btn-secondary" type="button">TIMEIN/TIMEOUT</button> <br />
+        <button id="toggleButton" class="btn btn-secondary" type="button">TIMEIN/TIMEOUT</button> <br />
+        <div class="stud-attendance">
+            <h5>Status:</h5>
+            <div class="form-group">
+                <div id="statusNotification" class="status-notification" style="display: none;"></div>
+            </div>
+            <div class="form-group">
+
+            </div>
+            <table id="attendanceTable" class="table">
+                <thead>
+                    <tr>
+                        <th>LRN</th>
+                        <th>Name</th>
+                        <th>Time</th>
+                        <th>Date</th> <!-- Add new column for status -->
+                        <th>Class</th>
+                    </tr>
+                </thead>
+                <tbody>
+                                <!-- Attendance data will be dynamically inserted here -->
+                </tbody>
+            </table>
         </div>
+    </div>
 
 
         <!-- Status notification -->
-                    <h5>Status:</h5>
-        <div class="form-group">
-            <div id="statusNotification" class="status-notification" style="display: none;"></div>
-        </div>
-        <div class="form-group">
-
-        </div>
-        <table id="attendanceTable" class="table">
-            <thead>
-                <tr>
-                    <th>LRN</th>
-                    <th>Name</th>
-                    <th>Time</th>
-                    <th>Date</th> <!-- Add new column for status -->
-                    <th>Class</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Attendance data will be dynamically inserted here -->
-            </tbody>
-        </table>
-    </div>
+    
 
     <!-- Modal for adding new attendance record -->
     <div class="modal fade" id="addAttendanceModal" tabindex="-1" role="dialog" aria-labelledby="addAttendanceModalLabel" aria-hidden="true">

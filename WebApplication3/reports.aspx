@@ -17,6 +17,11 @@
         function searchStudent() {
             var lrn = document.getElementsByName('search')[0].value;
 
+            if (!lrn) {
+                alert('Please enter the student LRN.');
+                return;
+            }
+
             $.ajax({
                 url: '/api/student/search',
                 method: 'GET',
@@ -50,58 +55,69 @@
     </script>
 </head>
 <body>
-    <h2>Reports</h2>
-    <div class="topnav">
-        <div class="header">
-            <h6>Generate Reports</h6>
+    <header>
+        <div class="header1">
+            <div class="header-overlay"></div>
+            <h1>Reports</h1>
         </div>
-        <div class="individual">
-            <h4>Individual Attendance Records</h4>
-        </div>
-        <div class="container">
-            <div class="container-actions">
-                <div id="actions">
-                    <img src="/images/icons/export.png" alt="Share" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 5px"> <span style="font-size: 20px; color: black;"></span>
-                    <img src="/images/icons/download.png" alt="Download" style="width: 20px; height: 25px; vertical-align: middle;margin:0px 5px"> <span style="font-size: 20px; color: black;"></span>
-                    <button id="print-button" type="button" style="border: none; background: none;">
-                        <img src="/images/icons/printer.png" alt="Printer" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 10px">
-                        <span style="font-size: 20px; color: black;"></span>
-                    </button>
+    </header>
+    <div class="container">
+        <div class="form-group">
+            <div class="report-header">
+                <div class="header2">
+                    <h1>STUDENT ATTENDANCE RECORDS</h1>
                 </div>
-                <div class="search-container">
-                    <form action="javascript:searchStudent();">
-                        <input type="text" placeholder="Search Student" name="search">
-                        <button type="submit">Search</button>
-                    </form>
+                <div class="actions">
+                    <div class="search-action">
+                        <form action="javascript:searchStudent();">
+                            <input type="text" placeholder="Enter student LRN" name="search" id="report-search"/>
+                            <button type="submit" class="search-button">
+                         <div class="search-icon"></div>
+   
+                        </button>
+                               
+                        </form>
+                    </div>
+                    <div id="actions">
+                        <img src="/images/icons/export.png" alt="Share" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 5px"/>
+                            <span style="font-size: 20px; color: black;"></span>
+                        <img src="/images/icons/download.png" alt="Download" style="width: 20px; height: 25px; vertical-align: middle;margin:0px 5px"/>
+                            <span style="font-size: 20px; color: black;"></span>
+                        <button id="print-button" type="button" style="border: none; background: none;">
+                            <img src="/images/icons/printer.png" alt="Printer" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 10px"/>
+                                <span style="font-size: 20px; color: black;"></span>
+                        </button>
+                    </div>
+                </div>
+                <div class="stud-info">
+                    <h4 id="studentName">Student Name: </h4>
+                    <h4 id="learnerReferenceNumber">Learner Reference Number: </h4>
+                    <h4 id="gradeAndSection">Grade and Section:</h4>
                 </div>
             </div>
-            <div class="studentdata1">
-                <h4 id="studentName">Student Name: </h4>
-                <h4 id="learnerReferenceNumber">Learner Reference Number: </h4>
-                <h4 id="gradeAndSection">Grade and Section:</h4>
+            <div id="report-details">
+                <div class="box1">
+                    <!-- Detailed Data -->
+                    <h4 id="detailed-data">Detailed Data</h4>
+                    <table id="attendanceTable">
+                        <thead>
+                            <tr class="fill">
+                                <th>Date</th>
+                                <th>Days</th>
+                                <th>Status</th>
+                                <th>Time In</th>
+                                <th>Time Out</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Data will be populated here -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
 
-    <div id="report-details">
-        <div class="box1">
-            <!-- Detailed Data -->
-            <h4>Detailed Data</h4>
-            <table id="attendanceTable">
-                <thead>
-                    <tr class="fill">
-                        <th>Date</th>
-                        <th>Days</th>
-                        <th>Status</th>
-                        <th>Time In</th>
-                        <th>Time Out</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Data will be populated here -->
-                </tbody>
-            </table>
-        </div>
-    </div>
+    
 </body>
 </html>

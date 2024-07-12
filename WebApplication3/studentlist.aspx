@@ -52,6 +52,7 @@
 <body>
 <header>
     <div class="header1">
+        <div class="header-overlay"></div>
         <h1>Student List</h1>
     </div>
 </header>

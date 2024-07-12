@@ -54,8 +54,11 @@
 </head>
 <body>
     <header>
+    <div class="header1">
+        <div class="header-overlay"></div>
         <h1>ID Generator</h1>
-    </header>
+    </div>
+</header>
     <div class="container">
         <!-- Search and Filter section -->
         <div id="id-generator-search">

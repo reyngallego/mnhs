@@ -2,8 +2,52 @@
 
 /* Example custom styles */
 body {
-    font-family: Arial, sans-serif;
+    background-color: #f8f9fa;
+    font-family: Poppins, sans-serif;
     overflow: hidden;
+}
+
+
+header, footer {
+    margin-left: -105px;
+    background-image: url(../images/MWB12.png);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+    width: 110%;
+}
+
+.header1 {
+    display: flex;
+}
+
+    .header1 h1 {
+        margin-left: 30px;
+        z-index: 5;
+    }
+
+.header-overlay {
+    position: absolute;
+    transform: translateX(-80px);
+    top: 0;
+    left: 0;
+    width: 110%;
+    height: 96px;
+    background-color: #033600;
+    opacity: 0.8;
+    z-index: 4;
+}
+
+.header2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#school-name {
+    width: 80%;
+    margin: auto;
 }
 
 .sidebar {
@@ -37,6 +81,16 @@ body {
     height: 20px;
     vertical-align: middle;
     margin-bottom: 5px;
+}
+
+.nav .nav-item span.nav-ul {
+    font-size: 20px;
+    color: #000000;
+}
+
+span.nav-ul {
+    font-size: 20px;
+    color: black;
 }
 
 /* Styles for logo */

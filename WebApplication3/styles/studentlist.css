@@ -6,19 +6,6 @@ body {
     background-color: #f8f9fa;
 }
 
-header {
-    background-color: #4C844B;
-    color: white;
-    text-align: center;
-    margin-bottom: 20px;
-    padding: 29px 0;
-}
-
-.header1 h1 {
-    margin: 0;
-    font-size: 2em;
-}
-
 /* Add Student Button */
 .add-student-button {
     text-align: right;
