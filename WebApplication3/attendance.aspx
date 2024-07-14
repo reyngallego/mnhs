@@ -15,46 +15,7 @@
 
 
   <script>
-      var currentState = 'enter'; // Initialize the current state to 'enter'
-
-      function enterOrLeaveAttendance() {
-          if (currentState === 'enter') {
-              enterAttendance();
-          } else {
-              leaveAttendance();
-          }
-      }
-
-      function toggleState() {
-          currentState = currentState === 'enter' ? 'leave' : 'enter';
-          $('#lrnInput').attr('placeholder', currentState === 'enter' ? 'Enter LRN' : 'Leave LRN');
-      }
-
-      $('#toggleButton').on('click', function () {
-          toggleState();
-      });
-
-      $('#lrnInput').on('keypress', function (event) {
-          if (event.which === 13) { // Check if the pressed key is Enter (key code 13)
-              event.preventDefault(); // Prevent default form submission behavior
-              scanLRN(); // Call the scanLRN function
-          }
-      });
-
-      function scanLRN() {
-          var lrn = $('#lrnInput').val().trim();
-
-          if (lrn !== '') {
-              if (currentState === 'enter') {
-                  enterAttendance();
-              } else {
-                  leaveAttendance();
-              }
-              $('#lrnInput').val(''); // Clear the input field
-          } else {
-              alert('Please enter LRN first.');
-          }
-      }
+      
   </script>
 </head>
 <body>
@@ -69,7 +30,7 @@
             <div class="header2">
                 <h1>SCAN RESULT</h1>
             </div>
-            <label for="searchInput">Scan Student LRN:</label>
+            <label for="searchInput">Scan QR code or input LRN:</label>
             <div class="input-group">
                 <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input" />
                 <div class="input-group-append">

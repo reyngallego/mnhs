@@ -10,14 +10,13 @@ body {
 .add-student-button {
     text-align: right;
     margin-bottom: 20px;
-
 }
 
     .add-student-button .btn {
         font-size: 1.1em;
         display: block !important;
-        color:white;
-        background-color:forestgreen;
+        color: white;
+        background-color: forestgreen;
     }
 
 /* Table Styles */
@@ -33,9 +32,34 @@ body {
     }
 
     #studentTable th {
-        background-color: green;
+        background-color: #054e00;
         color: white;
     }
+
+        #studentTable th:nth-child(1), #studentTable td:nth-child(1) { /* LRN column */
+            width: 15%;
+        }
+
+        #studentTable th:nth-child(2), #studentTable td:nth-child(2) { /* Name column */
+            width: 25%;
+        }
+
+        #studentTable th:nth-child(3), #studentTable td:nth-child(3) { /* Grade column */
+            width: 10%;
+        }
+
+        #studentTable th:nth-child(4), #studentTable td:nth-child(4) { /* Section column */
+            width: 10%;
+        }
+
+        #studentTable th:nth-child(5), #studentTable td:nth-child(5) { /* Adviser column */
+            width: 25%;
+        }
+
+        #studentTable th:nth-child(6), #studentTable td:nth-child(6) { /* Actions column */
+            width: 15%;
+        }
+
 /* Modal Styles */
 .modal-header {
     background-color: #007bff;
@@ -67,4 +91,15 @@ form h5 {
     margin-top: 20px;
     margin-bottom: 10px;
     color: #007bff;
+}
+
+/* Pagination Styles */
+.pagination-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.entries-info {
+    margin-top: 10px;
 }

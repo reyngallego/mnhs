@@ -124,6 +124,7 @@ h3 {
     margin-bottom: 20px;
 }
 
+/* Report details*/
 
 #report-details {
     width: 100%;
@@ -141,6 +142,8 @@ h3 {
     border: 1px solid black;
     text-align: center;
 }
+
+/* Table */
 
 table {
     border-collapse: collapse;
@@ -162,7 +165,49 @@ h4 {
     color: #ffffff;
 }
 
+#attendanceTable {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed; /* Ensures fixed column widths */
+}
+
+    #attendanceTable th, #attendanceTable td {
+        border: 1px solid black;
+        text-align: center;
+        width: 20%; /* Each column gets 20% width for equal distribution */
+    }
+
+/* Pagination */
+
+#pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+    #pagination .page-link {
+        margin: 0 5px;
+        padding: 5px 10px;
+        border: 1px solid #ddd;
+        color: #007bff;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+        #pagination .page-link:hover {
+            background-color: #f1f1f1;
+            border-color: #007bff;
+        }
+
+#entry-count {
+    text-align: center;
+    font-size: 14px;
+    color: #333;
+}
+
+
 /* Responsive Styles */
+
 @media screen and (max-width: 768px) {
     h2 {
         margin-left: 0;

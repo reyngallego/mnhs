@@ -8,51 +8,8 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <script src="../js/reports.js"></script>
-
-
     <link href="styles/reports.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
     <link href="styles/custom.css" rel="stylesheet" /> <!-- Link to custom CSS file -->
-
-    <script>
-        function searchStudent() {
-            var lrn = document.getElementsByName('search')[0].value;
-
-            if (!lrn) {
-                alert('Please enter the student LRN.');
-                return;
-            }
-
-            $.ajax({
-                url: '/api/student/search',
-                method: 'GET',
-                data: {
-                    lrn: lrn
-                },
-                success: function (data) {
-                    $('#studentName').text('Student Name: ' + data.FirstName + ' ' + data.LastName);
-                    $('#learnerReferenceNumber').text('Learner Reference Number: ' + data.LRN);
-                    $('#gradeAndSection').text('Total Present: ' + data.TotalPresent + ', Total Absent: ' + data.TotalAbsent);
-
-                    // Populate attendance table
-                    var tbody = $('#attendanceTable tbody');
-                    tbody.empty();
-                    data.AttendanceRecords.forEach(function (record) {
-                        var row = '<tr>' +
-                            '<td>' + new Date(record.Date).toLocaleDateString() + '</td>' +
-                            '<td>' + record.Day + '</td>' +
-                            '<td>' + record.Status + '</td>' +
-                            '<td>' + (record.TimeIn ? record.TimeIn : '') + '</td>' +
-                            '<td>' + (record.TimeOut ? record.TimeOut : '') + '</td>' +
-                            '</tr>';
-                        tbody.append(row);
-                    });
-                },
-                error: function () {
-                    alert('Student not found');
-                }
-            });
-        }
-    </script>
 </head>
 <body>
     <header>
@@ -72,10 +29,8 @@
                         <form action="javascript:searchStudent();">
                             <input type="text" placeholder="Enter student LRN" name="search" id="report-search"/>
                             <button type="submit" class="search-button">
-                         <div class="search-icon"></div>
-   
-                        </button>
-                               
+                                <div class="search-icon"></div>
+                            </button>
                         </form>
                     </div>
                     <div id="actions">
@@ -113,11 +68,15 @@
                             <!-- Data will be populated here -->
                         </tbody>
                     </table>
+                    <div id="pagination" class="mt-3">
+                        <!-- Pagination controls will be populated here -->
+                    </div>
+                    <div id="entry-count" class="mt-2">
+                        <!-- Entry count will be populated here -->
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-
-    
 </body>
 </html>

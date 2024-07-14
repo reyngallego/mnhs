@@ -14,8 +14,17 @@
     margin-bottom: 20px;
 }
 .long-input {
-    width: 800px; /* Adjust the value as needed */
+    width: 400px; /* Adjust the value as needed */
+    padding: 5px;
+    border: none;
+    border-radius: 5px 0 0 5px;
 }
+
+.input-group {
+    border: 1px solid #054e00;
+    border-radius: 5px;
+}
+
 /* Table styles */
 .stud-attendance {
     width: 100%;
@@ -53,7 +62,7 @@ table {
 }
 
     table thead {
-        background-color: green;
+        background-color: #054e00;
         color: white;
     }
 

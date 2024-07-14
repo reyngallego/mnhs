@@ -6,10 +6,6 @@
     display: flex;
     justify-content: space-between;
     flex-wrap: nowrap;
-    margin-left: 100px;
-    padding: 10px;
-    padding-bottom: 0px;
-    box-sizing: border-box;
     flex-direction: row;
 }
 
@@ -69,7 +65,7 @@ footer {
 }
 
 .colorbox2 {
-    background-color: #DAFFBD;
+    background-color: #d4edda;
     border: 1px solid #104210;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -174,8 +170,11 @@ footer {
     padding: 10px;
     border-radius: 8px;
     margin: 10px;
-    background-color: #DAFFBD;
+    background-color: #d4edda;
 }
+
+
+
 
 @media (max-width: 768px) {
     .box {
