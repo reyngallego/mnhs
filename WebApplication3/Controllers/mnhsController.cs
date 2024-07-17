@@ -83,7 +83,7 @@ namespace WebApplication3.Controllers
 
         [HttpGet]
         [Route("api/mnhs/GetStudents")]
-        public HttpResponseMessage GetStudents()
+        public HttpResponseMessage GetStudents(string searchTerm = "", string sortColumn = "LRN", string sortOrder = "ASC")
         {
             try
             {
@@ -93,8 +93,28 @@ namespace WebApplication3.Controllers
                 {
                     connection.Open();
                     string query = "SELECT LRN, FirstName, MiddleName, LastName, Grade, Section, Adviser FROM mnhs";
+
+                    if (!string.IsNullOrEmpty(searchTerm))
+                    {
+                        query += " WHERE " +
+                                 "LOWER(FirstName) LIKE @SearchTerm OR " +
+                                 "LOWER(MiddleName) LIKE @SearchTerm OR " +
+                                 "LOWER(LastName) LIKE @SearchTerm OR " +
+                                 "LOWER(Grade) LIKE @SearchTerm OR " +
+                                 "LOWER(Section) LIKE @SearchTerm OR " +
+                                 "LOWER(Adviser) LIKE @SearchTerm";
+                    }
+
+                    // Add sorting
+                    query += $" ORDER BY {sortColumn} {sortOrder}";
+
                     using (SqlCommand command = new SqlCommand(query, connection))
                     {
+                        if (!string.IsNullOrEmpty(searchTerm))
+                        {
+                            command.Parameters.AddWithValue("@SearchTerm", "%" + searchTerm.ToLower() + "%");
+                        }
+
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             while (reader.Read())

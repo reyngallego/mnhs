@@ -27,13 +27,17 @@ body {
 }
 
     #studentTable th, #studentTable td {
-        padding: 8px;
         text-align: left;
     }
 
     #studentTable th {
         background-color: #054e00;
         color: white;
+    }
+
+    #studentTable td {
+        vertical-align: middle !important;
+        padding: 5px;
     }
 
         #studentTable th:nth-child(1), #studentTable td:nth-child(1) { /* LRN column */

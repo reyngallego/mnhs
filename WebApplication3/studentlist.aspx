@@ -14,59 +14,62 @@
 </head>
 <body>
     <header>
+        <div class="header1">
             <div class="header-overlay"></div>
             <h1>Student List</h1>
         </div>
     </header>
 
-    <div class="container">
-        <div class="container-fluid mt-3">
-            <div class="row mb-3">
-                <div class="col-md-4">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search students...">
-                </div>
-                <div class="col-md-4">
-                    <select id="sortSelect" class="form-control">
-                        <option value="0">Sort by LRN</option>
-                        <option value="1">Sort by Name</option>
-                        <option value="2">Sort by Grade</option>
-                        <option value="3">Sort by Section</option>
-                        <option value="4">Sort by Adviser</option>
-                    </select>
-                </div>
-                <div class="col-md-4 text-right">
-                    <button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
-                </div>
+ <div class="container">
+    <div class="container-fluid mt-3">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search students...">
             </div>
+            <div class="col-md-4">
+                <select id="sortSelect" class="form-control">
+                    <option value="LRN">Sort by LRN</option>
+                    <option value="FirstName">Sort by First Name</option>
+                    <option value="LastName">Sort by Last Name</option>
+                    <option value="Grade">Sort by Grade</option>
+                    <option value="Section">Sort by Section</option>
+                    <option value="Adviser">Sort by Adviser</option>
+                </select>
+            </div>
+            <div class="col-md-4 text-right">
+                <button id="addStudentBtn" type="button" class="btn btn-primary" data-toggle="modal" data-target="#addStudentModal">Add Student</button>
+            </div>
+        </div>
 
-            <table id="studentTable" class="table">
-                <thead>
-                    <tr>
-                        <th>LRN</th>
-                        <th>Name</th>
-                        <th>Grade</th>
-                        <th>Section</th>
-                        <th>Adviser</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <!-- Student data will be dynamically inserted here -->
-                </tbody>
-            </table>
+        <table id="studentTable" class="table">
+            <thead>
+                <tr>
+                    <th>LRN</th>
+                    <th>Name</th>
+                    <th>Grade</th>
+                    <th>Section</th>
+                    <th>Adviser</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Student data will be dynamically inserted here -->
+            </tbody>
+        </table>
 
-            <div class="pagination-container">
-                <nav aria-label="Page navigation">
-                    <ul class="pagination justify-content-center" id="pagination">
-                        <!-- Pagination buttons will be dynamically generated here -->
-                    </ul>
-                </nav>
-                <div class="entries-info text-center">
-                    <span id="entriesInfo"></span>
-                </div>
+        <div class="pagination-container">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center" id="pagination">
+                    <!-- Pagination buttons will be dynamically generated here -->
+                </ul>
+            </nav>
+            <div class="entries-info text-center">
+                <span id="entriesInfo"></span>
             </div>
         </div>
     </div>
+</div>
+
 
     <!-- Modal for editing student -->
     <div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">

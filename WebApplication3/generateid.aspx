@@ -9,46 +9,7 @@
     <link href="/styles/idGenerator.css" rel="stylesheet" />
     <link href="/styles/custom.css" rel="stylesheet" />
     <style>
-        #id-generator-search {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            margin-bottom:20px;
-        }
-        .filter-section {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        .search-container {
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .search-input {
-            height: 35px;
-            border: 1px solid black;
-            background-color: white;
-            border-radius: 5px;
-            width: 300px;
-        }
-        .search-icon {
-            height: 35px;
-            margin-left: 5px;
-        }
-         table {
-           width: 100%;
-          border-collapse: collapse;
-          margin-bottom: 20px;
-        }
-        table thead {
-          background-color: green;
-            color: white;
-        }
-        table th, table td {
-             padding: 8px;
-         text-align: left;
-        }
+        
       
     </style>
 </head>
@@ -65,7 +26,6 @@
             <form action="/search" method="GET" class="search-container">
                 <input type="text" placeholder="Search students..." class="search-input" id="search-input">
                 <img src="/images/icons/search.png" alt="Search" class="search-icon"> 
-                <label class="filter-label"><strong>Filter</strong></label>
             </form>
             <div class="filter-section">
                 <label for="grade-filter">Grade:</label>

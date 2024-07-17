@@ -1,14 +1,27 @@
 ﻿$(document).ready(function () {
 
+    var searchInput = $("#searchInput");
+    var sortSelect = $("#sortSelect");
+
     // Function to populate the table with student data
     function populateTable() {
+        var searchTerm = searchInput.val().toLowerCase();
+        var sortColumn = sortSelect.val();
+        var sortOrder = 'ASC'; // You can modify this if you need a different sort order
+
         $.ajax({
             type: "GET",
             url: "/api/mnhs/GetStudents", // Endpoint to retrieve student data
             contentType: "application/json; charset=utf-8",
             dataType: "json",
+            data: {
+                searchTerm: searchTerm,
+                sortColumn: sortColumn,
+                sortOrder: sortOrder
+            },
             success: function (response) {
                 $("#studentTable tbody").empty(); // Clear existing table rows
+
                 $.each(response, function (index, student) {
                     var row = "<tr>" +
                         "<td>" + student.LRN + "</td>" +
@@ -248,7 +261,10 @@
         });
     }
 
+    // Event handlers for search and sort
+    searchInput.on("input", populateTable);
+    sortSelect.on("change", populateTable);
+
     // Call the populateTable function when the page loads
     populateTable();
 });
-
