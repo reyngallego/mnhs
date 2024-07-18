@@ -34,13 +34,13 @@
                         </form>
                     </div>
                     <div id="actions">
-                        <img src="/images/icons/export.png" alt="Share" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 5px"/>
+                        <button>
+                            <img src="/images/icons/download.png" alt="Download" style="width: 20px; height: 25px; vertical-align: middle;margin:0px 5px"/>
                             <span style="font-size: 20px; color: black;"></span>
-                        <img src="/images/icons/download.png" alt="Download" style="width: 20px; height: 25px; vertical-align: middle;margin:0px 5px"/>
+                        </button>
+                        <button class="action-button" id="print-button" type="button">
+                            <img src="/images/icons/printer.png" alt="Printer" />
                             <span style="font-size: 20px; color: black;"></span>
-                        <button id="print-button" type="button" style="border: none; background: none;">
-                            <img src="/images/icons/printer.png" alt="Printer" style="width: 20px; height: 20px; vertical-align: middle;margin:0px 10px"/>
-                                <span style="font-size: 20px; color: black;"></span>
                         </button>
                     </div>
                 </div>

@@ -1,7 +1,7 @@
 ﻿function populateTable() {
     $.ajax({
         type: "GET",
-        url: "/api/mnhs/GetStudents",
+        url: "/api/generateid/GetStudents",
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (response) {

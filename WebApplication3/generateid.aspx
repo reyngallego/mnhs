@@ -20,12 +20,12 @@
         <h1>ID Generator</h1>
     </div>
 </header>
-    <div class="container">
+     <div class="container">
         <!-- Search and Filter section -->
         <div id="id-generator-search">
             <form action="/search" method="GET" class="search-container">
-                <input type="text" placeholder="Search students..." class="search-input" id="search-input">
-                <img src="/images/icons/search.png" alt="Search" class="search-icon"> 
+                <input type="text" placeholder="Search students..." class="search-input" id="searchInput">
+                <img src="/images/icons/search.png" alt="Search" class="search-icon">
             </form>
             <div class="filter-section">
                 <label for="grade-filter">Grade:</label>
@@ -43,7 +43,8 @@
             </div>
         </div>
 
-        <table id="studentTable" class="table">
+
+       <table id="studentTable" class="table">
             <thead>
                 <tr>
                     <th>LRN</th>
@@ -59,6 +60,23 @@
             </tbody>
         </table>
         
+         <!-- Pagination controls -->
+        <nav aria-label="Page navigation">
+            <ul class="pagination justify-content-center">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous" id="prev-page">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- Page numbers will be dynamically inserted here -->
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next" id="next-page">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
         <!-- Modal for previewing the ID -->
         <div class="modal fade" id="generateIdModal" tabindex="-1" role="dialog" aria-labelledby="generateIdModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
@@ -137,6 +155,7 @@
         <script src="../js/generate_id.js"></script>
        
         <script>
+
             function generateQRCode(identifier) {
                 console.log('generateQRCode function called');
 
@@ -197,31 +216,38 @@
                 });
             }
 
-            $(document).ready(function () {
+            function filterTable() {
+                const searchTerm = $("#search-input").val();
+                const sortColumn = "LRN";
+                const sortOrder = "ASC";
+                const pageNumber = 1;
+                const pageSize = 10;
 
-                // Search
+                const selectedGrade = $("#grade-filter").val().toLowerCase();
+                const selectedSection = $("#section-filter").val().toLowerCase();
+
+                populateTable(searchTerm, sortColumn, sortOrder, pageNumber, pageSize);
+            }
+            $(document).ready(function () {
+                populateTable();
+
                 $("#search-input").on("keyup", function () {
-                    var value = $(this).val().toLowerCase();
-                    $("#studentTable tbody tr").filter(function () {
-                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-                    });
+                    filterTable();
                 });
 
-                // Filter by grade and update sections
-                const sections = {
-                    "Grade 7": ["Section A", "Section B", "Section C"],
-                    "Grade 8": ["Section A", "Section B", "Section C"],
-                    "Grade 9": ["Section A", "Section B", "Section C"],
-                    "Grade 10": ["Section A", "Section B", "Section C"],
-                };
-
                 $("#grade-filter").on("change", function () {
-                    var selectedGrade = $(this).val();
-                    var $sectionFilter = $("#section-filter");
+                    const selectedGrade = $(this).val();
+                    const $sectionFilter = $("#section-filter");
                     $sectionFilter.empty();
                     $sectionFilter.append('<option value="all">All</option>');
 
                     if (selectedGrade !== "all") {
+                        const sections = {
+                            "Grade 7": ["Section A", "Section B", "Section C"],
+                            "Grade 8": ["Section A", "Section B", "Section C"],
+                            "Grade 9": ["Section A", "Section B", "Section C"],
+                            "Grade 10": ["Section A", "Section B", "Section C"],
+                        };
                         sections[selectedGrade].forEach(function (section) {
                             $sectionFilter.append('<option value="' + section + '">' + section + '</option>');
                         });
@@ -233,18 +259,6 @@
                 $("#section-filter").on("change", function () {
                     filterTable();
                 });
-
-                function filterTable() {
-                    var selectedGrade = $("#grade-filter").val().toLowerCase();
-                    var selectedSection = $("#section-filter").val().toLowerCase();
-                    $("#studentTable tbody tr").filter(function () {
-                        var grade = $(this).children('td').eq(2).text().toLowerCase();
-                        var section = $(this).children('td').eq(3).text().toLowerCase();
-                        var gradeMatch = (selectedGrade === "all") || (grade === selectedGrade);
-                        var sectionMatch = (selectedSection === "all") || (section === selectedSection);
-                        $(this).toggle(gradeMatch && sectionMatch);
-                    });
-                }
             });
         </script>
 </body>
