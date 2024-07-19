@@ -3,16 +3,20 @@
   "WorkspaceRootPath": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|c:\\users\\reynm\\onedrive\\desktop\\new folder\\2\\mnhs\\webapplication3\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\controllers\\attendancecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|c:\\users\\reynm\\onedrive\\desktop\\new folder\\2\\mnhs\\webapplication3\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\controllers\\generateidcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\styles\\reports.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\styles\\reports.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\reports.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\reports.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
+      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\styles\\reports.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\styles\\reports.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\styles\\custom.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
@@ -23,10 +27,6 @@
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\js\\reports.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\mnhs.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\generateid.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}",
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\generateid.aspx||{57312C73-6202-49E9-B1E1-40EA1A6DC1F6}"
     },
@@ -35,16 +35,8 @@
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\js\\student.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\js\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\js\\generate_id.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\styles\\idgenerator.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\styles\\idgenerator.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\webapplication3\\controllers\\mnhscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1602BD76-C3C4-428C-B574-AAD1A8DF5517}|WebApplication3\\WebApplication3.csproj|solutionrelative:webapplication3\\controllers\\mnhscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -54,11 +46,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
+              "Title": "AttendanceController.cs",
+              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\Controllers\\AttendanceController.cs",
+              "RelativeDocumentMoniker": "WebApplication3\\Controllers\\AttendanceController.cs",
+              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\Controllers\\AttendanceController.cs",
+              "RelativeToolTip": "WebApplication3\\Controllers\\AttendanceController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-07-19T02:31:01.48Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "reports.css",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\styles\\reports.css",
               "RelativeDocumentMoniker": "WebApplication3\\styles\\reports.css",
@@ -67,30 +72,6 @@
               "ViewState": "AQIAAAQBAAAAAAAAAAAowDMBAAABAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
               "WhenOpened": "2024-07-18T06:13:11.874Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "reports.aspx",
-              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\reports.aspx",
-              "RelativeDocumentMoniker": "WebApplication3\\reports.aspx",
-              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\reports.aspx",
-              "RelativeToolTip": "WebApplication3\\reports.aspx",
-              "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-07-18T06:10:19.04Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "generate_id.js",
-              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\js\\generate_id.js",
-              "RelativeDocumentMoniker": "WebApplication3\\js\\generate_id.js",
-              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\js\\generate_id.js",
-              "RelativeToolTip": "WebApplication3\\js\\generate_id.js",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABwAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-07-18T04:10:50.795Z"
             },
             {
               "$type": "Document",
@@ -106,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "generateidController.cs",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\Controllers\\generateidController.cs",
               "RelativeDocumentMoniker": "WebApplication3\\Controllers\\generateidController.cs",
@@ -131,7 +112,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 8,
               "Title": "idgenerator.css",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\styles\\idgenerator.css",
               "RelativeDocumentMoniker": "WebApplication3\\styles\\idgenerator.css",
@@ -143,19 +124,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "mnhsController.cs",
-              "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\Controllers\\mnhsController.cs",
-              "RelativeDocumentMoniker": "WebApplication3\\Controllers\\mnhsController.cs",
-              "ToolTip": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\Controllers\\mnhsController.cs",
-              "RelativeToolTip": "WebApplication3\\Controllers\\mnhsController.cs",
-              "ViewState": "AQIAAE8AAAAAAAAAAAAkwI8AAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-07-17T07:08:48.015Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "reports.js",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\js\\reports.js",
               "RelativeDocumentMoniker": "WebApplication3\\js\\reports.js",
@@ -167,7 +136,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "custom.css",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\styles\\custom.css",
               "RelativeDocumentMoniker": "WebApplication3\\styles\\custom.css",
@@ -179,7 +148,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 2,
               "Title": "mnhs.aspx",
               "DocumentMoniker": "C:\\Users\\reynm\\OneDrive\\Desktop\\New folder\\2\\mnhs\\WebApplication3\\mnhs.aspx",
               "RelativeDocumentMoniker": "WebApplication3\\mnhs.aspx",
@@ -187,7 +156,8 @@
               "RelativeToolTip": "WebApplication3\\mnhs.aspx",
               "LogicalView": "7651a703-06e5-11d1-8ebd-00a0c90f26ea",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000195|",
-              "WhenOpened": "2024-07-09T02:25:57.358Z"
+              "WhenOpened": "2024-07-09T02:25:57.358Z",
+              "EditorCaption": ""
             }
           ]
         }
