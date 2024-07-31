@@ -88,7 +88,7 @@ form .form-group input,
 form .form-group select {
     border: 1px solid #ced4da;
     border-radius: 0.25rem;
-    padding: 10px;
+    padding: 2px 10px;
 }
 
 form h5 {
@@ -106,4 +106,15 @@ form h5 {
 
 .entries-info {
     margin-top: 10px;
+}
+.no-backdrop .modal-backdrop {
+    display: none;
+}
+
+/* Optional: Change backdrop color or opacity */
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.2); /* Adjust the opacity as needed */
+}
+.modal-title{
+    color:white !important;
 }

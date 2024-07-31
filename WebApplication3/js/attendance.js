@@ -1,4 +1,14 @@
-﻿var currentState = 'enter'; // Initialize the current state to 'enter'
+﻿$(document).ready(function () {
+    // Monitor the Enter key press on the LRN input field
+    $('#lrnInput').on('keypress', function (event) {
+        if (event.which === 13) { // Enter key code
+            event.preventDefault(); // Prevent default form submission behavior
+            scanLRN(); // Call the scanLRN function
+        }
+    });
+});
+
+var currentState = 'enter'; // Initialize the current state to 'enter'
 
 function enterOrLeaveAttendance() {
     if (currentState === 'enter') {
@@ -17,16 +27,8 @@ $('#toggleButton').on('click', function () {
     toggleState();
 });
 
-$('#lrnInput').on('keypress', function (event) {
-    if (event.which === 13) { // Check if the pressed key is Enter (key code 13)
-        event.preventDefault(); // Prevent default form submission behavior
-        scanLRN(); // Call the scanLRN function
-    }
-});
-
 function scanLRN() {
     var lrn = $('#lrnInput').val().trim();
-
     if (lrn !== '') {
         if (currentState === 'enter') {
             enterAttendance();
@@ -38,6 +40,7 @@ function scanLRN() {
         alert('Please enter LRN first.');
     }
 }
+
 $(document).ready(function () {
     $.ajax({
         url: '/api/attendance/getattendancedata',
@@ -74,8 +77,8 @@ $(document).ready(function () {
         }
     });
 });
+
 function enterAttendance() {
-    // Get the LRN value from the input field
     var lrn = $('#lrnInput').val().trim(); // Ensure there are no leading/trailing spaces
     console.log('LRN to be sent:', lrn); // Log the LRN
 
@@ -89,9 +92,6 @@ function enterAttendance() {
             console.log('Attendance entered successfully');
             refreshAttendanceTable();
             fetchParentContact(lrn);
-
-            // Optional: Refresh attendance table after successful entry
-            refreshAttendanceTable();
 
             // Assuming you want to send an SMS notification to parents
             $.ajax({
@@ -139,7 +139,7 @@ function enterAttendance() {
         }
     });
 }
-// Function to send SMS
+
 function sendSMS(payload) {
     const myHeaders = new Headers();
     myHeaders.append("Authorization", "App 81d503eb320ed748f41e10ebee9fbb6e-ee998e47-890e-4766-9521-0c87e02fd435");
@@ -158,6 +158,7 @@ function sendSMS(payload) {
         .then((result) => console.log(result))
         .catch((error) => console.error(error));
 }
+
 function leaveAttendance() {
     var lrn = $('#lrnInput').val();
 
@@ -170,11 +171,9 @@ function leaveAttendance() {
             $('#statusNotification').removeClass('alert alert-danger').addClass('alert alert-success').text('Attendance left successfully').show();
             console.log('Attendance left successfully');
             refreshAttendanceTable();
-
         },
         error: function (xhr, textStatus, errorThrown) {
             if (xhr.status === 400) {
-                // LRN does not exist or student has already left
                 $('#statusNotification').removeClass('alert alert-success').addClass('alert alert-danger').text(xhr.responseJSON.Message).show();
             } else {
                 console.log('Error:', errorThrown);
@@ -182,27 +181,19 @@ function leaveAttendance() {
         }
     });
 }
+
 function refreshAttendanceTable() {
-    // Reload attendance data after time in recorded
     $.ajax({
         url: '/api/attendance/getattendancedata',
         type: 'GET',
         dataType: 'json',
         success: function (data) {
-            // Clear the table body
             $('#attendanceTable tbody').empty();
-
-            // Populate the table with data
             $.each(data, function (index, row) {
                 var fullName = row.FirstName + ' ' + row.LastName;
-
-                // Format time in and time out
                 var timeIn = formatTime(row.TimeIn);
                 var timeOut = formatTime(row.TimeOut);
-
-                // Format date
                 var date = formatDate(row.Date);
-
                 $('#attendanceTable tbody').append(
                     '<tr>' +
                     '<td>' + row.LRN + '</td>' +
@@ -219,6 +210,7 @@ function refreshAttendanceTable() {
         }
     });
 }
+
 function formatTime(timeString) {
     if (!timeString || timeString === '0001-01-01T00:00:00') {
         return ''; // Handle empty or invalid time
@@ -232,5 +224,5 @@ function formatDate(dateString) {
         return ''; // Handle empty or invalid date
     }
     var date = new Date(dateString);
-    return date.toLocaleDateString(); // Format date
+    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }); // Format date
 }

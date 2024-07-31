@@ -43,16 +43,14 @@
                 $(document).on("click", ".edit-btn", function (event) {
                     event.preventDefault();
                     var studentId = $(this).data("student-id");
-                    var confirmEdit = confirm("Are you sure you want to edit this student?");
-                    if (confirmEdit) {
+                    if (confirm("Are you sure you want to edit this student?")) {
                         openEditModal(studentId);
                     }
                 });
 
                 $("#addStudentBtn").click(function (event) {
                     event.preventDefault();
-                    var confirmAdd = confirm("Are you sure you want to add a new student?");
-                    if (confirmAdd) {
+                    if (confirm("Are you sure you want to add a new student?")) {
                         $('#addStudentModal').modal('show');
                     }
                 });
@@ -60,8 +58,7 @@
                 $(document).on("click", ".delete-btn", function (event) {
                     event.preventDefault();
                     var studentId = $(this).data("student-id");
-                    var confirmDelete = confirm("Are you sure you want to delete this student?");
-                    if (confirmDelete) {
+                    if (confirm("Are you sure you want to delete this student?")) {
                         $.ajax({
                             type: "DELETE",
                             url: "/api/mnhs/DeleteStudent?LRN=" + studentId,
@@ -69,7 +66,7 @@
                             dataType: "json",
                             success: function (response) {
                                 alert(response);
-                                populateTable();
+                                populateTable(); // Refresh the table
                             },
                             error: function (xhr, textStatus, errorThrown) {
                                 alert("Error: " + errorThrown);
@@ -148,7 +145,9 @@
             success: function (response) {
                 alert(response);
                 $("#editStudentModal").modal("hide");
-                populateTable();
+                setTimeout(function () {
+                    populateTable(); // Refresh the table
+                }, 500); // Add a slight delay to ensure modal hides before table refresh
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert("Error: " + errorThrown);
@@ -188,9 +187,11 @@
             dataType: "json",
             success: function (response) {
                 alert(response);
-                populateTable();
                 $('#addStudentModal').modal('hide');
-                clearModalForm();
+                setTimeout(function () {
+                    populateTable(); // Refresh the table
+                    clearModalForm();
+                }, 500); // Add a slight delay to ensure modal hides before table refresh
             },
             error: function (xhr, textStatus, errorThrown) {
                 alert("Error: " + errorThrown);
@@ -253,7 +254,7 @@
             var start = (page - 1) * rowsPerPage;
             var end = start + rowsPerPage;
 
-            rows.hide();
+            rows.hide(); v
             rows.slice(start, end).show();
 
             pagination.find("li").removeClass("active");
@@ -267,4 +268,5 @@
 
     // Call the populateTable function when the page loads
     populateTable();
+
 });

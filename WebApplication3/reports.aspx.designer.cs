@@ -11,7 +11,7 @@ namespace WebApplication3
 {
 
 
-    public partial class reports
+    public partial class mnhs
     {
     }
 }

@@ -46,11 +46,11 @@ function searchStudent() {
 
                 paginatedRecords.forEach(function (record) {
                     var row = '<tr>' +
-                        '<td>' + new Date(record.Date).toLocaleDateString() + '</td>' +
+                        '<td>' + new Date(record.Date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) + '</td>' +
                         '<td>' + record.Day + '</td>' +
                         '<td>' + record.Status + '</td>' +
-                        '<td>' + (record.TimeIn ? record.TimeIn : '') + '</td>' +
-                        '<td>' + (record.TimeOut ? record.TimeOut : '') + '</td>' +
+                        '<td>' + (record.TimeIn ? new Date(record.TimeIn).toLocaleTimeString() : '') + '</td>' +
+                        '<td>' + (record.TimeOut ? new Date(record.TimeOut).toLocaleTimeString() : '') + '</td>' +
                         '</tr>';
                     tbody.append(row);
                 });

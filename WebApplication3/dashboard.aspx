@@ -12,131 +12,132 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
-    <script src="js/dashboard.js"></script> 
-
+    <script src="js/dashboard.js"></script>
 </head>
-     <script>
-         $(document).ready(function () {
-             fetchDashboardData();
-             updateDateTime();
-             setInterval(updateDateTime, 1000);
-         });
+<body>
+    <script>
 
-         function fetchDashboardData() {
-             $.ajax({
-                 url: '/api/generateid/GetDashboardData',
-                 method: 'GET',
-                 success: function (data) {
-                     renderStudentSummary(data.StudentSummary);
-                     renderAttendanceSummary(data.AttendanceSummary, data.NotTimedInCount);
-                     renderBarChart(data.StudentSummary.Grades);
-                     renderPieChart(data.NotTimedInCount, calculateTotalStudents(data.StudentSummary.Grades) - data.NotTimedInCount);
-                 },
-                 error: function () {
-                     alert('Failed to fetch dashboard data');
-                 }
-             });
-         }
+        $(document).ready(function () {
+            fetchDashboardData();
+            updateDateTime();
+            setInterval(updateDateTime, 1000);
+        });
 
-         function updateDateTime() {
-             const now = new Date();
-             const time = now.toLocaleTimeString();
-             const date = now.toLocaleDateString();
+        function fetchDashboardData() {
+            $.ajax({
+                url: '/api/generateid/GetDashboardData',
+                method: 'GET',
+                success: function (data) {
+                    renderStudentSummary(data.StudentSummary);
+                    renderAttendanceSummary(data.AttendanceSummary, data.NotTimedInCount);
+                    renderBarChart(data.StudentSummary.Grades);
+                    renderPieChart(data.NotTimedInCount, calculateTotalStudents(data.StudentSummary.Grades) - data.NotTimedInCount);
+                },
+                error: function () {
+                    alert('Failed to fetch dashboard data');
+                }
+            });
+        }
 
-             document.getElementById('timeDisplay').textContent = time;
-             document.getElementById('dateDisplay').textContent = date;
-         }
+        function updateDateTime() {
+            const now = new Date();
+            const time = now.toLocaleTimeString();
+            const date = now.toLocaleDateString();
 
-         function renderStudentSummary(data) {
-             document.getElementById("totalStudents").textContent = calculateTotalStudents(data.Grades);
-             document.getElementById("maleStudents").textContent = calculateMaleStudents(data.Grades);
-             document.getElementById("femaleStudents").textContent = calculateFemaleStudents(data.Grades);
-         }
+            document.getElementById('timeDisplay').textContent = time;
+            document.getElementById('dateDisplay').textContent = date;
+        }
 
-         function renderAttendanceSummary(attendanceData, notTimedInCount) {
-             document.getElementById("timedInCount").textContent = attendanceData[0].TotalTimeIn;
-             document.getElementById("notTimedInCount").textContent = notTimedInCount;
-             document.getElementById("timedOutCount").textContent = attendanceData[0].TotalTimeOut;
-             document.getElementById("notTimedOutCount").textContent = attendanceData[0].TotalRecords - attendanceData[0].TotalTimeOut;
-         }
+        function renderStudentSummary(data) {
+            document.getElementById("totalStudents").textContent = calculateTotalStudents(data.Grades);
+            document.getElementById("maleStudents").textContent = calculateMaleStudents(data.Grades);
+            document.getElementById("femaleStudents").textContent = calculateFemaleStudents(data.Grades);
+        }
 
-         function calculateTotalStudents(grades) {
-             let total = 0;
-             grades.forEach(grade => {
-                 total += grade.TotalStudents;
-             });
-             return total;
-         }
+        function renderAttendanceSummary(attendanceData, notTimedInCount) {
+            document.getElementById("timedInCount").textContent = attendanceData[0].TotalTimeIn;
+            document.getElementById("notTimedInCount").textContent = notTimedInCount;
+            document.getElementById("timedOutCount").textContent = attendanceData[0].TotalTimeOut;
+            document.getElementById("notTimedOutCount").textContent = attendanceData[0].TotalRecords - attendanceData[0].TotalTimeOut;
+        }
 
-         function calculateMaleStudents(grades) {
-             let totalMale = 0;
-             grades.forEach(grade => {
-                 totalMale += grade.MaleStudents;
-             });
-             return totalMale;
-         }
+        function calculateTotalStudents(grades) {
+            let total = 0;
+            grades.forEach(grade => {
+                total += grade.TotalStudents;
+            });
+            return total;
+        }
 
-         function calculateFemaleStudents(grades) {
-             let totalFemale = 0;
-             grades.forEach(grade => {
-                 totalFemale += grade.FemaleStudents;
-             });
-             return totalFemale;
-         }
+        function calculateMaleStudents(grades) {
+            let totalMale = 0;
+            grades.forEach(grade => {
+                totalMale += grade.MaleStudents;
+            });
+            return totalMale;
+        }
 
-         function renderBarChart(gradeData) {
-             const labels = gradeData.map(grade => grade.Grade);
-             const totalStudents = gradeData.map(grade => grade.TotalStudents);
+        function calculateFemaleStudents(grades) {
+            let totalFemale = 0;
+            grades.forEach(grade => {
+                totalFemale += grade.FemaleStudents;
+            });
+            return totalFemale;
+        }
 
-             const barCtx = document.getElementById('myChart').getContext('2d');
+        function renderBarChart(gradeData) {
+            const labels = gradeData.map(grade => grade.Grade);
+            const totalStudents = gradeData.map(grade => grade.TotalStudents);
 
-             new Chart(barCtx, {
-                 type: 'bar',
-                 data: {
-                     labels: labels,
-                     datasets: [{
-                         label: 'Total Students',
-                         data: totalStudents,
-                         backgroundColor: 'rgba(76, 175, 80, 0.5)',
-                         borderColor: 'rgba(76, 175, 80, 1)',
-                         borderWidth: 1
-                     }]
-                 },
-                 options: {
-                     scales: {
-                         y: {
-                             beginAtZero: true
-                         }
-                     }
-                 }
-             });
-         }
+            const barCtx = document.getElementById('myChart').getContext('2d');
 
-         function renderPieChart(notTimedInCount, timedInCount) {
-             const pieCtx = document.getElementById('myPieChart').getContext('2d');
+            new Chart(barCtx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Total Students',
+                        data: totalStudents,
+                        backgroundColor: 'rgba(76, 175, 80, 0.5)',
+                        borderColor: 'rgba(76, 175, 80, 1)',
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
+            });
+        }
 
-             new Chart(pieCtx, {
-                 type: 'pie',
-                 data: {
-                     labels: ['Not Timed In', 'Timed In'],
-                     datasets: [{
-                         data: [notTimedInCount, timedInCount],
-                         backgroundColor: ['#FF6384', '#36A2EB'],
-                         hoverBackgroundColor: ['#FF6384', '#36A2EB']
-                     }]
-                 },
-                 options: {
-                     responsive: true,
-                     plugins: {
-                         legend: {
-                             position: 'top',
-                         }
-                     }
-                 }
-             });
-         }
+        function renderPieChart(notTimedInCount, timedInCount) {
+            const pieCtx = document.getElementById('myPieChart').getContext('2d');
+
+            new Chart(pieCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Not Timed In', 'Timed In'],
+                    datasets: [{
+                        data: [notTimedInCount, timedInCount],
+                        backgroundColor: ['#FF6384', '#36A2EB'],
+                        hoverBackgroundColor: ['#FF6384', '#36A2EB']
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        }
+                    }
+                }
+            });
+        }
     </script>
+
     <header>
         <div class="header1">
             <div class="header-overlay"></div>
@@ -144,7 +145,7 @@
         </div>
     </header>
 
-  <div class="container">
+    <div class="container">
         <div class="content">
             <div class="box">
                 <div class="timebox">
@@ -157,37 +158,37 @@
                 </div>
             </div>
         </div>
-    <div class="content">
-        <div class="colorbox2">
-            <div class="img_case">
-                <img src="/images/icons/student.png" alt="icon" width="80px" height="80px">
+        <div class="content">
+            <div class="colorbox2">
+                <div class="img_case">
+                    <img src="/images/icons/student.png" alt="icon" width="80px" height="80px">
+                </div>
+                <div class="innerbox">
+                    <h1>Enrolled Students</h1>
+                    <h3 id="totalStudents">Loading...</h3>
+                </div>
             </div>
-            <div class="innerbox">
-                <h1>Enrolled Students</h1>
-                <h3 id="totalStudents">Loading...</h3>
+            <div class="colorbox2">
+                <div class="malebox">
+                    <h3>Male</h3>
+                    <h3 id="maleStudents">Loading...</h3>
+                </div>
+                <div class="femalebox">
+                    <h3>Female</h3>
+                    <h3 id="femaleStudents">Loading...</h3>
+                </div>
             </div>
         </div>
-        <div class="colorbox2">
-            <div class="malebox">
-                <h3>Male</h3>
-                <h3 id="maleStudents">Loading...</h3>
-            </div>
-            <div class="femalebox">
-                <h3>Female</h3>
-                <h3 id="femaleStudents">Loading...</h3>
-            </div>
-        </div>
-    </div>
         <div class="content">
             <div class="box3">
-            <div class="chart-container">
-                <canvas id="myChart" width="300" height="300"></canvas>
+                <div class="chart-container">
+                    <canvas id="myChart" width="300" height="300"></canvas>
+                </div>
             </div>
         </div>
     </div>
-    </div>
 
-   <div class="container">
+    <div class="container">
         <div class="content">
             <div class="box2">
                 <div class="img_case">
@@ -239,9 +240,5 @@
             </div>
         </div>
     </div>
-
-
-
-   
 </body>
 </html>

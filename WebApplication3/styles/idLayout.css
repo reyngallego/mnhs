@@ -52,6 +52,13 @@
     display: flex;
     flex-direction: row-reverse;
     align-items: center;
+    width: 105%;
+}
+
+.id-card-back-content {
+    width: 345px;
+    align-items: center;
+    text-align: center;
 }
 
 .details img {
@@ -64,6 +71,7 @@
     list-style-type: none;
     padding: 0;
     text-align: center;
+    width: 100%;
 }
 
 .student-details-front, .student-details-back {
@@ -79,12 +87,9 @@
 }
 
 .qr-code img {
-    justify-content: center;
-    align-items: center;
     width: 200px;
     height: 200px;
-    margin-left: 0px;
-    margin-top: -30px;
+    transform: translate(32%, -9%);
 }
 
 strong {

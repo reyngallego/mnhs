@@ -2,9 +2,9 @@
 
 /* Container styles */
 .container {
-    margin-left: 100px; 
-    position: relative; 
-    display: flex; 
+    margin-left: 100px;
+    position: relative;
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -13,16 +13,22 @@
 .form-group {
     margin-bottom: 20px;
 }
+
 .long-input {
     width: 400px; /* Adjust the value as needed */
-    padding: 5px;
+    padding: 0 10px;
     border: none;
     border-radius: 5px 0 0 5px;
+}
+
+.attendance-input {
+    display: flex;
 }
 
 .input-group {
     border: 1px solid #054e00;
     border-radius: 5px;
+    margin-right: 10px;
 }
 
 /* Table styles */
@@ -71,3 +77,33 @@ table {
         text-align: left;
     }
 
+    table tbody {
+        display: block;
+        max-height: 400px; /* Set the maximum height for the tbody */
+        overflow-y: auto; /* Enable vertical scrolling */
+    }
+
+        table thead, table tbody tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed; /* Ensures the columns have fixed widths */
+        }
+
+            table tbody tr td {
+                max-width: 150px; /* Adjust the max width as needed */
+                overflow-x: auto;
+                white-space: nowrap;
+            }
+
+                table tbody tr td::-webkit-scrollbar {
+                    height: 6px;
+                }
+
+                table tbody tr td::-webkit-scrollbar-thumb {
+                    background-color: #cccccc;
+                    border-radius: 3px;
+                }
+
+                table tbody tr td::-webkit-scrollbar-track {
+                    background-color: #f0f0f0;
+                }

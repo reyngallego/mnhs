@@ -424,6 +424,8 @@
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="dashboard.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="images\bagong-pilipinas.png" />
+    <Content Include="images\deped-pque.png" />
     <Content Include="images\icons\admin-green.png" />
     <Content Include="images\icons\admin-white.png" />
     <Content Include="images\icons\dashboard.png" />
@@ -499,6 +501,8 @@
     <Content Include="styles\stud-attendance-summary.css" />
     <Content Include="styles\stud-search-list.css" />
     <Content Include="styles\studentlist.css" />
+    <Content Include="styles\terms-and-conditions.css" />
+    <Content Include="terms-and-conditions.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -575,6 +579,13 @@
     <Compile Include="program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="terms-and-conditions.aspx.cs">
+      <DependentUpon>terms-and-conditions.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="terms-and-conditions.aspx.designer.cs">
+      <DependentUpon>terms-and-conditions.aspx</DependentUpon>
+    </Compile>
     <Compile Include="UserUtility.cs" />
     <Compile Include="attendance.aspx.cs">
       <DependentUpon>attendance.aspx</DependentUpon>

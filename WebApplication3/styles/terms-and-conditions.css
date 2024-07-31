@@ -1,0 +1,21 @@
+﻿/* Modal styling */
+.modal-dialog.t-and-c {
+    max-width: 800px !important;
+    margin: 1.75rem auto;
+}
+
+/* Modal content styling */
+.terms-and-cond {
+    text-align: justify;
+}
+
+    .terms-and-cond li,
+    .terms-and-cond p {
+        font-size: 12px;
+    }
+
+    .terms-and-cond h2,
+    .terms-and-cond h3 {
+        font-size: 16px;
+        font-weight: 600;
+    }

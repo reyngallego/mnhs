@@ -60,22 +60,12 @@
             </tbody>
         </table>
         
-         <!-- Pagination controls -->
-        <nav aria-label="Page navigation">
-            <ul class="pagination justify-content-center">
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Previous" id="prev-page">
-                        <span aria-hidden="true">&laquo;</span>
-                    </a>
-                </li>
-                <!-- Page numbers will be dynamically inserted here -->
-                <li class="page-item">
-                    <a class="page-link" href="#" aria-label="Next" id="next-page">
-                        <span aria-hidden="true">&raquo;</span>
-                    </a>
-                </li>
-            </ul>
-        </nav>
+        <!-- Pagination Controls -->
+        <div id="pagination-controls">
+            <button type="button" id="prev-page" class="pagination-button">Previous</button>
+            <span id="page-info">Page 1</span>
+            <button type="button" id="next-page" class="pagination-button">Next</button>
+        </div>
 
         <!-- Modal for previewing the ID -->
         <div class="modal fade" id="generateIdModal" tabindex="-1" role="dialog" aria-labelledby="generateIdModalLabel" aria-hidden="true">
@@ -155,111 +145,9 @@
         <script src="../js/generate_id.js"></script>
        
         <script>
-
-            function generateQRCode(identifier) {
-                console.log('generateQRCode function called');
-
-                const qrContent = `${identifier}`;
-                console.log('QR content:', qrContent);
-
-                try {
-                    const qrCodeDiv = document.querySelector(".qr-code");
-                    console.log('QR code div:', qrCodeDiv);
-
-                    // Clear any existing QR code
-                    qrCodeDiv.innerHTML = '';
-
-                    new QRCode(qrCodeDiv, {
-                        text: qrContent,
-                        width: 100,
-                        height: 100,
-                        colorDark: "#000000",
-                        colorLight: "#ffffff",
-                        correctLevel: QRCode.CorrectLevel.H,
-                    });
-
-                    console.log('QR code generated successfully');
-                } catch (error) {
-                    console.error('Error generating QR code:', error);
-                }
-            }
-
-            function printID() {
-                // Capture id-card-front as canvas
-                html2canvas(document.getElementById('id-card-front')).then(function (canvasFront) {
-                    // Capture id-card-back as canvas
-                    html2canvas(document.getElementById('id-card-back')).then(function (canvasBack) {
-                        // Create a new canvas to combine id-card-front and id-card-back
-                        var combinedCanvas = document.createElement('canvas');
-                        var combinedContext = combinedCanvas.getContext('2d');
-
-                        // Set the combined canvas size
-                        combinedCanvas.width = Math.max(canvasFront.width, canvasBack.width);
-                        combinedCanvas.height = canvasFront.height + canvasBack.height;
-
-                        // Draw id-card-front and id-card-back on the combined canvas
-                        combinedContext.drawImage(canvasFront, 0, 0);
-                        combinedContext.drawImage(canvasBack, 0, canvasFront.height);
-
-                        // Convert the combined canvas to an image
-                        var imgData = combinedCanvas.toDataURL('image/png');
-
-                        // Open a new window with the image for printing
-                        var printWindow = window.open('', '_blank');
-                        printWindow.document.open();
-                        printWindow.document.write('<img src="' + imgData + '" style="display: block; margin: 0 auto;">');
-                        printWindow.document.close();
-
-                        // Trigger the print dialog
-                        printWindow.print();
-                    });
-                });
-            }
-
-            function filterTable() {
-                const searchTerm = $("#search-input").val();
-                const sortColumn = "LRN";
-                const sortOrder = "ASC";
-                const pageNumber = 1;
-                const pageSize = 10;
-
-                const selectedGrade = $("#grade-filter").val().toLowerCase();
-                const selectedSection = $("#section-filter").val().toLowerCase();
-
-                populateTable(searchTerm, sortColumn, sortOrder, pageNumber, pageSize);
-            }
-            $(document).ready(function () {
-                populateTable();
-
-                $("#search-input").on("keyup", function () {
-                    filterTable();
-                });
-
-                $("#grade-filter").on("change", function () {
-                    const selectedGrade = $(this).val();
-                    const $sectionFilter = $("#section-filter");
-                    $sectionFilter.empty();
-                    $sectionFilter.append('<option value="all">All</option>');
-
-                    if (selectedGrade !== "all") {
-                        const sections = {
-                            "Grade 7": ["Section A", "Section B", "Section C"],
-                            "Grade 8": ["Section A", "Section B", "Section C"],
-                            "Grade 9": ["Section A", "Section B", "Section C"],
-                            "Grade 10": ["Section A", "Section B", "Section C"],
-                        };
-                        sections[selectedGrade].forEach(function (section) {
-                            $sectionFilter.append('<option value="' + section + '">' + section + '</option>');
-                        });
-                    }
-
-                    filterTable();
-                });
-
-                $("#section-filter").on("change", function () {
-                    filterTable();
-                });
-            });
+           
+            
+            
         </script>
 </body>
 </html>

@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="reports.aspx.cs" Inherits="WebApplication3.mnhs" %>
+
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
     <title>Reports</title>
@@ -21,6 +23,30 @@
     <div class="container">
         <div class="form-group">
             <div class="report-header">
+
+                <!-- This header only visible to the printing of student records -->
+                <div class="school-header">
+                    <div id="school-header-logo">
+                        <img src="/images/logomnhs.png"/>
+                    </div>
+                    <div id="school-header">
+                        <p><b>Republic of the Philippines</b></p>
+                        <p>National Capital Region</p>
+                        <p>Schools Division of Parañaque City</p>
+                        <h3 id="school-name"><b>MOONWALK NATIONAL HIGH SCHOOL</b></h3>
+                    </div>
+                    <div id="school-header-1">
+                        <div id="deped-pque-logo">
+                            <img src="/images/deped-pque.png"/>
+                        </div>
+                        <div id="bagong-pilipinas-logo">
+                            <img src="/images/bagong-pilipinas.png"/>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <!-- Student Attendance Records -->
                 <div class="header2">
                     <h1>STUDENT ATTENDANCE RECORDS</h1>
                 </div>

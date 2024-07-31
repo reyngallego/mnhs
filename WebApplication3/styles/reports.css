@@ -59,6 +59,35 @@ h3 {
     width: 100%;
 }
 
+/* Print Header */
+
+.school-header {
+    display: none;
+    justify-content: space-between
+}
+
+.school-header img {
+    height: 100px;
+}
+
+#school-header {
+    margin: 0 10px;
+    text-align: center;
+    width: 100%;
+}
+
+#school-header-1 {
+    display: flex;
+}
+
+#school-header p, h3 {
+    margin: 0;
+    font-size: 18px;
+    line-height: 1.5rem;
+}
+
+
+
 /* Actions */
 
 .actions {
@@ -156,7 +185,7 @@ table {
 }
 
 th {
-    height: 70px;
+    padding: 0.75rem;
 }
 
 h4 {
@@ -181,6 +210,32 @@ h4 {
         text-align: center;
         width: 20%; /* Each column gets 20% width for equal distribution */
     }
+
+        /* Column width styling */
+        #attendanceTable th:nth-child(1),
+        #attendanceTable td:nth-child(1) {
+            width: 25%;
+        }
+
+        #attendanceTable th:nth-child(2),
+        #attendanceTable td:nth-child(2) {
+            width: 20%;
+        }
+
+        #attendanceTable th:nth-child(3),
+        #attendanceTable td:nth-child(3) {
+            width: 15%;
+        }
+
+        #attendanceTable th:nth-child(4),
+        #attendanceTable td:nth-child(4) {
+            width: 20%;
+        }
+
+        #attendanceTable th:nth-child(5),
+        #attendanceTable td:nth-child(5) {
+            width: 20%;
+        }
 
 /* Pagination */
 
@@ -298,11 +353,21 @@ h4 {
 
 @media print {
     body {
-        background-color: #ffffff;
+        background-color: #ffffff !important;
     }
     
     body header, .header1, .actions {
         display: none;
+    }
+
+    .school-header {
+        display: flex;
+    }
+
+    .header2 h1 {
+        line-height: 1rem;
+        font-size: 20px;
+        font-weight: 600;
     }
 
 }

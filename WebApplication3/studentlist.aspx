@@ -70,7 +70,6 @@
     </div>
 </div>
 
-
     <!-- Modal for editing student -->
     <div class="modal fade" id="editStudentModal" tabindex="-1" role="dialog" aria-labelledby="editStudentModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
@@ -180,7 +179,7 @@
                 </div>
                 <div class="modal-body">
                     <!-- Student fill-up form -->
-                    <form>
+                    <form id="addStudentForm">
                         <div class="form-group">
                             <label for="STUD_LRN">LRN:</label>
                             <input type="text" class="form-control" id="STUD_LRN" required>

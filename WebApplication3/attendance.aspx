@@ -31,15 +31,18 @@
                 <h1>SCAN RESULT</h1>
             </div>
             <label for="searchInput">Scan QR code or input LRN:</label>
-            <div class="input-group">
-                <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input" />
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button" onclick="scanLRN()">Scan</button>
+            <div class="attendance-input">
+                <div class="input-group">
+                    <input type="text" id="lrnInput" placeholder="Enter LRN" class="long-input" />
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button" onclick="scanLRN()">Scan</button>
+                    </div>
                 </div>
+                <button id="toggleButton" class="btn btn-secondary" type="button">TIMEIN/TIMEOUT</button> 
             </div>
         </div>
 
-        <button id="toggleButton" class="btn btn-secondary" type="button">TIMEIN/TIMEOUT</button> <br />
+        <!-- Attendance Table -->
         <div class="stud-attendance">
             <h5>Status:</h5>
             <div class="form-group">
