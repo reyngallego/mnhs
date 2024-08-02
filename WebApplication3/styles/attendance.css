@@ -79,7 +79,7 @@ table {
 
     table tbody {
         display: block;
-        max-height: 400px; /* Set the maximum height for the tbody */
+        max-height: 350px; /* Set the maximum height for the tbody */
         overflow-y: auto; /* Enable vertical scrolling */
     }
 

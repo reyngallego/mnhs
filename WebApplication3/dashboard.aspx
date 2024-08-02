@@ -42,7 +42,7 @@
         function updateDateTime() {
             const now = new Date();
             const time = now.toLocaleTimeString();
-            const date = now.toLocaleDateString();
+            const date = now.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
 
             document.getElementById('timeDisplay').textContent = time;
             document.getElementById('dateDisplay').textContent = date;

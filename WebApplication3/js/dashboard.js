@@ -64,7 +64,11 @@
 // Function to update time and date
 function updateTimeDate() {
     var currentDate = new Date();
-    var options = { weekday: 'long', month: 'long', day: 'numeric' };
+    var options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric'
+    };
     var dateString = currentDate.toLocaleDateString('en-US', options);
     var timeString = currentDate.toLocaleTimeString();
     document.getElementById("dateDisplay").textContent = dateString;
