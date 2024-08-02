@@ -254,7 +254,7 @@
             var start = (page - 1) * rowsPerPage;
             var end = start + rowsPerPage;
 
-            rows.hide(); v
+            rows.hide();
             rows.slice(start, end).show();
 
             pagination.find("li").removeClass("active");
